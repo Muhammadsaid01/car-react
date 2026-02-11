@@ -4,10 +4,11 @@ import React from "react"
 import ReactDOM from "react-dom"
 import { Provider } from "react-redux"
 import App from "./app/App"
+import theme from './app/MaterialTheme'
 import { store } from "./app/store"
 import "./css/index.css"
 import reportWebVitals from "./reportWebVitals"
-import theme from './theme'
+
 
 
 ReactDOM.render(
