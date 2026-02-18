@@ -22,7 +22,7 @@ export default function NewDishes() {
 				<Box className='category-title'>Fresh Menu</Box>
 				<Stack className='cards-frame'>
 					<CssVarsProvider>
-						{newDishes.length === 0 ? (
+						{newDishes.length !== 0 ? (
 						newDishes.map((ele, index)=>{
 							return (
 								<Card key={index} variant='outlined' className={"card"}>
