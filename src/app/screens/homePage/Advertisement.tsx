@@ -1,4 +1,4 @@
- export default function Advertisement() {
+  export default function Advertisement() {
 	return (
 	<div className={'advertisement'}>
 		Advertisement

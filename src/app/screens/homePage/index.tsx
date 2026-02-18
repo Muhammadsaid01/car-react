@@ -1,3 +1,4 @@
+import "../../../css/home.css"
 import ActiveUsers from './ActiveUsers'
 import Advertisement from './Advertisement'
 import Events from './Events'
