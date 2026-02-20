@@ -1,10 +1,12 @@
-/* eslint-disable jsx-a11y/alt-text */
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye"
 import { Box, Container, Stack } from "@mui/material"
 import Button from "@mui/material/Button"
 import Rating from "@mui/material/Rating"
 import { FreeMode, Navigation, Thumbs } from "swiper"
-
+import "swiper/css"
+import "swiper/css/free-mode"
+import "swiper/css/navigation"
+import "swiper/css/thumbs"
 import { Swiper, SwiperSlide } from "swiper/react"
 import Divider from "../../components/divider"
 
@@ -25,7 +27,7 @@ export default function ChosenProduct() {
               (ele: string, index: number) => {
                 return (
                   <SwiperSlide key={index}>
-                    <img className="slider-image" src={ele} />
+                    <img className="slider-image" src={ele} alt='det' />
                   </SwiperSlide>
                 );
               }
