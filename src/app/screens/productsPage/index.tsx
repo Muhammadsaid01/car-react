@@ -1,4 +1,5 @@
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import "../../../css/products.css"
 import ChosenProduct from './ChosenProduct'
 import Products from './Products'
 
