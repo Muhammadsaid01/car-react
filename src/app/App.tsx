@@ -6,9 +6,9 @@ import Footer from './components/footer'
 import HomeNavbar from './components/headers/HomeNavbar'
 import OtherNavbar from './components/headers/OtherNavbar'
 import HelpPage from './screens/helpPage'
+import HomePage from './screens/homePage'
 import OrdersPage from './screens/ordersPage'
 import ProductsPage from './screens/productsPage'
-import Test from './screens/testPage/Test'
 import UserPage from './screens/userPage'
 function App() {
   const location = useLocation();
@@ -32,8 +32,7 @@ function App() {
             <HelpPage />
           </Route>
           <Route path="/">
-          <Test/>
-           {/* { <HomePage />} */}
+           <HomePage />
           </Route>
         </Switch>
         < Footer />
