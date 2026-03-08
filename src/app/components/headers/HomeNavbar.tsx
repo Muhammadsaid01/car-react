@@ -1,9 +1,30 @@
 import { Box, Button, Container, Stack } from '@mui/material'
+import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import Basket from './Basket'
 
 export default  function HomeNavbar() {
-	const authMember = true;
+	const authMember = null;
+	const [count, setCount] = useState<number>(0);
+	const [value, setValue] = useState<boolean>(true);
+
+
+useEffect(() => {
+	console.log("componentDidMount");
+	setCount(count + 1);
+	return () => {
+		console.log("componentWillUnmount");
+
+	}
+// eslint-disable-next-line react-hooks/exhaustive-deps
+},[value]);
+
+	/** HANDLERS */
+	 const buttonHendler = () => {
+		setValue(!value);
+	 };
+
+
 	return <div className="home-navbar">
 		<Container className="home-container">
 			<Stack className="menu">
@@ -60,12 +81,13 @@ export default  function HomeNavbar() {
 						The Choice, not just a choice
 						</Box>
 					<Box className={"service-txt"}>
-						24 hour service
+						{count} hour service
 					</Box>
 					<Box className={"signup"}>
 						{!authMember ? <Button 
 						variant={'contained'} 
 						className='signup-button'
+						onClick={buttonHendler}
 						>Signup</Button>
 						: null}
 					</Box>
