@@ -7,14 +7,24 @@ import { CssVarsProvider } from '@mui/joy/styles'
 import { Box, Container, Stack } from '@mui/material'
 import Divider from '../../components/divider'
 
-const newDishes = [
-	{productName: "Cutlet", imagePath: "/img/cutlet.webp"},
-	{productName: "Kebab", imagePath: "/img/kebab.webp"},
-	{productName: "Kebab", imagePath: "/img/kebab-fresh.webp"},
-	{productName: "Lavash", imagePath: "/img/lavash.webp"},
-];
+import { useSelector } from 'react-redux'
+import { createSelector } from 'reselect'
+import { serverApi } from '../../../lib/config'
+import { ProductCollection } from '../../../lib/enums/product.enum'
+import { Product } from '../../../lib/types/product'
+import { retrieveNewDishes } from './selector'
+
+const newDishesRetriever = createSelector(
+  retrieveNewDishes,
+  (newDishes) =>({newDishes})
+);
 
 export default function NewDishes() {
+
+		const { newDishes } = useSelector(newDishesRetriever);
+		
+	console.log("popularDishes:", newDishes);
+
 	return (
 	<div className={'new-products-frame'}>
 		<Container>
@@ -23,13 +33,15 @@ export default function NewDishes() {
 				<Stack className='cards-frame'>
 					<CssVarsProvider>
 						{newDishes.length !== 0 ? (
-						newDishes.map((ele, index)=>{
+						newDishes.map((product:Product)=>{
+							const imagePath = `${serverApi}/${product.productImages[0]}`;
+							const sizeVolume = product.productCollection===ProductCollection.DRINK ?product.productVolume +"l" :  product.productSize + " size";
 							return (
-								<Card key={index} variant='outlined' className={"card"}>
+								<Card key={product._id} variant='outlined' className={"card"}>
 									<CardOverflow>
-										<div className='product-sale'>Normal size</div>
+										<div className='product-sale'>{sizeVolume}</div>
 										<AspectRatio ratio='1'>
-											<img src={ele.imagePath} alt="" />
+											<img src={imagePath} alt="" />
 										</AspectRatio>
 									</CardOverflow>
 
@@ -37,14 +49,14 @@ export default function NewDishes() {
 										<Stack className='info'>
 											<Stack flexDirection={"row"}>
 												<Typography className={"title"}>
-													{ele.productName}
+													{product.productName}
 													</Typography>
 													<Divider width='2' height='24' bg='#d9d9d9'/>
-													<Typography className={"price"}>$12</Typography>
+													<Typography className={"price"}>${product.productPrice}</Typography>
 											</Stack>
 											<Stack>
 												<Typography className={"views"}>
-													20
+													{product.productViews}
 													<VisibilityIcon sx={{ fontSize: 20, marginLeft:"5px" }} />
 												</Typography>
 											</Stack>

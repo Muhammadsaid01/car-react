@@ -13,16 +13,17 @@ import { useDispatch } from 'react-redux'
 import { ProductCollection } from '../../../lib/enums/product.enum'
 import { Product } from '../../../lib/types/product'
 import ProductService from '../../services/ProductService'
-import { setPopularDishes } from './slice'
+import { setNewDishes, setPopularDishes } from './slice'
 /** Redux Slice & Selector **/
 const actionDispatch = (dispatch: Dispatch)=>({
   setPopularDishes:(data:Product[])=>dispatch(setPopularDishes(data)),
+  setNewDishes:(data:Product[])=> dispatch(setNewDishes(data)),
 });
 
 
 
 export  default function HomePage() {
-  const { setPopularDishes } = actionDispatch(useDispatch());
+  const { setPopularDishes, setNewDishes } = actionDispatch(useDispatch());
 
 
 
@@ -37,6 +38,16 @@ export  default function HomePage() {
       }).then((data)=>{
         console.log("Data passed here:", data);
         setPopularDishes(data);
+      }).catch((err) => console.log(err));
+
+      product.getProducts({
+        page: 1,
+        limit: 4,
+        order: "createdAt",
+        productCollection: ProductCollection.DISH,
+      }).then((data)=>{
+        console.log("Data passed here:", data);
+        setNewDishes(data);
       }).catch((err) => console.log(err));
     },[]);
 
