@@ -7,7 +7,9 @@ import Products from './Products'
 export default function ProductsPage() {
   const products = useRouteMatch();
   console.log("products:",products);
-  return <div className={'products-page'}>
+  
+  return (
+  <div className={'products-page'}>
     <Switch>
       <Route path={`${products.path}/:productId`}>
       <ChosenProduct />
@@ -16,5 +18,6 @@ export default function ProductsPage() {
           <Products />
         </Route>
     </Switch>
-  </div>;
+  </div>
+  );
 }

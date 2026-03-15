@@ -6,6 +6,22 @@ import SearchIcon from "@mui/icons-material/Search"
 import { Badge, Box, Button, Container, Pagination, PaginationItem, Stack } from "@mui/material"
 import { ChangeEvent, useState } from "react"
 
+import { Dispatch } from '@reduxjs/toolkit'
+import { createSelector } from "reselect"
+import { Product } from '../../../lib/types/product'
+import { retrieveProducts } from './selector'
+import { setProducts } from './slice'
+
+
+/** Redux Slice & Selector **/
+const actionDispatch = (dispatch: Dispatch)=>({
+  setProducts:(data:Product[])=>dispatch(setProducts(data)),
+});
+
+const productsRetriever = createSelector(
+  retrieveProducts,
+  (products) =>({products})
+);
 
 const products = [
   { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
@@ -24,6 +40,9 @@ const brands = [
   { name: "SWEETS", image: "/img/sweets.webp" },
   { name: "DÖNER", image: "/img/doner.webp" },
 ];
+
+
+
 
 export default function Products() {
   const [searchText, setSearchText] = useState<string>("");
