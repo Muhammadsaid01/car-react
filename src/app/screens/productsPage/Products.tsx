@@ -4,11 +4,15 @@ import MonetizationOnIcon from "@mui/icons-material/MonetizationOn"
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye"
 import SearchIcon from "@mui/icons-material/Search"
 import { Badge, Box, Button, Container, Pagination, PaginationItem, Stack } from "@mui/material"
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useEffect, useState } from "react"
 
 import { Dispatch } from '@reduxjs/toolkit'
+import { useDispatch, useSelector } from 'react-redux'
 import { createSelector } from "reselect"
+import { serverApi } from '../../../lib/config'
+import { ProductCollection } from '../../../lib/enums/product.enum'
 import { Product } from '../../../lib/types/product'
+import ProductService from '../../services/ProductService'
 import { retrieveProducts } from './selector'
 import { setProducts } from './slice'
 
@@ -23,17 +27,6 @@ const productsRetriever = createSelector(
   (products) =>({products})
 );
 
-const products = [
-  { productName: "Cutlet", imagePath: "/img/cutlet.webp" },
-  { productName: "Kebab Fresh", imagePath: "/img/kebab-fresh.webp" },
-  { productName: "Kebab", imagePath: "/img/kebab.webp" },
-  { productName: "Lavash", imagePath: "/img/lavash.webp" },
-  { productName: "Gourmet Lavash", imagePath: "/img/lavash.webp" },
-  { productName: "Spicy Cutlet", imagePath: "/img/cutlet.webp" },
-  { productName: "Steak Kebab", imagePath: "/img/kebab.webp" },
-  { productName: "Mixed Kebab", imagePath: "/img/kebab-fresh.webp" },
-];
-
 const brands = [
   { name: "GURME", image: "/img/gurme.webp" },
   { name: "SEAFOOD", image: "/img/seafood.webp" },
@@ -45,6 +38,23 @@ const brands = [
 
 
 export default function Products() {
+
+const { setProducts } = actionDispatch(useDispatch());
+const {products} = useSelector(productsRetriever);
+useEffect (() => {
+  const product = new ProductService();
+  product
+  .getProducts({
+    page: 1,
+    limit: 8,
+    order: "createdAt",
+    productCollection: ProductCollection.DISH,
+    search: "",
+  })
+  .then(data => setProducts(data))
+  .catch((err) => console.log(err));
+}, []);
+
   const [searchText, setSearchText] = useState<string>("");
 
   const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -99,31 +109,35 @@ export default function Products() {
 
 							<Stack className="product-wrapper">
                 {filteredProducts.length !== 0 ? (
-                  filteredProducts.map((product, index) => (
-                    <Stack key={index} className="product-card">
-                      <Stack
-                        className="product-img"
-                        sx={{ backgroundImage: `url(${product.imagePath})` }}
-                      >
-                        <div className="product-sale">Normal size</div>
-                        <Button className="shop-btn">
-                          <img src="/icons/shopping-cart.svg" alt="cart" />
-                        </Button>
-                        <Button className="view-btn">
-                          <Badge badgeContent={20} color="secondary">
-                            <RemoveRedEyeIcon sx={{ color: "gray" }} />
-                          </Badge>
-                        </Button>
+                  filteredProducts.map((product: Product) => {
+                    const imagePath = `${serverApi}/${product.productImages[0]}`;
+                    const sizeVolume = product.productCollection === ProductCollection.DRINK ? product.productVolume + "l" : product.productSize + " size";
+                    return (
+                      <Stack key={product._id} className="product-card">
+                        <Stack
+                          className="product-img"
+                          sx={{ backgroundImage: `url(${imagePath})` }}
+                        >
+                          <div className="product-sale">{sizeVolume}</div>
+                          <Button className="shop-btn">
+                            <img src="/icons/shopping-cart.svg" alt="cart" />
+                          </Button>
+                          <Button className="view-btn">
+                            <Badge badgeContent={product.productViews} color="secondary">
+                              <RemoveRedEyeIcon sx={{ color: product.productViews === 0 ? "grey" : "white" }} />
+                            </Badge>
+                          </Button>
+                        </Stack>
+                        <Box className="product-desc">
+                          <span className="product-title">{product.productName}</span>
+                          <div className="product-desc">
+                            <MonetizationOnIcon />
+                            {product.productPrice}
+                          </div>
+                        </Box>
                       </Stack>
-                      <Box className="product-desc">
-                        <span className="product-title">{product.productName}</span>
-                        <div className="product-desc">
-                          <MonetizationOnIcon />
-                          {12}
-                        </div>
-                      </Box>
-                    </Stack>
-                  ))
+                    );
+                  })
                 ) : (
                   <Box className="no-data">Products are not available!</Box>
                 )}
