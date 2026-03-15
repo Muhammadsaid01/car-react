@@ -4,6 +4,9 @@ import { serverApi } from '../../lib/config'
 import { Member } from '../../lib/types/member'
 
 class MemberService {
+  getRestaurant() {
+    throw new Error('Method not implemented.')
+  }
 	private readonly path: string;
 
 	constructor() {
