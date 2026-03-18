@@ -19,6 +19,7 @@ import { createSelector } from "reselect"
 import { serverApi } from '../../../lib/config'
 import { Member } from '../../../lib/types/member'
 import { Product } from '../../../lib/types/product'
+import { CartItem } from '../../../lib/types/search'
 import MemberService from '../../services/MemberService'
 import ProductService from '../../services/ProductService'
 import { retrieveChosenProduct, retrieveRestaurant } from './selector'
@@ -40,11 +41,14 @@ const restaurantRetriever = createSelector(
   (restaurant) =>({restaurant})
 );
 
+interface ProductsPageProps {
+  onAdd : (item :CartItem) => void;
+}
 
 
 
-
-export default function ChosenProduct() {
+export default function ChosenProduct(props: ProductsPageProps) {
+  const {onAdd} = props;
   const {productId} = useParams<{productId: string}>();
   const { setRestaurant, setChosenProduct } = actionDispatch(useDispatch());
   const {chosenProduct} = useSelector(chosenProductsRetriever);

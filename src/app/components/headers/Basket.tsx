@@ -8,8 +8,13 @@ import IconButton from "@mui/material/IconButton"
 import Menu from "@mui/material/Menu"
 import React from "react"
 import { useHistory } from "react-router-dom"
-
-export default function Basket() {
+import { serverApi } from '../../../lib/config'
+import { CartItem } from '../../../lib/types/search'
+interface BasketProps {
+  cartItems: CartItem[];
+}
+export default function Basket(props: BasketProps) {
+  const {cartItems} = props;
   const authMember = null;
   const history = useHistory();
 
@@ -34,7 +39,7 @@ export default function Basket() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <Badge badgeContent={3} color="secondary">
+        <Badge badgeContent={cartItems.length} color="secondary">
           <img src={"/icons/shopping-cart.svg"} />
         </Badge>
       </IconButton>
@@ -50,7 +55,7 @@ export default function Basket() {
             overflow: "visible",
             filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
             mt: 1.5,
-            "& .MuiAvatar-root": {
+            "& .MuiAvatar-root": {      
               width: 32,
               height: 32,
               ml: -0.5,
@@ -75,25 +80,36 @@ export default function Basket() {
       >
         <Stack className={"basket-frame"}>
           <Box className={"all-check-box"}>
-            <div>Cart is empty!</div>
+            {cartItems.length === 0 ? (<div>Cart is empty!</div>
+            )  : (
+              <div>Cart Products</div>
+            )}
+            
           </Box>
 
           <Box className={"orders-main-wrapper"}>
             <Box className={"orders-wrapper"}>
-              <Box className={"basket-info-box"}>
-                <div className={"cancel-btn"}>
-                  <CancelIcon color={"primary"} />
-                </div>
-                <img src={"/img/fresh.webp"} className={"product-img"} />
-                <span className={"product-name"}>Kebab</span>
-                <p className={"product-price"}>$10 x 1</p>
-                <Box sx={{ minWidth: 120 }}>
-                  <div className="col-2">
-                    <button className="remove">-</button>{" "}
-                    <button className="add">+</button>
+              {cartItems.map((item:CartItem)=> {
+                  const imagePath = `${serverApi}/${item.image}`;
+                  return (
+                  <Box className={"basket-info-box"}>
+                  <div className={"cancel-btn"}>
+                    <CancelIcon color={"primary"} />
                   </div>
+                  <img src={imagePath} className={"product-img"} />
+                  <span className={"product-name"}>{item.name}</span>
+                  <p className={"product-price"}>${item.price} x {item.quantity}</p>
+                  <Box sx={{ minWidth: 120 }}>
+                    <div className="col-2">
+                      <button className="remove">-</button>{" "}
+                      <button className="add">+</button>
+                    </div>
+                  </Box>
                 </Box>
-              </Box>
+                );
+              })}
+
+              
             </Box>
           </Box>
           <Box className={"basket-order"}>
