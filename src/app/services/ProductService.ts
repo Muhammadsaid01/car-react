@@ -1,6 +1,6 @@
-import axios from "axios";
-import { serverApi } from "../../lib/config";
-import { Product, ProductInquery } from "../../lib/types/product";
+import axios from "axios"
+import { serverApi } from "../../lib/config"
+import { Product, ProductInquery } from "../../lib/types/product"
 
 class ProductService {
   private readonly path: string;
@@ -21,7 +21,7 @@ class ProductService {
 
       return result.data;
     } catch (err) {
-      console.log("Error, getProduct:", err);
+      console.log("Error, getProducts:", err);
       throw err;
     }
   }

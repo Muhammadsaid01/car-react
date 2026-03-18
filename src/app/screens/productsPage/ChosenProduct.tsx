@@ -1,66 +1,68 @@
+/**Chosen Product**/
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye"
 import { Box, Container, Stack } from "@mui/material"
 import Button from "@mui/material/Button"
 import Rating from "@mui/material/Rating"
-import { Dispatch } from "@reduxjs/toolkit"
-import { useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
-import { createSelector } from "reselect"
 import { FreeMode, Navigation, Thumbs } from "swiper"
 import "swiper/css"
 import "swiper/css/free-mode"
 import "swiper/css/navigation"
 import "swiper/css/thumbs"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { serverApi } from "../../../lib/config"
-import { Member } from "../../../lib/types/member"
-import { Product } from "../../../lib/types/product"
 import Divider from "../../components/divider"
-import MemberService from "../../services/MemberService"
-import ProductService from "../../services/ProductService"
-import { retrieveChosenProduct, retrieveRestaurant } from "./selector"
-import { setChosenProduct, setRestaurant } from "./slice"
 
-/** REDUX SLICE & SELECTOR **/
-const actionDispatch = (dispatch: Dispatch) => ({
-  setRestaurant: (data: Member) => dispatch(setRestaurant(data)),
-  setChosenProduct: (data: Product) => dispatch(setChosenProduct(data)),
+import { Dispatch } from '@reduxjs/toolkit'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { createSelector } from "reselect"
+import { serverApi } from '../../../lib/config'
+import { Member } from '../../../lib/types/member'
+import { Product } from '../../../lib/types/product'
+import MemberService from '../../services/MemberService'
+import ProductService from '../../services/ProductService'
+import { retrieveChosenProduct, retrieveRestaurant } from './selector'
+import { setChosenProduct, setRestaurant } from './slice'
+
+
+/** Redux Slice & Selector **/
+const actionDispatch = (dispatch: Dispatch)=>({
+  setRestaurant:(data:Member)=>dispatch(setRestaurant(data)),
+  setChosenProduct:(data:Product)=>dispatch(setChosenProduct(data)),
 });
 
-const chosenProductRetriever = createSelector(
+const chosenProductsRetriever = createSelector(
   retrieveChosenProduct,
-  (chosenProduct) => ({ chosenProduct })
+  (chosenProduct) =>({chosenProduct})
 );
-
 const restaurantRetriever = createSelector(
   retrieveRestaurant,
-  (restaurant) => ({ restaurant })
+  (restaurant) =>({restaurant})
 );
 
+
+
+
+
 export default function ChosenProduct() {
-
-  const { productId } = useParams<{ productId: string }>();
+  const {productId} = useParams<{productId: string}>();
   const { setRestaurant, setChosenProduct } = actionDispatch(useDispatch());
-  const {chosenProduct} =useSelector(chosenProductRetriever);
-  const {restaurant} = useSelector(restaurantRetriever);
+  const {chosenProduct} = useSelector(chosenProductsRetriever);
+    const {restaurant} = useSelector(restaurantRetriever);
 
-  useEffect(() => {
+   console.log("productId :", productId);
+   useEffect(() =>{
     const product = new ProductService();
-    product
-      .getProduct(productId)
-      .then((data) => setChosenProduct(data))
-      .catch((err) => console.log(err));
+    product.getProduct(productId)
+    .then((data)=> setChosenProduct(data))
+    .catch((err) => console.log(err));
 
     const member = new MemberService();
-    member
-      .getRestaurant()
-      .then((data) => setRestaurant(data))
-      .catch((err) => console.log(err));
-  }, []);
+    member.getRestaurant().then((data)=>setRestaurant(data))
+    .catch((err) => console.log(err));
+   }, []);
 
-  if (!chosenProduct) return null;
-
+   if(!chosenProduct) return null;
   return (
     <div className={"chosen-product"}>
       <Box className={"title"}>Product Detail</Box>
@@ -75,10 +77,10 @@ export default function ChosenProduct() {
           >
             {chosenProduct?.productImages.map(
               (ele: string, index: number) => {
-                const imagePath = `${serverApi}/${ele}`
+                const imagePath = `${serverApi}/${ele}`;
                 return (
                   <SwiperSlide key={index}>
-                    <img className="slider-image" src={imagePath} />
+                    <img className="slider-image" src={imagePath} alt='det' />
                   </SwiperSlide>
                 );
               }
@@ -99,7 +101,10 @@ export default function ChosenProduct() {
                 </div>
               </div>
             </Box>
-            <p className={"product-desc"}>{chosenProduct?.productDesc? chosenProduct?.productDesc : "No Description"}</p>
+            <p className={"product-desc"}>
+              {chosenProduct?.productDesc 
+            ? chosenProduct?.productDesc 
+            : "No Description"}</p>
             <Divider height="1" width="100%" bg="#000000" />
             <div className={"product-price"}>
               <span>Price:</span>
