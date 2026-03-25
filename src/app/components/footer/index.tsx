@@ -1,7 +1,7 @@
-/* eslint-disable jsx-a11y/alt-text */
-import { Box, Container, Stack } from "@mui/material"
-import { Link } from "react-router-dom"
-import styled from "styled-components"
+import React from "react";
+import { Box, Container, Stack } from "@mui/material";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 const Footers = styled.div`
   width: 100%;
@@ -20,7 +20,6 @@ export default function Footer() {
         <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
           <Stack flexDirection={"column"} style={{ width: "340px" }}>
             <Box>
-          
               <img width={"100px"} src={"/icons/burak.svg"} />
             </Box>
             <Box className={"foot-desc-txt"}>

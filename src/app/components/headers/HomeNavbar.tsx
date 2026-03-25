@@ -1,12 +1,11 @@
-/* eslint-disable jsx-a11y/role-supports-aria-props */
-import { Logout } from "@mui/icons-material"
-import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material"
-import React from "react"
-import { NavLink } from "react-router-dom"
-import { serverApi } from "../../../lib/config"
-import { CartItem } from "../../../lib/types/search"
-import { useGlobals } from "../../hooks/useGlobal"
-import Basket from "./Basket"
+import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
+import { NavLink } from "react-router-dom";
+import Basket from "./Basket";
+import React from "react"; 
+import { CartItem } from "../../../lib/types/search";
+import { useGlobals } from "../../hooks/useGlobal"; 
+import { serverApi } from "../../../lib/config";
+import { Logout } from "@mui/icons-material";
 
 interface HomeNavbarProps {
   cartItems: CartItem[];

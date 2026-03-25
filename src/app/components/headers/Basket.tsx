@@ -1,16 +1,21 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable jsx-a11y/role-supports-aria-props */
-import CancelIcon from "@mui/icons-material/Cancel"
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
-import { Box, Button, Stack } from "@mui/material"
-import Badge from "@mui/material/Badge"
-import IconButton from "@mui/material/IconButton"
-import Menu from "@mui/material/Menu"
-import React from "react"
-import { useHistory } from "react-router-dom"
-import { serverApi } from "../../../lib/config"
-import { CartItem } from "../../../lib/types/search"
+import React, { useEffect, useState } from "react";
+import { Box, Button, Stack } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import Badge from "@mui/material/Badge";
+import Menu from "@mui/material/Menu";
+import CancelIcon from "@mui/icons-material/Cancel";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useHistory } from "react-router-dom";
+import { CartItem } from "../../../lib/types/search";
+import { Messages, serverApi } from "../../../lib/config";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { useGlobals } from "../../hooks/useGlobal";
+import { Message } from "@mui/icons-material";
+import OrderService from "../../services/OrderService";
+import { OrderInquiry } from "../../../lib/types/order";
+import { OrderStatus } from "../../../lib/enums/order.enum";
+import { setProcessOrders } from "../../screens/ordersPage/slice";
 
 
 interface BasketProps {
@@ -25,7 +30,7 @@ interface BasketProps {
 
 export default function Basket(props: BasketProps) {
  const { cartItems , onAdd, onRemove, onDelete, onDeleteAll} = props;
-  const authMember = null;
+  const {authMember, setOrderBuilder} = useGlobals();
   const history = useHistory();
   const itemsPrice:  number = cartItems.reduce(
     (a: number, c: CartItem) => a + c.quantity*c.price, 0);
@@ -36,6 +41,7 @@ export default function Basket(props: BasketProps) {
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  
 
   /** HANDLERS **/
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -44,6 +50,29 @@ export default function Basket(props: BasketProps) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const proceedOrderHandler = async () => {
+    try {
+ handleClose();
+ if(!authMember) throw new Error (Messages.error2);
+
+  const order = new OrderService();
+   await order.createOrder(cartItems);
+   
+
+   onDeleteAll();
+
+   setOrderBuilder(new Date());
+
+   history.push("/orders");
+
+
+    } catch (err) {
+      console.log(err);
+      sweetErrorHandling(err).then();
+    }
+
+  }
 
   return (
     <Box className={"hover-line"}>
@@ -56,7 +85,7 @@ export default function Basket(props: BasketProps) {
         onClick={handleClick}
       >
         <Badge badgeContent={cartItems.length} color="secondary">
-          <img src={"/icons/shopping-cart.svg"} alt="server-resm"/>
+          <img src={"/icons/shopping-cart.svg"} />
         </Badge>
       </IconButton>
       <Menu
@@ -115,7 +144,7 @@ export default function Basket(props: BasketProps) {
                 <div className={"cancel-btn"}>
                   <CancelIcon color={"primary"}  onClick={() => onDelete(item)}/>
                 </div>
-                <img src={imagePath} className={"product-img"}  alt="server-resm"/>
+                <img src={imagePath} className={"product-img"} />
                 <span className={"product-name"}> {item.name}</span>
                 <p className={"product-price"}>${item.price} x {item.quantity}</p>
                 <Box sx={{ minWidth: 120 }}>
@@ -133,7 +162,9 @@ export default function Basket(props: BasketProps) {
           </Box>
           {cartItems.length !== 0 ?  ( <Box className={"basket-order"}>
             <span className={"price"}>Total: ${totalPrice} ({itemsPrice} +{shippingCost})</span>
-            <Button startIcon={<ShoppingCartIcon />} variant={"contained"}>
+            <Button onClick={proceedOrderHandler} 
+            startIcon={<ShoppingCartIcon />} 
+            variant={"contained"}>
               Order
             </Button>
           </Box>) : ("")}

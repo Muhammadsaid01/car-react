@@ -1,22 +1,24 @@
-import React, { useState } from 'react'
-import { Route, Switch, useLocation } from 'react-router-dom'
-import '../css/app.css'
-import "../css/footer.css"
-import "../css/navbar.css"
-import { Message } from '../lib/config'
-import { sweetErrorHandling, sweetTopSuccessAlert } from '../lib/sweetAlert'
-import AuthenticationModal from './components/auth'
-import Footer from './components/footer'
-import HomeNavbar from "./components/headers/HomeNavbar"
-import OtherNavbar from './components/headers/OtherNavbar'
-import useBasket from './hooks/useBasket'
-import { useGlobals } from './hooks/useGlobal'
-import HelpPage from './screens/helpPage'
-import HomePage from './screens/homePage'
-import OrdersPage from './screens/ordersPage'
-import ProductsPage from './screens/productsPage'
-import UsersPage from './screens/userPage'
-import MemberService from './services/MemberService'
+import React, { useState } from 'react';
+import { Route, Switch, useLocation } from 'react-router-dom';
+import OtherNavbar from './components/headers/OtherNavbar';
+import HomeNavbar from "./components/headers/HomeNavbar";
+import HomePage from './screens/homePage';
+import OrdersPage from './screens/ordersPage';
+import ProductsPage from './screens/productsPage';
+import UsersPage from './screens/userPage';
+import Footer from './components/footer';
+import HelpPage from './screens/helpPage';
+import Test from './screens/Test';
+import useBasket from './hooks/useBasket';
+import AuthenticationModal from './components/auth';
+import '../css/app.css';
+import "../css/navbar.css";
+import "../css/footer.css";
+import { T } from '../lib/types/common';
+import { sweetErrorHandling, sweetTopSuccessAlert } from '../lib/sweetAlert';
+import { Messages } from '../lib/config';
+import MemberService from './services/MemberService';
+import { useGlobals } from './hooks/useGlobal';
 
 
 
@@ -49,7 +51,7 @@ const handleLogoutRequest = async() => {
     setAuthMember(null);
   }catch (err) {
     console.log(err);
-    sweetErrorHandling(Message.error1);
+    sweetErrorHandling(Messages.error1);
   }
 };
 

@@ -1,19 +1,76 @@
-import LocationOnIcon from "@mui/icons-material/LocationOn"
-import TabContext from "@mui/lab/TabContext"
-import TabPanel from "@mui/lab/TabPanel"
-import { Box, Container, Stack, Tab, Tabs } from "@mui/material"
-import { SyntheticEvent, useState } from "react"
-import "../../../css/orders.css"
-import FinishedOrders from "./FinishedOrders"
-import PausedOrders from "./PausedOrders"
-import ProcessOrders from "./ProcessOrders"
+import React, { useState, SyntheticEvent, useEffect } from "react";
+import { Container, Stack, Box, Tab, Tabs } from "@mui/material";
+import TabContext from "@mui/lab/TabContext";
+import TabPanel from "@mui/lab/TabPanel";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import PausedOrders from "./PausedOrders";
+import ProcessOrders from "./ProcessOrders";
+import FinishedOrders from "./FinishedOrders";
+import "../../../css/order.css";
+
+import { Dispatch } from '@reduxjs/toolkit'
+import { useDispatch } from 'react-redux'
+import { setPausedOrders, setProcessOrders, setFinishedOrders} from './slice'
+import { Order, OrderInquiry } from "../../../lib/types/order";
+import { OrderStatus } from "../../../lib/enums/order.enum";
+import OrderService from "../../services/OrderService";
+import { useGlobals } from "../../hooks/useGlobal";
+import { useHistory } from "react-router-dom";
+import { serverApi } from "../../../lib/config";
+import { MemberType } from "../../../lib/enums/member.enum";
+
+
+
+/** Redux Slice & Selector **/
+const actionDispatch = (dispatch: Dispatch)=>({
+  setPausedOrders:(data:Order[])=>dispatch(setPausedOrders(data)),
+  setProcessOrders:(data:Order[])=> dispatch(setProcessOrders(data)),
+  setFinishedOrders:(data: Order[]) => dispatch(setFinishedOrders(data))
+});
+
+
 
 export default function OrdersPage() {
+  const {setPausedOrders, setProcessOrders, setFinishedOrders} = 
+  actionDispatch(useDispatch());
+
+  const {orderBuilder, authMember} = useGlobals();
+  const history = useHistory();
   const [value, setValue] = useState("1");
+const [orderInquiry ,setOrderInquiry] = useState<OrderInquiry>({
+    page: 1,
+    limit: 5,
+    orderStatus: OrderStatus.PAUSE,
+  });
+
+  useEffect(() => {
+    const order = new OrderService();
+    
+    order
+    .getMyOrders({...orderInquiry, orderStatus: OrderStatus.PAUSE})
+    .then((data) => setPausedOrders(data))
+    .catch((err) => console.log(err));
+
+     order
+     .getMyOrders({...orderInquiry, orderStatus: OrderStatus.PROCESS})
+    .then((data) => setProcessOrders(data))
+    .catch((err) => console.log(err));
+
+     order
+     .getMyOrders({...orderInquiry, orderStatus: OrderStatus.FINISH})
+    .then((data) => setFinishedOrders(data))
+    .catch((err) => console.log(err));
+
+  }, [orderInquiry,orderBuilder]);
+
+
+  /**HANDLERS */
 
   const handleChange = (e: SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
+
+  if (!authMember)history.push("/");
 
   return (
     <div className="order-page">
@@ -38,41 +95,45 @@ export default function OrdersPage() {
 
             <Stack className="order-main-content">
               <TabPanel value="1">
-                <PausedOrders />
+                <PausedOrders  setValue={setValue}/>
               </TabPanel>
               <TabPanel value="2">
-                <ProcessOrders />
+                <ProcessOrders setValue={setValue} />
               </TabPanel>
               <TabPanel value="3">
-                <FinishedOrders />
+                <FinishedOrders  />
               </TabPanel>
             </Stack>
           </TabContext>
         </Stack>
 
-        {/* RIGHT SIDE: Separated into two distinct boxes */}
+     
         <Stack className="order-right">
-          {/* BOX 1: User Profile Info */}
+
           <Box className="order-info-box">
             <Box className="member-box">
               <div className="order-user-img">
-                <img src="/icons/default-user.svg" className="order-user-avatar" alt="User" />
+                <img src= {  authMember?.memberImage
+                    ? `${serverApi}/${authMember.memberImage}`
+                    : "/icons/default-user.svg" } className="order-user-avatar" alt="User" />
                 <div className="order-user-icon-box">
-                  <img src="/icons/user-badge.svg" className="order-user-prof-img" alt="Badge" />
+                  <img src= { authMember?.memberType === MemberType.RESTAURANT
+                   ? "/icons/restaurant.svg"
+                   :"/icons/user-badge.svg"}
+                   className="order-user-prof-img" alt="Badge" />
                 </div>
               </div>
-              <span className="order-user-name">Burak</span>
-              <span className="order-user-prof">USER</span>
+              <span className="order-user-name">{authMember?.memberNick}</span>
+              <span className="order-user-prof">{authMember?.memberType}</span>
             </Box>
 
             <div className="liner"></div>
 
             <Box className="order-user-address">
               <LocationOnIcon style={{ color: "#a1a1a1" }} />
-              <span className="spec-address-txt">Incheon, South Korea</span>
+              <span className="spec-address-txt">{authMember?.memberAddress ?authMember.memberAddress:"Do not exist"}</span>
             </Box>
           </Box>
-
 
           {/* BOX 2: Payment Details */}
           <Box 
@@ -102,7 +163,7 @@ export default function OrdersPage() {
               <img src="/icons/visa-card.svg" alt="visa" style={{ height: '24px' }} />
             </Box>
           </Box>
-        </Stack> 
+        </Stack> {/* FIXED: Added missing closing Stack */}
       </Container> {/* FIXED: Added missing closing Container */}
     </div> /* FIXED: Added missing closing div */
   );

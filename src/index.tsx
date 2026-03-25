@@ -1,30 +1,34 @@
-import CssBaseline from '@mui/material/CssBaseline'
-import { ThemeProvider } from '@mui/material/styles'
+import { CssBaseline } from "@mui/material"
+import { ThemeProvider } from "@mui/material/styles"
 import React from "react"
 import { createRoot } from "react-dom/client"
 import { Provider } from "react-redux"
 import { BrowserRouter as Router } from "react-router-dom"
 import App from "./app/App"
-import theme from './app/MaterialTheme'
+import ContextProvider from "./app/context/ContextProvider"
+import theme from "./app/MaterialTheme"
 import { store } from "./app/store"
 import "./css/index.css"
 import reportWebVitals from "./reportWebVitals"
 
-const container =   document.getElementById("root")!;
-const root = createRoot(container);
+
+const container = document.getElementById('root')!;
+const root = createRoot (container);
+
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline/>
-       <Router>
-        <App/>
-       </Router>
-      </ThemeProvider>
-      
+      <ContextProvider> 
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Router>
+            <App />
+          </Router>
+        </ThemeProvider>
+      </ContextProvider>
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

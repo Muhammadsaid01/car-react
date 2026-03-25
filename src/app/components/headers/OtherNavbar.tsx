@@ -1,13 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable jsx-a11y/role-supports-aria-props */
-import { Logout } from "@mui/icons-material"
-import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material"
-import { NavLink } from "react-router-dom"
-import { serverApi } from '../../../lib/config'
-import { CartItem } from "../../../lib/types/search"
-import { useGlobals } from "../../hooks/useGlobal"
-import Basket from "./Basket"
-
+import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
+import { NavLink } from "react-router-dom";
+import Basket from "./Basket";
+import { CartItem } from "../../../lib/types/search";
+import { useGlobals } from "../../hooks/useGlobal";
+import { Logout } from "@mui/icons-material";
+import { serverApi } from "../../../lib/config";
 
 
 interface OtherNavbarProps {
@@ -73,7 +70,6 @@ export default function OtherNavbar(props: OtherNavbarProps) {
                 </Button>
               </Box>
             ) : (
-             
               <img 
                className="user-avatar"
                   src={
