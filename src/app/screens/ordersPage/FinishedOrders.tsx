@@ -1,13 +1,12 @@
-import React from "react";
-import { Box, Stack } from "@mui/material";
 import TabPanel from "@mui/lab/TabPanel";
+import { Box, Stack } from "@mui/material";
 
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { retrieveFinishedOrders } from "./selector";
 import { serverApi } from "../../../lib/config";
 import { Order, OrderItem } from "../../../lib/types/order";
 import { Product } from "../../../lib/types/product";
+import { retrieveFinishedOrders } from "./selector";
 
 //**REDUX SLICE & SELECTOR
 const finishedOrdersRetriever = createSelector(

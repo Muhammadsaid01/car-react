@@ -1,18 +1,18 @@
-import { createSelector} from "reselect"
-import { AppRootState } from "../../../lib/types/screen"
+import { createSelector } from "reselect";
+import { AppRootState } from "../../../lib/types/screen";
 
 
 const selectHomePage = (state: AppRootState ) => state.homePage;
 
 
-export const retrievePopularDishes = createSelector (
+export const retrieveBrandCars = createSelector (
     selectHomePage,
-    (HomePage) => HomePage.popularDishes
+    (HomePage) => HomePage.brandCars
 );
 
-export const retrieveNewDishes = createSelector (
+export const retrieveNewCars = createSelector (
     selectHomePage,
-    (HomePage) => HomePage.newDishes
+    (HomePage) => HomePage.newCars
 );
 
 export const retrieveTopUsers = createSelector (
@@ -21,5 +21,5 @@ export const retrieveTopUsers = createSelector (
 );
 
 // Update your retrieveProducts selector to look into homePage
-export const retrieveProducts = (state: AppRootState) => state.homePage.products || [];
+export const retrieveCars = (state: AppRootState) => state.homePage.products || [];
  

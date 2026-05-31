@@ -1,6 +1,5 @@
 /** REACT APP STATE **/
 
-import OrdersPage from "../../app/screens/ordersPage";
 import { Member } from "./member";
 import { Order } from "./order";
 import { Product } from "./product";
@@ -16,8 +15,9 @@ export interface AppRootState {
 /** HOMEPAGE **/
 
 export interface HomePageState {
-    popularDishes:  Product[];
-    newDishes:Product[];
+    
+    brandCars:Product[];
+    newCars:Product[];
     topUsers: Member [];
 }
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Container, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -20,7 +19,7 @@ export default function Footer() {
         <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
           <Stack flexDirection={"column"} style={{ width: "340px" }}>
             <Box>
-              <img width={"100px"} src={"/icons/burak.svg"} />
+              <img alt="Burak Gurme Logo" width={"100px"} src={"/icons/burak.svg"} />
             </Box>
             <Box className={"foot-desc-txt"}>
               Focusing on the gourmet Turkish breakfast as well as the youth
@@ -28,10 +27,10 @@ export default function Footer() {
               Burak Gurme creates an illusion with its cuisine.
             </Box>
             <Box className="sns-context">
-              <img src={"/icons/facebook.svg"} />
-              <img src={"/icons/twitter.svg"} />
-              <img src={"/icons/instagram.svg"} />
-              <img src={"/icons/youtube.svg"} />
+              <img  src={"/icons/facebook.svg"} />
+              <img  src={"/icons/twitter.svg"} />
+              <img  src={"/icons/instagram.svg"} />
+              <img  src={"/icons/youtube.svg"} />
             </Box>
           </Stack>
           <Stack sx={{ ml: "288px" }} flexDirection={"row"}>
@@ -61,7 +60,7 @@ export default function Footer() {
                   </Box>
                   <Box className={"find-us"}>
                     <span>P.</span>
-                    <div>+971 4 554 7777</div>
+                    <div>+8210 8054 2811</div>
                   </Box>
                   <Box className={"find-us"}>
                     <span>E.</span>

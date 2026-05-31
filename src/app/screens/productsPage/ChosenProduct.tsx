@@ -1,27 +1,28 @@
-import React, { useEffect } from "react";
-import { Container, Stack, Box } from "@mui/material";
-import { Swiper, SwiperSlide } from "swiper/react";
+/* eslint-disable jsx-a11y/alt-text */
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import Divider from "../../components/divider";
+import { Box, Container, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
+import { Dispatch } from "@reduxjs/toolkit";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { createSelector } from "reselect";
+import { FreeMode, Navigation, Thumbs } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
-import { FreeMode, Navigation, Thumbs } from "swiper";
-import { useDispatch, useSelector } from "react-redux";
-import { Dispatch } from "@reduxjs/toolkit";
-import { setRestaurant, setChosenProduct } from "./slice";
-import { createSelector } from "reselect";
-import { retrieveChosenProduct, retrieveRestaurant } from "./selector";
-import { Product } from "../../../lib/types/product";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { serverApi } from "../../../lib/config";
 import { Member } from "../../../lib/types/member";
+import { Product } from "../../../lib/types/product";
+import { CartItem } from "../../../lib/types/search";
+import Divider from "../../components/divider";
 import MemberService from "../../services/MemberService";
 import ProductService from "../../services/ProductService";
-import { useParams } from "react-router-dom";
-import { serverApi } from "../../../lib/config";
-import { CartItem } from "../../../lib/types/search";
+import { retrieveChosenProduct, retrieveRestaurant } from "./selector";
+import { setChosenProduct, setRestaurant } from "./slice";
 
 /** REDUX SLICE & SELECTOR **/
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -96,7 +97,7 @@ export default function ChosenProduct(props: ChosenProductsProps) {
         <Stack className={"chosen-product-info"}>
           <Box className={"info-box"}>
             <strong className={"product-name"}>{chosenProduct?.productName}</strong>
-            <span className={"resto-name"}>{restaurant?.memberNick}</span>
+            <span className={"resto-name"}>{chosenProduct?.productCategory}</span>
             <Box className={"rating-box"}>
               <Rating name="half-rating" defaultValue={2.5} precision={0.5} />
               <div className={"evaluation-box"}>

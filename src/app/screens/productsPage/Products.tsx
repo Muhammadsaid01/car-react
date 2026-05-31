@@ -1,24 +1,25 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
-import { Box, Button, Container, Stack } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+/* eslint-disable jsx-a11y/iframe-has-title */
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import SearchIcon from "@mui/icons-material/Search";
+import { Box, Button, Container, Stack } from "@mui/material";
 import Badge from "@mui/material/Badge";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { useDispatch, useSelector } from "react-redux";
 import { Dispatch } from "@reduxjs/toolkit";
-import { setProducts } from "./slice";
-import { createSelector } from "reselect";
-import { retrieveProducts } from "./selector";
-import { Product, ProductInquiry } from "../../../lib/types/product";
-import ProductService from "../../services/ProductService";
-import { ProductCollection } from "../../../lib/enums/product.enum";
-import { serverApi } from "../../../lib/config";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { createSelector } from "reselect";
+import { serverApi } from "../../../lib/config";
+import { ProductCollection, ProductCondition } from "../../../lib/enums/product.enum";
+import { Product, ProductInquiry } from "../../../lib/types/product";
 import { CartItem } from "../../../lib/types/search";
+import ProductService from "../../services/ProductService";
+import { retrieveProducts } from "./selector";
+import { setProducts } from "./slice";
 
 /** REDUX SLICE & SELECTOR **/
 const actionDispatch = (dispatch: Dispatch) => ({
@@ -44,7 +45,7 @@ export default function Products(props: ProductsProps) {
     page: 1,
     limit: 8,
     order: "createdAt",
-    productCollection: ProductCollection.DISH,
+    productCollection: ProductCollection.SEDAN,
     search: "",
   });
 
@@ -98,7 +99,7 @@ export default function Products(props: ProductsProps) {
         <Stack flexDirection={"column"} alignItems={"center"}>
           <Stack className={"avatar-big-box"}>
             <Stack className={"top-text"}>
-              <p>Burak Restaurant</p>
+              <p>BUGATTI</p>
               <Stack className={"single-search-form"}>
                 <input
                   type={"search"}
@@ -175,46 +176,46 @@ export default function Products(props: ProductsProps) {
                             <Button
                               variant={"contained"}
                               color={
-                                productSearch.productCollection === ProductCollection.DESSERT
+                                productSearch.productCollection === ProductCollection.HATCHBACK
                                   ? "primary"
                                   : "secondary"
                               }
-                              onClick={() => searchCollectionHandler(ProductCollection.DESSERT)}
+                              onClick={() => searchCollectionHandler(ProductCollection.HATCHBACK)}
                               >
-                              Dessert
+                              Hatchback
                             </Button>
                             <Button
                               variant={"contained"}
                               color={
-                                productSearch.productCollection === ProductCollection.DRINK
+                                productSearch.productCollection === ProductCollection.TRUCK
                                   ? "primary"
                                   : "secondary"
                               }
-                              onClick={() => searchCollectionHandler(ProductCollection.DRINK)}
+                              onClick={() => searchCollectionHandler(ProductCollection.TRUCK)}
                               >
-                              Drink
+                              Truck
                             </Button>
                             <Button
                               variant={"contained"}
                               color={
-                                productSearch.productCollection === ProductCollection.SALAD
+                                productSearch.productCollection === ProductCollection.SPORT_CAR
                                   ? "primary"
                                   : "secondary"
                               }
-                              onClick={() => searchCollectionHandler(ProductCollection.SALAD)}
+                              onClick={() => searchCollectionHandler(ProductCollection.SPORT_CAR)}
                               >
-                              Salad
+                              Sport Car
                             </Button>
                             <Button
                               variant={"contained"}
                               color={
-                                productSearch.productCollection === ProductCollection.DISH
+                                productSearch.productCollection === ProductCollection.SEDAN
                                   ? "primary"
                                   : "secondary"
                               }
-                              onClick={() => searchCollectionHandler(ProductCollection.DISH)}
+                              onClick={() => searchCollectionHandler(ProductCollection.SEDAN)}
                               >
-                              Dish
+                              Sedan
                             </Button>
                         </div>
                     </Stack>
@@ -223,8 +224,8 @@ export default function Products(props: ProductsProps) {
                         {products.length !== 0 ? (
                             products.map((product: Product) => {
                               const imagePath = `${serverApi}/${product.productImages[0]}`;
-                              const sizeVolume = 
-                              product.productCollection === ProductCollection.DRINK ? product.productVolume + " litre " : product.productSize + "size";
+                              const secondHand = 
+                              product.productCondition === ProductCondition.USED ?  " USED " : "NEW";
                                 return (
                                     <Stack key={product._id} className={"product-card"}
                                     onClick={() => chooseDishHandler(product._id)}>
@@ -232,7 +233,7 @@ export default function Products(props: ProductsProps) {
                                         className={"product-img"}
                                         sx={{backgroundImage: `url(${imagePath})`}}
                                         >
-                                            <div className={"product-sale"}>{sizeVolume}</div>
+                                            <div className={"product-sale"}>{secondHand}</div>
                                             <Button className={"shop-btn"}
                                             onClick={(e) => {
                                              
@@ -250,7 +251,7 @@ export default function Products(props: ProductsProps) {
 
                                                 <img 
                                                 src={"/icons/shopping-cart.svg"}
-                                                style={{ display: "flex"}}/>
+                                                style={{ display: "flex"}} alt="Add to Cart"/>
                                             </Button>
                                             <Button className={"view-btn"} sx={{right: "36px"}}>
                                             <Badge badgeContent={product.productViews} color="secondary">
@@ -275,7 +276,7 @@ export default function Products(props: ProductsProps) {
                                 );
                             })
                         ) : (
-                            <Box className="no-data">Products are not available!</Box>
+                            <Box className="no-data">Cars are not available!</Box>
                         )}
                     </Stack>
                 </Stack>
@@ -305,24 +306,25 @@ export default function Products(props: ProductsProps) {
         </Container>
 
         <div className={"brands-logo"}>
-            <Container className={"family-brands"}>
-                <Box className={"category-title"}>Our Family Brands</Box>
-                <Stack className={"brand-list"}>
-                    <Box className={"review-box"}>
-                        <img src={"/img/gurme.webp"} />
-                    </Box>
-                    <Box className={"review-box"}>
-                        <img src={"/img/seafood.webp"} />
-                    </Box>
-                    <Box className={"review-box"}>
-                        <img src={"/img/sweets.webp"} />
-                    </Box>
-                    <Box className={"review-box"}>
-                        <img src={"/img/doner.webp"} />
-                    </Box>
-                </Stack>
-            </Container>
-        </div>
+  <Container>
+    <Box className={"brands-title"}>Curated Timepiece Highlights</Box>
+    {/* Use a div instead of Stack to ensure CSS Grid takes full control */}
+    <div className={"video-grid"}>
+      <Box className={"video-box"}>
+        <video src={"/video/BMW.mp4"} autoPlay loop muted playsInline />
+      </Box>
+      <Box className={"video-box"}>
+        <video src={"/video/Bugatti.mp4"} autoPlay loop muted playsInline />
+      </Box>
+      <Box className={"video-box"}>
+        <video src={"/video/Lamborghini.mp4"} autoPlay loop muted playsInline />
+      </Box>
+      <Box className={"video-box"}>
+        <video src={"/video/Benz.mp4"} autoPlay loop muted playsInline />
+      </Box>
+    </div>
+  </Container>
+</div>
 
         <div className={"address"}>
             <Container>

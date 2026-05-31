@@ -1,26 +1,26 @@
 export const faq = [
 	{
-		question: 'How to make order?',
-		answer: 'You should choose products and make an order via basket!',
+		question: 'How to place an order for a car?',
+		answer: 'Select your desired car, review the details, and proceed to checkout to place your order.',
 	},
 	{
-		question: 'How long does delivery takes?',
-		answer: 'It depends on your location. The max delivery time is 1 hour!',
+		question: 'How long does the delivery or pickup process take?',
+		answer: 'Delivery or pickup time depends on your location and vehicle availability. Our team will contact you with exact timing.',
 	},
 	{
-		question: 'Is our details secure in this platform?',
-		answer: 'Of course, we take full responsibility for your provided user details!',
+		question: 'Is my personal information secure on this platform?',
+		answer: 'Yes, we use secure systems to protect your personal and payment information.',
 	},
 	{
-		question: 'I am blocked, what should I do?',
-		answer: 'There is a reason for your block, please contact to us!',
+		question: 'My account is blocked. What should I do?',
+		answer: 'If your account is blocked, please contact our support team to review the issue.',
 	},
 	{
-		question: 'How can I cancel order?',
-		answer: 'You can cancel your order any time easily, just go to your orders page!',
+		question: 'Can I cancel my car order?',
+		answer: 'Order cancellation is subject to our policy. Please contact support as soon as possible after placing the order.',
 	},
 	{
 		question: 'Who developed this platform?',
-		answer: 'ITC Global developers developed this platform!',
+		answer: 'This platform was developed by the Lux Motors development team.',
 	},
 ];

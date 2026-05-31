@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { Box, Button, Stack } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
-import Menu from "@mui/material/Menu";
 import CancelIcon from "@mui/icons-material/Cancel";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { Box, Button, Stack } from "@mui/material";
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { CartItem } from "../../../lib/types/search";
 import { Messages, serverApi } from "../../../lib/config";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { CartItem } from "../../../lib/types/search";
 import { useGlobals } from "../../hooks/useGlobal";
-import { Message } from "@mui/icons-material";
 import OrderService from "../../services/OrderService";
-import { OrderInquiry } from "../../../lib/types/order";
-import { OrderStatus } from "../../../lib/enums/order.enum";
-import { setProcessOrders } from "../../screens/ordersPage/slice";
 
 
 interface BasketProps {
@@ -85,7 +81,7 @@ export default function Basket(props: BasketProps) {
         onClick={handleClick}
       >
         <Badge badgeContent={cartItems.length} color="secondary">
-          <img src={"/icons/shopping-cart.svg"} />
+          <img src={"/icons/shopping-cart.svg"} alt="Shopping Cart" />
         </Badge>
       </IconButton>
       <Menu
@@ -144,7 +140,7 @@ export default function Basket(props: BasketProps) {
                 <div className={"cancel-btn"}>
                   <CancelIcon color={"primary"}  onClick={() => onDelete(item)}/>
                 </div>
-                <img src={imagePath} className={"product-img"} />
+                <img src={imagePath} className={"product-img"}  alt={item.name}/>
                 <span className={"product-name"}> {item.name}</span>
                 <p className={"product-price"}>${item.price} x {item.quantity}</p>
                 <Box sx={{ minWidth: 120 }}>

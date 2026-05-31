@@ -1,12 +1,12 @@
-import { Box } from "@mui/material";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
-import { useGlobals } from "../../hooks/useGlobal";
 import { useState } from "react";
-import { MemberUpdateInput } from "../../../lib/types/member";
-import { T } from "../../../lib/types/common";
 import { Messages, serverApi } from "../../../lib/config";
 import { sweetErrorHandling, sweetTopSmallSuccessAlert } from "../../../lib/sweetAlert";
+import { T } from "../../../lib/types/common";
+import { MemberUpdateInput } from "../../../lib/types/member";
+import { useGlobals } from "../../hooks/useGlobal";
 import MemberService from "../../services/MemberService";
 
 export function Settings() {
@@ -94,7 +94,7 @@ const handleImageViewer = (e: T) => {
   return (
     <Box className={"settings"}>
       <Box className={"member-media-frame"}>
-        <img src={memberImage} className={"mb-image"} />
+        <img src={memberImage} className={"mb-image"} alt="Member" />
         <div className={"media-change-box"}>
           <span>Upload image</span>
           <p>JPG, JPEG, PNG formats only!</p>
@@ -160,7 +160,9 @@ const handleImageViewer = (e: T) => {
         </div>
       </Box>
       <Box className={"save-box"}>
-        <Button variant={"contained"} onClick={handleSubmitButton}>Save</Button>
+        <Button variant={"contained"} onClick={handleSubmitButton} className={"save-button"}>
+          Save
+        </Button>
       </Box>
     </Box>
   );

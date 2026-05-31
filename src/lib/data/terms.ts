@@ -1,6 +1,6 @@
 export const terms = [
-	'Making orders from the site is complete, live register to use communications you must pass.',
-	'This is why you cannot cancel your orders once you have paid for them check before making payments.',
-	'It is not possible to write and distribute personal ads without the permission of the admin.',
-	'All your actions are under the control of our restaurant administration, so please follow the general rules.',
+	'To place orders on the car salon platform, you must complete registration and use a verified account.',
+	'Once a payment is completed for a vehicle, the order cannot be canceled. Please check all details carefully before payment.',
+	'It is strictly prohibited to post or distribute personal advertisements without admin approval.',
+	'All activities on this platform are monitored by the car salon administration. Please follow the rules and guidelines at all times.',
 ];

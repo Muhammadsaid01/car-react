@@ -1,10 +1,11 @@
+/* eslint-disable jsx-a11y/role-supports-aria-props */
+import { Logout } from "@mui/icons-material";
 import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
 import { NavLink } from "react-router-dom";
-import Basket from "./Basket";
+import { serverApi } from "../../../lib/config";
 import { CartItem } from "../../../lib/types/search";
 import { useGlobals } from "../../hooks/useGlobal";
-import { Logout } from "@mui/icons-material";
-import { serverApi } from "../../../lib/config";
+import Basket from "./Basket";
 
 
 interface OtherNavbarProps {
@@ -32,7 +33,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
         <Stack className="menu">
           <Box>
             <NavLink to="/">
-              <img className="brand-logo" src="/icons/burak.svg" alt="Logo"/>
+              <img className="brand-logo" src="/icons/logo-text-white.svg" alt="Logo"/>
             </NavLink>
           </Box>
           <Stack className="links">
@@ -40,7 +41,7 @@ export default function OtherNavbar(props: OtherNavbarProps) {
               <NavLink to="/">Home</NavLink>
             </Box>
             <Box className={"hover-line"}>
-              <NavLink to="/products" activeClassName={"underline"}>Products</NavLink>
+              <NavLink to="/products" activeClassName={"underline"}>Cars</NavLink>
             </Box>
             {authMember ? (
               <Box className={"hover-line"}>

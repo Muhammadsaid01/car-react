@@ -1,11 +1,11 @@
-import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
-import { NavLink } from "react-router-dom";
-import Basket from "./Basket";
-import React from "react"; 
-import { CartItem } from "../../../lib/types/search";
-import { useGlobals } from "../../hooks/useGlobal"; 
-import { serverApi } from "../../../lib/config";
 import { Logout } from "@mui/icons-material";
+import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import { serverApi } from "../../../lib/config";
+import { CartItem } from "../../../lib/types/search";
+import { useGlobals } from "../../hooks/useGlobal";
+import Basket from "./Basket";
 
 interface HomeNavbarProps {
   cartItems: CartItem[];
@@ -46,7 +46,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
         <Stack className="menu">
           <Box>
             <NavLink to="/">
-              <img className="brand-logo" src="/icons/burak.svg" alt="Logo"/>
+              <img className="brand-logo" src="/icons/logo-text-white.svg" alt="Logo"/>
             </NavLink>
           </Box>
           <Stack className="links">
@@ -54,7 +54,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
               <NavLink to="/">Home</NavLink>
             </Box>
             <Box className="hover-line">
-              <NavLink to="/products">Products</NavLink>
+              <NavLink to="/products">Cars</NavLink>
             </Box>
 
             {authMember ? (
@@ -92,6 +92,7 @@ export default function HomeNavbar(props: HomeNavbarProps) {
     </Button>
   </Box>
 ) : (
+  // eslint-disable-next-line jsx-a11y/role-supports-aria-props
   <img
     className="user-avatar"
     src={
@@ -160,10 +161,10 @@ anchorEl={anchorEl}
 
         <Stack className="header-frame">
           <Stack className="detail">
-            <Box className="head-main-txt">World's Most Delicious Cuisine</Box>
-            <Box className="wel-txt">The Choice, not just a choice</Box>
+            <Box className="head-main-txt">Where luxury meets unmatched performance.</Box>
+            <Box className="wel-txt">Welcome to Luxury and Performance</Box>
 
-            <Box className="service-txt">24 hours service</Box>
+            <Box className="service-txt">24/7 Service</Box>
             
             <Box className="signup">
               {!authMember ? (

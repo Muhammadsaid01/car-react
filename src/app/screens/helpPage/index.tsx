@@ -1,14 +1,14 @@
-import React from "react";
-import { Box, Container, Stack, Tabs } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import Tab from "@mui/material/Tab";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Button from "@mui/material/Button";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
+import { Box, Container, Stack, Tabs } from "@mui/material";
+import Accordion from "@mui/material/Accordion";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import Button from "@mui/material/Button";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import React from "react";
 import "../../../css/help.css";
 import { faq } from "../../../lib/data/faq";
 import { terms } from "../../../lib/data/terms";
@@ -110,7 +110,7 @@ export default function HelpPage() {
                         justifyContent={"flex-end"}
                         sx={{ mt: "30px" }}
                       >
-                        <Button type={"submit"} variant="contained">
+                        <Button type={"submit"} variant="contained" className={"admin-send-btn"}>
                           Send
                         </Button>
                       </Box>

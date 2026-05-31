@@ -1,40 +1,39 @@
-import React from "react";
-import { Box, Container, Stack } from "@mui/material";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import Card from "@mui/joy/Card";
-import CardCover from "@mui/joy/CardCover";
 import CardContent from "@mui/joy/CardContent";
+import CardCover from "@mui/joy/CardCover";
+import CardOverflow from "@mui/joy/CardOverflow";
 import Typography from "@mui/joy/Typography";
 import { CssVarsProvider } from "@mui/joy/styles";
-import CardOverflow from "@mui/joy/CardOverflow";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+import { Box, Container, Stack } from "@mui/material";
 
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { retrievePopularDishes } from "./selector";
 import { serverApi } from "../../../lib/config";
 import { Product } from "../../../lib/types/product";
+import { retrieveBrandCars } from "./selector";
 
 //**REDUX SLICE & SELECTOR
-const popularDishesRetriever = createSelector(
-  retrievePopularDishes,
-  (popularDishes) => ({ popularDishes })
+const brandCarsRetriever = createSelector(
+  retrieveBrandCars,
+  (brandCars) => ({ brandCars })
 );
 
-export default function PopularDishes() {
-  const { popularDishes } = useSelector(popularDishesRetriever);
+export default function BrandCars() {
+  const { brandCars } = useSelector(brandCarsRetriever);
 
-  console.log("popularDishes", popularDishes);
+  console.log("brandCars", brandCars);
 
   return (
     <div className="popular-dishes-frame">
       <Container>
         <Stack className="popular-section">
-          <Box className="category-title">Popular Dishes</Box>
+          <Box className="category-title">Brand Cars</Box>
           <Stack className="cards-frame">
             <CssVarsProvider>
-              {popularDishes.length !== 0 ? (
-                popularDishes.map((ele: Product) => {
+              {brandCars.length !== 0 ? (
+                brandCars.map((ele: Product) => {
                
                   const imagePath = `${serverApi}/${ele.productImages[0]}`;
                   return (
@@ -97,7 +96,7 @@ export default function PopularDishes() {
                   );
                 })
               ) : (
-                <Box className="no-data">New Products are not available</Box>
+                <Box className="no-data">Brand Cars are not available</Box>
               )}
             </CssVarsProvider>
           </Stack>

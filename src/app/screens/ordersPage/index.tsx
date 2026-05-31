@@ -1,23 +1,23 @@
-import React, { useState, SyntheticEvent, useEffect } from "react";
-import { Container, Stack, Box, Tab, Tabs } from "@mui/material";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Box, Container, Stack, Tab, Tabs } from "@mui/material";
+import { SyntheticEvent, useEffect, useState } from "react";
+import "../../../css/order.css";
+import FinishedOrders from "./FinishedOrders";
 import PausedOrders from "./PausedOrders";
 import ProcessOrders from "./ProcessOrders";
-import FinishedOrders from "./FinishedOrders";
-import "../../../css/order.css";
 
-import { Dispatch } from '@reduxjs/toolkit'
-import { useDispatch } from 'react-redux'
-import { setPausedOrders, setProcessOrders, setFinishedOrders} from './slice'
-import { Order, OrderInquiry } from "../../../lib/types/order";
-import { OrderStatus } from "../../../lib/enums/order.enum";
-import OrderService from "../../services/OrderService";
-import { useGlobals } from "../../hooks/useGlobal";
+import { Dispatch } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
 import { serverApi } from "../../../lib/config";
 import { MemberType } from "../../../lib/enums/member.enum";
+import { OrderStatus } from "../../../lib/enums/order.enum";
+import { Order, OrderInquiry } from "../../../lib/types/order";
+import { useGlobals } from "../../hooks/useGlobal";
+import OrderService from "../../services/OrderService";
+import { setFinishedOrders, setPausedOrders, setProcessOrders } from './slice';
 
 
 
@@ -40,14 +40,14 @@ export default function OrdersPage() {
 const [orderInquiry ,setOrderInquiry] = useState<OrderInquiry>({
     page: 1,
     limit: 5,
-    orderStatus: OrderStatus.PAUSE,
+    orderStatus: OrderStatus.PENDING,
   });
 
   useEffect(() => {
     const order = new OrderService();
     
     order
-    .getMyOrders({...orderInquiry, orderStatus: OrderStatus.PAUSE})
+    .getMyOrders({...orderInquiry, orderStatus: OrderStatus.PENDING})
     .then((data) => setPausedOrders(data))
     .catch((err) => console.log(err));
 
@@ -61,7 +61,7 @@ const [orderInquiry ,setOrderInquiry] = useState<OrderInquiry>({
     .then((data) => setFinishedOrders(data))
     .catch((err) => console.log(err));
 
-  }, [orderInquiry,orderBuilder]);
+  }, [orderInquiry, orderBuilder]);
 
 
   /**HANDLERS */
@@ -117,7 +117,7 @@ const [orderInquiry ,setOrderInquiry] = useState<OrderInquiry>({
                     ? `${serverApi}/${authMember.memberImage}`
                     : "/icons/default-user.svg" } className="order-user-avatar" alt="User" />
                 <div className="order-user-icon-box">
-                  <img src= { authMember?.memberType === MemberType.RESTAURANT
+                  <img src= { authMember?.memberType === MemberType.ADMIN
                    ? "/icons/restaurant.svg"
                    :"/icons/user-badge.svg"}
                    className="order-user-prof-img" alt="Badge" />

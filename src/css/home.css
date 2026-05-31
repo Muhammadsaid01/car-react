@@ -1,6 +1,7 @@
 .homepage {
     width: 100%;
     height: auto;
+    background: #03010e;
 }
 
 
@@ -9,7 +10,7 @@
 .homepage .static-frame {
     width: 100%;
     height: 236px;
-    background: #343434;
+    background: #0f0f10f5;
 }
 
 .homepage .static-frame .info {
@@ -30,22 +31,24 @@
 }
 
 .homepage .static-frame .info .static-box .static-num{
+  margin-top: 50px;
     text-align: center;
     font-family: "Poppins";
     font-size:54px;
     font-weight:  600;
     line-height: 80px;
-    color: #d7b686;
+    color: #ffffff;
 }
 
 .homepage .static-frame .info .static-box .static-text {
     text-align: center;
     font-family: "Poppins";
-    font-size: 20px;
-    font-style: normal;
+    font-size: 30px;
+    font-style: bold;
     font-weight: 30px;
     line-height: 30px;
-    color:#d7b586;
+    color:#ffffff;
+
 }
 
 
@@ -73,7 +76,7 @@ font-size: 36px;
 font-weight: 600;
 line-height: normal;
 letter-spacing: 1.44px;
-color: #000;
+color: #f8f8ff;
 }
 .homepage .popular-dishes-frame .popular-section .cards-frame {
     width: 100%;
@@ -101,7 +104,6 @@ color: #000;
 .homepage .new-products-frame {
     width: 100%;
     height: 605px;
-    background: #f8f8ff;
     display: flex;
 }
 
@@ -118,6 +120,7 @@ color: #000;
     font-weight: 700;
     font-size: 36px;
     line-height: 43px;
+      color: #f8f8ff;
 }
 
 .homepage .new-products-frame .main .cards-frame {
@@ -238,7 +241,7 @@ color: #000;
 .homepage .active-users-frame {
   width: 100%;
   height: 550px;
-  background: #ffffff; 
+
   display: flex;
 }
 
@@ -311,7 +314,6 @@ color: #000;
 .homepage .events-frame {
   width: 100%;
   height: 745px;
-  background: #f8f8ff;
   display: flex;
 }
 

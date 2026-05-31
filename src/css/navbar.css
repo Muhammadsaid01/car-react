@@ -3,7 +3,7 @@
   width: 100%;
   height: 773px;
   display: flex;
-  background: url("/public/img/banner.webp");
+  background: url("/public/img/Red-Ferrari.webp");
   background-size: cover;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .home-navbar .navbar-container .menu {
-  height: 50px;
+  height: 70px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -22,7 +22,7 @@
 
 .home-navbar .navbar-container .menu .brand-logo {
   width: 125px;
-  height: 30px;
+  height: 100%;
 }
 
 .home-navbar .navbar-container .menu .links {
@@ -96,7 +96,7 @@
  width: 450px;
  height: 150px;
  font-family: "Roboto Serif";
- font-size: 50px;
+ font-size: 45px;
  font-style: normal;
  font-weight: 500;
  line-height: normal;
@@ -107,26 +107,29 @@
 
 
 .home-navbar .navbar-container .header-frame .detail .wel-txt{
+  margin-top: -30px;
  width: 510px;
  height: 42px;
  font-family: "Roboto Serif";
- font-size: 36px;
+ font-size: 40px;
  font-style: normal;
  font-weight: 400;
  line-height: normal;
  letter-spacing: -0.54px;
   color:#d7b686;
+  margin-bottom: 20px;
 }
 
 
 
 .home-navbar .navbar-container .header-frame .detail .service-txt{
- margin-top: 23px;
+ 
  width: 153px;
  height: 23px;
+ margin-top: 20px;
  font-family: "Roboto Serif";
- font-size: 20px;
- font-style: normal;
+ font-size: 30px;
+ font-style: bold;
  font-weight: 400;
  line-height: normal;
  letter-spacing: -0.3px;
@@ -161,7 +164,7 @@
 .home-navbar .navbar-container .logo-frame  .logo-img {
     width:  100%;
     height: 100%;
-    background: url("/public/img/logo.webp");
+    background: url("/public/img/logo.jpg");
     background-size: contain;
     background-repeat: no-repeat;
     filter: invert(25%);
@@ -173,7 +176,7 @@
     width: 100%;
     height: 400px;
     display: flex;
-    background: url("/public/img/banner.webp");
+    background: url("/public/img/Red-Ferrari.webp");
     background-size: cover;
 }
 
@@ -268,7 +271,8 @@ border-radius: 24px;
 
 
 
-/* BASKET */^5.8.4
+/* BASKET ^5.8.4*/
+
 
 .basket-frame {
   position: relative;

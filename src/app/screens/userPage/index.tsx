@@ -1,14 +1,15 @@
-import { Box, Container, Stack } from "@mui/material";
+/* eslint-disable jsx-a11y/alt-text */
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import { Settings } from "./Settings";
-import "../../../css/userPage.css";
+import { Box, Container, Stack } from "@mui/material";
 import { useHistory } from "react-router-dom";
-import { useGlobals } from "../../hooks/useGlobal";
+import "../../../css/userPage.css";
 import { serverApi } from "../../../lib/config";
 import { MemberType } from "../../../lib/enums/member.enum";
+import { useGlobals } from "../../hooks/useGlobal";
+import { Settings } from "./Settings";
 
 export default function UserPage() {
   const history = useHistory();
@@ -42,7 +43,7 @@ export default function UserPage() {
                   />
                   <div className={"order-user-icon-box"}>
                     <img src={
-                      authMember?.memberType === MemberType.RESTAURANT
+                      authMember?.memberType === MemberType.ADMIN
                        ? "/icons/restaurant.svg"
                         :"/icons/user-badge.svg"
                         } />

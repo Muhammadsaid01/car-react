@@ -1,19 +1,18 @@
-import React from "react";
+import TabPanel from "@mui/lab/TabPanel";
 import { Box, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
-import TabPanel from "@mui/lab/TabPanel";
 
 import { useSelector } from "react-redux";
 import { createSelector } from "reselect";
-import { retrievePausedOrders } from "./selector";
 import { Messages, serverApi } from "../../../lib/config";
+import { OrderStatus } from "../../../lib/enums/order.enum";
+import { sweetErrorHandling } from "../../../lib/sweetAlert";
+import { T } from "../../../lib/types/common";
 import { Order, OrderItem, OrderUpdateInput } from "../../../lib/types/order";
 import { Product } from "../../../lib/types/product";
-import { T } from "../../../lib/types/common";
-import { sweetErrorHandling } from "../../../lib/sweetAlert";
-import { OrderStatus } from "../../../lib/enums/order.enum";
 import { useGlobals } from "../../hooks/useGlobal";
 import OrderService from "../../services/OrderService";
+import { retrievePausedOrders } from "./selector";
 
 //**REDUX SLICE & SELECTOR
 const pausedOrdersRetriever = createSelector(
@@ -71,7 +70,7 @@ export default function PausedOrders(props: PausedOrdersProps) {
         orderStatus: OrderStatus.PROCESS,
       };
 
-      const confirmation = window.confirm("Do you want to delete the order?")
+      const confirmation = window.confirm("Do you want to confirm the order?")
       if (confirmation) {
         const order = new OrderService();
         await order.updateOrder(input);

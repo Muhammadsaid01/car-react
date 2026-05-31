@@ -4,14 +4,14 @@
     position: relative;
     width: 100%;
     height: auto;
-    background: #f8f8ff;
+    background: #03010e;
 }
 
 .products-page .products {
     width: 100%;
     height: auto;
     display: flex;
-    background: #f8f8ff;
+    background: #03010e;
     flex-direction: column;
 }
 
@@ -99,7 +99,7 @@
 .products-page .products .dishes-filter-section {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: 20px;
 }
 
@@ -107,11 +107,13 @@
     height: auto;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .products-page .products .dishes-filter-box .order {
     margin-right: 20px;
+    width: 120px;
+    height: 40px;
 }
 
 /* --- CATEGORIES (Integrated your source) --- */
@@ -149,20 +151,28 @@
 .products-page .products .product-wrapper {
     margin-left: 25px;
     width: 100%;
-    height: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center; /* Centers the cards */
 }
 
 .products-page .products .product-card {
-    margin-top: 40px;
-    margin-right: 24px;
+    margin: 40px 20px;
     width: 270px;
-    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #0b1114; /* Match your dark theme */
+    padding-bottom: 20px;
+    border-radius: 10px 10px 40px 40px;
+    border: 1px solid rgba(215, 181, 134, 0.3); /* Subtle gold frame */
+    transition: transform 0.3s ease;
+}
+
+.products-page .products .product-card:hover {
+    transform: translateY(-10px);
+    border-color: #d7b586;
 }
 
 .products-page .products .product-card .product-img {
@@ -171,37 +181,38 @@
     height: 275px;
     background-size: cover;
     background-position: center;
-		border-radius: 0 50px 0 0;
+    /* Luxury Shape: Sharp top, soft bottom curve */
+    border-radius: 10px 10px 40px 40px;
 }
 
 
 .products-page .products .product-card .product-img .product-sale {
- position: absolute;
-margin-top: 10px;
-z-index: 100;
-width: 90px;
-height: 30px;
-display: flex;
-justify-content: center;
-align-items: center;
-background: #ff9200;
-box-shadow: 4px 6px 20px rgba(0, 0, 0, 0.1);
-border-radius: 25px;
-font-family: "Poppins";
-font-size: 12px;
-font-style: normal;
-font-weight: 600;
-line-height: 21px;
-color: #f8f8ff;
+    position: absolute;
+    margin: 15px;
+    z-index: 100;
+    width: 90px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Luxury Tag: Champagne Gold with dark text */
+    background: #d7b586; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    font-family: "Poppins", sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #0b1114; /* Dark blue/black text */
 }
 .products-page .products .product-img:before {
-    border-radius: 0px 50px 0px 0px;
+    border-radius: 10px 10px 40px 40px;
     content: "";
     opacity: 0;
     transition: opacity 0.5s ease;
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     z-index: 2;
 }
 
@@ -273,44 +284,68 @@ color: #f8f8ff;
 }
 
 .brands-logo .brands-title {
-  font-family: "Dancing Script";
+  font-family: "Poppins", sans-serif;
   font-size: 36px;
-  font-weight: 700;
-	font-style: normal;
-	line-height: 43px;
-  color: #e3c08d; /* White text for the dark background */
+  font-weight: 600;
+  color: #ffffff;
   margin-bottom: 40px;
+  text-align: center;
 }
 
-.brands-logo .brands-wrapper {
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px; /* More space between stands */
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.video-box {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 50px; /* Space between the logos */
+  aspect-ratio: 3 / 4; /* Keeps them as "Luxury Stands" */
+  overflow: hidden;
+  border-radius: 20px 20px 50px 50px;
+  border: 2px solid #d7b586;
+  background: #1a1e22;
 }
-
-.brands-logo .brand-card {
-  width: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-	border: 1px solid #d9d9d9;
-	border-radius: 10px;
-	
-}
-
-.brands-logo .brand-card img {
+  
+.video-box video {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px 15px 40px 40px; /* Matches container shape */
+}
+
+.video-box:hover {
+  transform: translateY(-10px); /* Lift effect */
+  box-shadow: 0 20px 40px rgba(215, 181, 134, 0.3);
+}
+
+.video-box video {
+  width: 100%;.video-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures video stays inside the box */
+}
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px 15px 40px 40px; /* Matches the container shape */
+}
+/* Responsive Grid for Tablets/Phones */
+@media (max-width: 900px) {
+  .video-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .video-grid { grid-template-columns: 1fr; }
 }
 
 
 .address {
     width: 100%;
     padding: 80px 0;
-    background-color: #f8f8ff;
+    background: #03010e;
 }
 
 .address-area .title {
@@ -318,6 +353,10 @@ color: #f8f8ff;
     font-size: 36px;
     font-weight: 600;
     color: #343434;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .products .no-data {
@@ -342,7 +381,7 @@ color: #f8f8ff;
   position: relative;
   width: 100%;
   height: auto;
-  background: #f8f8ff;
+  background: #03010e;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -358,19 +397,28 @@ color: #f8f8ff;
 
 .products-page .chosen-product .chosen-product-slider {
   width: 48%;
-  height: 480px;
+  height: 700px;
   background: #ffffff;
   box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),
     inset -1px 2px 10px 3px rgba(0, 0, 0, 0.25);
   border-radius: 16px;
   overflow: hidden;
 }
+.products-page .chosen-product .title {
+  font-family: "Dancing Script";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 43px;
+  color: #ffffff;
+}
 
 .products-page .chosen-product .chosen-product-slider .swiper-area {
   --swiper-navigation-color: #fff;
   --swiper-pagination-color: #fff;
+  border: 10px solid #f8f8ff;
   width: 100%;
-  height: 1020px;
+  height: 700px;
 }
 
 .products-page
@@ -385,7 +433,7 @@ color: #f8f8ff;
 .products-page .chosen-product .chosen-product-info {
   padding: 30px 40px;
   width: 49%;
-  height: 480px;
+  height: 700px;
   display: flex;
   background: #ffffff;
   box-shadow: 9px 13px 14px 5px rgba(0, 0, 0, 0.25),

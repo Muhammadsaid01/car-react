@@ -1,32 +1,35 @@
-export enum ProductSize {
-  SMALL = "SMALL",
-  NORMAL = "NORMAL",
-  LARGE = "LARGE",
-  SET = "SET",
-}
-
-
-
-export enum ProductVolume {
-    HALF = 0.5,
-    ONE = 1, 
-    ONE_POINT_TWO =1.2,
-    ONE_POINT_FIVE = 1.5,
-    TWO = 2 ,
-
-}
-
 export enum ProductStatus {
-    PAUSE = "PAUSE",
-    PROCESS = "PROCESS",
-    DELETE ="DELETE",
+	PAUSE = 'PAUSE',
+	ACTIVE = 'ACTIVE',
+	SOLD = 'SOLD',
+	DELETE = 'DELETE',
+	RESERVED = 'RESERVED',
 }
 
+export enum ProductCondition {
+	NEW = 'NEW',
+	USED = 'USED',
+	REFURBISHED = 'REFURBISHED',
+	CRASHED = 'CRASHED',
+}
+
+export enum ProductCategory {
+	GASOLINE = 'GASOLINE',
+	DIESEL = 'DIESEL',
+	LPG = 'LPG',
+	ELECTRIC = 'ELECTRIC',
+	KERASENE = 'KERASENE',
+	OTHER = 'OTHER',
+}
 
 export enum ProductCollection {
-    DISH ="DISH",
-    SALAD ="SALAD",
-    DESSERT ="DESSERT",
-    DRINK ="DRINK",
-    OTHER ="OTHER",
+	SEDAN = 'SEDAN',
+	SUV = 'SUV',
+	TRUCK = 'TRUCK',
+	VAN = 'VAN',
+	COUPE = 'COUPE',
+	CONVERTIBLE = 'CONVERTIBLE',
+	HATCHBACK = 'HATCHBACK',
+	SPORT_CAR = 'SPORTS_CAR',
+	OTHER = 'OTHER',
 }
