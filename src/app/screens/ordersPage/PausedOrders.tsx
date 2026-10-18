@@ -37,7 +37,7 @@ export default function PausedOrders(props: PausedOrdersProps) {
   const deleteOrderHandler = async (e: T) => {
     try {
       if(!authMember) throw new Error(Messages.error2);
-      const orderId = e.target.value;
+      const orderId = e.currentTarget.value;
       const input: OrderUpdateInput = {
         orderId: orderId,
         orderStatus: OrderStatus.DELETE,
@@ -64,7 +64,7 @@ export default function PausedOrders(props: PausedOrdersProps) {
       if(!authMember) throw new Error(Messages.error2);
 
       //PAYMENT PROCESS
-      const orderId = e.target.value;
+      const orderId = e.currentTarget.value;
       const input: OrderUpdateInput = {
         orderId: orderId,
         orderStatus: OrderStatus.PROCESS,
@@ -95,9 +95,9 @@ export default function PausedOrders(props: PausedOrdersProps) {
             <Box  className={"order-box-scroll"} >
               {order?.orderItems?.map((item: OrderItem) => {
                 const product: Product = order.productData.filter(
-                  (ele: Product) => item.productId === ele._id
+                  (ele: Product) => item.productId.toString() === ele._id.toString()
                 )[0];
-                const imagePath = `${serverApi}/${product?.productImages?.[0]}`;
+                const imagePath = product?.productImages?.[0] ? `${serverApi}/${product.productImages[0]}` : "/icons/noimage-list.svg";
 
                 return (
                   <Box key={item._id} className={"orders-name-price"}>
@@ -106,7 +106,7 @@ export default function PausedOrders(props: PausedOrdersProps) {
                       className="order-dish-img"
                       alt="lavash"
                     />
-                    <p className="title-dish">{product?.productName}</p>
+                    <p className="title-dish">{product?.productName || "Unavailable car"}</p>
                     <Box className="price-box">
                       <p>${item.itemPrice}</p>
                       <img src={"/icons/close.svg"} alt="close" />

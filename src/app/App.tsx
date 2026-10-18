@@ -14,6 +14,7 @@ import AuthenticationModal from './components/auth';
 import '../css/app.css';
 import "../css/navbar.css";
 import "../css/footer.css";
+import "../css/responsive.css";
 import { T } from '../lib/types/common';
 import { sweetErrorHandling, sweetTopSuccessAlert } from '../lib/sweetAlert';
 import { Messages } from '../lib/config';
@@ -46,6 +47,7 @@ const handleLogoutRequest = async() => {
   try {
   const member = new MemberService();
   await member.logout();
+  setAnchorEl(null);
   
     await sweetTopSuccessAlert("success", 700);
     setAuthMember(null);

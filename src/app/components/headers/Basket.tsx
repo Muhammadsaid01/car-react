@@ -123,10 +123,7 @@ export default function Basket(props: BasketProps) {
           <Box className={"all-check-box"}>
            {cartItems.length ===0 ? <div>Cart is empty!</div> :
            <Stack flexDirection="row">  <div>Cart Products:</div>
-           <DeleteForeverIcon
-            sx= {{ml: "5px"}}
-             color={"primary"}  
-             onClick={() => onDeleteAll()} /></Stack>}
+           <IconButton size="small" aria-label="Clear cart" onClick={onDeleteAll}><DeleteForeverIcon color="primary" /></IconButton></Stack>}
             
             
           </Box>
@@ -138,7 +135,7 @@ export default function Basket(props: BasketProps) {
                 return (
                       <Box className={"basket-info-box"} key={item._id}>
                 <div className={"cancel-btn"}>
-                  <CancelIcon color={"primary"}  onClick={() => onDelete(item)}/>
+                  <IconButton size="small" aria-label={`Remove ${item.name}`} onClick={() => onDelete(item)}><CancelIcon color="primary" /></IconButton>
                 </div>
                 <img src={imagePath} className={"product-img"}  alt={item.name}/>
                 <span className={"product-name"}> {item.name}</span>

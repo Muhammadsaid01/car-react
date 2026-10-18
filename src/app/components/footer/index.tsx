@@ -1,5 +1,6 @@
 import { Box, Container, Stack } from "@mui/material";
 import { Link } from "react-router-dom";
+import { useGlobals } from "../../hooks/useGlobal";
 import styled from "styled-components";
 
 const Footers = styled.div`
@@ -11,20 +12,18 @@ const Footers = styled.div`
 `;
 
 export default function Footer() {
-  const authMember = null;
+  const { authMember } = useGlobals();
 
   return (
-    <Footers>
+    <Footers className="site-footer">
       <Container>
-        <Stack flexDirection={"row"} sx={{ mt: "94px" }}>
-          <Stack flexDirection={"column"} style={{ width: "340px" }}>
+        <Stack className="footer-main" flexDirection={"row"} sx={{ mt: "94px" }}>
+          <Stack className="footer-about" flexDirection={"column"} style={{ width: "340px" }}>
             <Box>
-              <img alt="Burak Gurme Logo" width={"100px"} src={"/icons/burak.svg"} />
+              <img alt="Burak Gurme Logo" width={"100px"} src={"/icons/logo-text-white.svg"} />
             </Box>
             <Box className={"foot-desc-txt"}>
-              Focusing on the gourmet Turkish breakfast as well as the youth
-              society, CZN Burak Gurme aims to bring Turkish cuisine back. CZN
-              Burak Gurme creates an illusion with its cuisine.
+              Focusing on luxury automobiles and modern driving culture, our showroom aims to redefine the premium car experience. Combining elegance, performance, and innovation, Lux Motors creates a unique atmosphere where passion for automobiles comes to life.
             </Box>
             <Box className="sns-context">
               <img  src={"/icons/facebook.svg"} />
@@ -33,10 +32,10 @@ export default function Footer() {
               <img  src={"/icons/youtube.svg"} />
             </Box>
           </Stack>
-          <Stack sx={{ ml: "288px" }} flexDirection={"row"}>
+          <Stack className="footer-navigation" sx={{ ml: "288px" }} flexDirection={"row"}>
             <Stack>
               <Box>
-                <Box className={"foot-category-title"}>Bo'limlar</Box>
+                <Box className={"foot-category-title"}>Pages</Box>
                 <Box className={"foot-category-link"}>
                   <Link to="/">Home</Link>
                   <Link to="/products">Products</Link>
@@ -45,7 +44,7 @@ export default function Footer() {
                 </Box>
               </Box>
             </Stack>
-            <Stack sx={{ ml: "100px" }}>
+            <Stack className="footer-contact" sx={{ ml: "100px" }}>
               <Box>
                 <Box className={"foot-category-title"}>Find us</Box>
                 <Box
@@ -64,7 +63,7 @@ export default function Footer() {
                   </Box>
                   <Box className={"find-us"}>
                     <span>E.</span>
-                    <div>devexuz@gmail.com</div>
+                    <div>bugatti@gmail.com</div>
                   </Box>
                   <Box className={"find-us"}>
                     <span>H.</span>
@@ -80,7 +79,7 @@ export default function Footer() {
           sx={{ mt: "80px" }}
         ></Stack>
         <Stack className={"copyright-txt"}>
-          © Copyright Devex Global, All rights reserved.
+          © Copyright Lux Motors, All rights reserved.
         </Stack>
       </Container>
     </Footers>

@@ -44,3 +44,32 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## LuxAvto configuration and verification
+
+Run the API in the sibling `Mod1` project and this frontend with `npm start`.
+The existing local deployment uses frontend `http://localhost:3000` and
+`REACT_APP_API_URL=http://localhost:3004`. Configure that variable before building.
+Authentication uses an HttpOnly API cookie; session restoration calls
+`GET /member/detail` and does not trust localStorage as authentication.
+See the backend README for HTTPS cookie settings and MongoDB replica-set requirements.
+
+Checks: `./node_modules/.bin/tsc --noEmit --incremental false`,
+`CI=true npm test -- --watchAll=false --runInBand`, and `npm run build`.
+Set `BUILD_PATH` to a temporary directory to keep an existing build unchanged.
+The Jest setup transforms real Swiper ESM modules and stubs only Swiper CSS;
+MUI/Swiper media-query APIs are supplied for jsdom.
+
+Yarn resolutions keep React/React DOM types on the existing React 18 versions,
+including transitive router/testing-library imports. Runtime packages were not
+upgraded. Use `yarn install --frozen-lockfile` for a reproducible install.
+The TypeScript build worker is allocated 4096 MB to avoid CRA's 2048 MB heap limit.
+The older test/UI libraries may still emit React deprecation/peer warnings.
+
+Payment remains a status-confirmation flow without a payment provider.
+The Help contact form has no contact service yet.
+
+The running-browser verification and its limitations are recorded in
+[docs/qa/verification.md](docs/qa/verification.md), with viewport measurements
+and screenshots. The sibling backend README includes tested macOS foreground
+MongoDB replica-set startup instructions and explicit hostname/origin settings.

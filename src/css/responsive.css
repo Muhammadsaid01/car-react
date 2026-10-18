@@ -1,0 +1,145 @@
+/* Keep the existing palette and components while allowing their containers to shrink. */
+#root { min-width: 0; }
+.site-footer { height: auto; min-height: 590px; padding-bottom: 24px; }
+.site-footer .footer-main { gap: 32px; }
+.site-footer .footer-about { flex-shrink: 0; max-width: 100%; }
+.site-footer .footer-navigation { margin-left: auto; min-width: 0; }
+.homepage .cards-frame { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.homepage .cards-frame .card,
+.homepage .popular-dishes-frame .cards-frame .card,
+.homepage .new-products-frame .main .card { width: 100%; min-width: 0; }
+.homepage .cards-frame .no-data { grid-column: 1 / -1; }
+.homepage .new-products-frame .product-detail .title { width: auto; overflow-wrap: anywhere; }
+.homepage .new-products-frame .product-detail .price { width: auto; white-space: nowrap; }
+.products-page .products .product-wrapper { min-width: 0; }
+.products-page .products .product-card .product-img { width: 100%; }
+.products-page .products .address iframe { width: 100%; max-width: 100%; }
+.products-page .chosen-product .chosen-product-info { min-width: 0; height: auto; }
+.products-page .chosen-product .info-box .product-desc { height: auto; min-height: 112px; overflow-wrap: anywhere; }
+.order-page .order-left { flex: 1; min-width: 0; }
+.order-page .order-main-content > .MuiTabPanel-root { padding: 24px 0; }
+.order-page .order-main-content > .MuiTabPanel-root > .MuiTabPanel-root { padding: 0; }
+.order-page .order-box-scroll .orders-name-price .price-box { margin-left: auto; gap: 8px; }
+.order-page .order-box-scroll .orders-name-price .title-dish { overflow-wrap: anywhere; min-width: 0; }
+
+@media (max-width: 1200px) {
+  .home-navbar .navbar-container .menu .links,
+  .other-navbar .navbar-container .menu .links { min-width: 0; gap: 20px; }
+  .home-navbar .navbar-container .logo-frame { width: 45%; min-width: 0; }
+  .site-footer .footer-contact { margin-left: 48px; }
+  .products-page .products .top-text p { margin-left: 0; }
+  .order-page .order-right { width: 300px; flex-shrink: 0; margin-left: 20px; }
+  .order-page .order-right .order-info-box { width: 100%; }
+  .order-page .order-main-content .order-main-box .total-price-box { flex-wrap: wrap; gap: 16px; }
+  .order-page .order-main-content .order-main-box .total-price-box .box-total { flex-wrap: wrap; gap: 8px; }
+}
+@media (max-width: 900px) {
+  .home-navbar .navbar-container,
+  .other-navbar .navbar-container { margin-top: 24px; height: auto; }
+  .home-navbar .navbar-container .menu,
+  .other-navbar .navbar-container .menu { height: auto; flex-wrap: wrap; gap: 16px; justify-content: space-between; }
+  .home-navbar .navbar-container .menu .links,
+  .other-navbar .navbar-container .menu .links { flex-wrap: wrap; justify-content: flex-start; gap: 12px 20px; }
+  .home-navbar .navbar-container .header-frame { margin-top: 90px; height: auto; }
+  .home-navbar .navbar-container .header-frame .detail { width: 65%; min-width: 0; }
+  .home-navbar .navbar-container .header-frame .detail .head-main-txt { width: 100%; height: auto; font-size: 38px; }
+  .home-navbar .navbar-container .header-frame .detail .wel-txt { width: 100%; height: auto; margin-top: 24px; font-size: 32px; }
+  .home-navbar .navbar-container .header-frame .detail .service-txt { width: auto; height: auto; }
+  .home-navbar .navbar-container .logo-frame { width: 30%; height: 280px; }
+  .homepage .cards-frame { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .homepage .popular-dishes-frame, .homepage .new-products-frame, .homepage .active-users-frame { height: auto; padding-bottom: 48px; }
+  .site-footer .footer-main { flex-direction: column; margin-top: 48px; }
+  .site-footer .footer-about { width: 100% !important; }
+  .site-footer .footer-navigation { margin-left: 0; gap: 48px; }
+  .site-footer .footer-contact { margin-left: 0; }
+  .products-page .products .top-text { width: 100%; height: auto; gap: 20px; margin-top: 32px; }
+  .products-page .products .single-search-form { min-width: 0; }
+  .products-page .products .single-search-input { width: 100%; min-width: 0; }
+  .products-page .chosen-product .product-container { flex-direction: column; gap: 24px; margin-top: 32px; margin-bottom: 48px; }
+  .products-page .chosen-product .chosen-product-slider,
+  .products-page .chosen-product .chosen-product-info { width: 100%; }
+  .products-page .chosen-product .chosen-product-slider,
+  .products-page .chosen-product .chosen-product-slider .swiper-area { height: 420px; }
+  .user-page .my-page-frame { flex-direction: column; gap: 32px; padding: 16px 0; }
+  .my-page-frame .my-page-left, .my-page-frame .my-page-right { width: 100%; }
+  .user-page .settings { width: 100%; }
+  .my-page-left .menu-name { height: auto; font-size: 32px; text-align: center; }
+  .order-page .order-container { flex-direction: column; gap: 32px; }
+  .order-page .order-left, .order-page .order-right { width: 100%; }
+  .order-page .order-right { margin: 0; }
+  .order-page .order-right .order-info-box { width: 100%; max-width: 480px; align-self: center; }
+}
+@media (max-width: 600px) {
+  .home-navbar { min-height: 700px; height: auto; background-position: center; padding-bottom: 48px; }
+  .other-navbar { height: 230px; background-position: center; }
+  .home-navbar .navbar-container .menu .links,
+  .other-navbar .navbar-container .menu .links { width: 100%; gap: 8px 16px; font-size: 14px; }
+  .home-navbar .navbar-container .header-frame { margin-top: 64px; }
+  .home-navbar .navbar-container .header-frame .detail { width: 100%; }
+  .home-navbar .navbar-container .header-frame .detail .head-main-txt { font-size: 34px; }
+  .home-navbar .navbar-container .header-frame .detail .wel-txt { font-size: 28px; }
+  .home-navbar .navbar-container .logo-frame { display: none; }
+  .homepage .static-frame { height: auto; padding: 24px 0; }
+  .homepage .static-frame .info { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .homepage .static-frame .info > span { display: none; }
+  .homepage .static-frame .info .static-box { width: 100%; height: auto; }
+  .homepage .static-frame .info .static-box .static-num { margin-top: 0; font-size: 40px; line-height: 1.4; }
+  .homepage .static-frame .info .static-box .static-text { font-size: 22px; }
+  .homepage .cards-frame { grid-template-columns: minmax(0, 1fr); }
+  .homepage .ads-restaurant-frame { height: auto; }
+  .homepage .ads-restaurant-frame .ads-video { display: block; height: auto; }
+  .homepage .events-frame { height: auto; overflow: hidden; }
+  .homepage .events-frame .events-info .events-info-frame { width: calc(100vw - 32px); max-width: 500px; }
+  .homepage .events-frame .events-img { height: 280px; }
+  .homepage .events-frame .events-desc { width: 100%; }
+  .homepage .events-frame .events-main .events-info { height: auto; }
+  .site-footer .footer-navigation { flex-wrap: wrap; gap: 32px; }
+  .site-footer .foot-desc-txt { line-height: 1.8; }
+  .site-footer .copyright-txt { font-size: 14px; }
+  .products-page .products .top-text { flex-direction: column; margin-top: 24px; gap: 8px; }
+  .products-page .products .top-text p { margin: 0; }
+  .products-page .products .single-button-search { flex-shrink: 0; }
+  .products-page .products .dishes-filter-box { flex-wrap: wrap; gap: 8px; }
+  .products-page .products .dishes-filter-box .order { width: auto; margin-right: 0; }
+  .products-page .products .list-category-section { flex-direction: column; }
+  .products-page .products .product-category { margin-top: 24px; width: 100%; }
+  .products-page .products .category-main { flex-direction: row-reverse; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+  .products-page .products .category-main button { writing-mode: horizontal-tb; transform: none; height: 40px; }
+  .products-page .products .product-wrapper { margin-left: 0; }
+  .products-page .products .product-card { margin: 24px 0; width: 100%; max-width: 340px; }
+  .products-page .products .shop-btn, .products-page .products .view-btn { opacity: 1; }
+  .products-page .chosen-product .chosen-product-slider,
+  .products-page .chosen-product .chosen-product-slider .swiper-area { height: 320px; }
+  .products-page .chosen-product .chosen-product-info { padding: 24px; }
+  .products-page .chosen-product .button-box button { width: 100%; }
+  .user-page .settings { padding: 20px; }
+  .user-page .settings .input-frame, .user-page .settings .member-media-frame { flex-direction: column; gap: 16px; }
+  .user-page .settings .member-media-frame .media-change-box { width: 100%; margin-left: 0; }
+  .user-page .settings .spec-input, .user-page .settings .spec-textarea { padding: 14px; }
+  .order-page .order-nav-frame .MuiTabs-flexContainer { flex-wrap: wrap; }
+  .order-page .order-nav-frame .MuiTab-root { min-width: 0; padding: 12px 8px; font-size: 11px; }
+  .order-page .order-box-scroll .orders-name-price { flex-wrap: wrap; height: auto; gap: 8px; }
+  .order-page .order-box-scroll .orders-name-price .title-dish { margin-left: 8px; flex: 1; }
+  .order-page .order-box-scroll .orders-name-price .price-box { margin: 0; width: 100%; max-width: 100%; justify-content: flex-end; }
+  .basket-frame { max-width: calc(100vw - 48px); }
+  .basket-frame .basket-info-box { flex-wrap: wrap; gap: 8px; padding-right: 24px; }
+  .basket-frame .basket-info-box .product-name { width: auto; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+  .basket-frame .basket-order { height: auto; flex-direction: column; gap: 12px; align-items: stretch; padding: 12px 0; }
+  .help-page .help-main-content { width: 100%; }
+}
+
+@media (max-width: 900px) { .my-page-frame .my-page-right { margin-left: 0; } }
+.order-page .order-main-content .order-main-box { max-height: none; }
+.order-page .order-main-content .order-main-box .order-box-scroll { overflow-y: auto; }
+.order-page .order-main-content .order-main-box .total-price-box .box-total { gap: 8px; flex-wrap: wrap; }
+.order-page .order-nav-frame .MuiTab-root.Mui-selected,
+.help-page .help-menu .MuiTab-root.Mui-selected { color: #d7b586; }
+.order-page .order-nav-frame .MuiTabs-indicator,
+.help-page .help-menu .MuiTabs-indicator { background-color: #d7b586; }
+.products-page .products .top-text p { color: #d7b586; }
+@media (max-width: 600px) {
+  .order-page .order-left .order-nav-frame { height: auto; }
+  .order-page .order-nav-frame > div { width: 100%; }
+  .order-page .order-nav-frame .MuiTabs-flexContainer { flex-wrap: nowrap; }
+  .order-page .order-nav-frame .MuiTab-root { flex: 1; max-width: none; min-width: 0; padding: 12px 4px; font-size: 10px; }
+}

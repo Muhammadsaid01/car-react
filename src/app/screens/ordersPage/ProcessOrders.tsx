@@ -38,7 +38,7 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
     try {
       if(!authMember) throw new Error(Messages.error2);
 
-      const orderId = e.target.value;
+      const orderId = e.currentTarget.value;
       const input: OrderUpdateInput = {
         orderId: orderId,
         orderStatus: OrderStatus.FINISH,
@@ -76,7 +76,7 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
                 const product: Product = order.productData.filter(
                   (ele: Product) => item.productId === ele._id
                 )[0];
-                const imagePath = `${serverApi}/${product.productImages[0]}`;
+                const imagePath = product?.productImages?.[0] ? `${serverApi}/${product.productImages[0]}` : "/icons/noimage-list.svg";
                 return (
                   <Box key={item._id} className={"orders-name-price"}>
                     <img
@@ -84,7 +84,7 @@ export default function ProcessOrders(props: ProcessOrdersProps) {
                       className={"order-dish-img"}
                       alt="kebab"
                     />
-                    <p className="title-dish">{product.productName}</p>
+                    <p className="title-dish">{product?.productName || "Unavailable car"}</p>
                     <Box className="price-box">
                     <p>${item.itemPrice}</p>
                       <img src={"/icons/close.svg"} alt="close" />

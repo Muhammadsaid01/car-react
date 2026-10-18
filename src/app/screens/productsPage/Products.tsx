@@ -52,42 +52,38 @@ export default function Products(props: ProductsProps) {
   const [searchText, setSearchText] = useState<string>("");
   const history = useHistory();
 
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [loadError, setLoadError] = useState(false);
   useEffect(() => {
-    const product = new ProductService();
-    product
-      .getProducts(productSearch)
-      .then((data) => setProducts(data))
-      .catch((err) => console.log(err));
+    let active = true;
+    setLoading(true);
+    setLoadError(false);
+    new ProductService().getProductPage(productSearch).then(data => {
+      if (!active) return;
+      setProducts(data.products);
+      setTotal(data.total);
+    }).catch(() => {
+      if (active) { setProducts([]); setTotal(0); setLoadError(true); }
+    }).finally(() => { if (active) setLoading(false); });
+    return () => { active = false; };
   }, [productSearch]);
 
   useEffect(() => {
-  if (searchText === "") {
-    productSearch.search = "";
-    setProductSearch({ ...productSearch });
-  }
+    if (searchText === "") setProductSearch(current => ({ ...current, page: 1, search: "" }));
   }, [searchText]);
 
-  /** HANDLERS **/
   const searchCollectionHandler = (collection: ProductCollection) => {
-    productSearch.page = 1;
-    productSearch.productCollection = collection;
-    setProductSearch({ ...productSearch });
+    setProductSearch(current => ({ ...current, page: 1, productCollection: collection }));
   };
-
   const searchOrderHandler = (order: string) => {
-  productSearch.page = 1;
-  productSearch.order = order;
-  setProductSearch({ ...productSearch });
+    setProductSearch(current => ({ ...current, page: 1, order }));
   };
-
   const searchProductHandler = () => {
-  productSearch.search = searchText;
-  setProductSearch({ ...productSearch });
+    setProductSearch(current => ({ ...current, page: 1, search: searchText.trim() }));
   };
-
-  const paginationHandler = (e: ChangeEvent<any>, value: number) => {
-  productSearch.page = value;
-  setProductSearch({ ...productSearch });
+  const paginationHandler = (_e: ChangeEvent<any>, page: number) => {
+    setProductSearch(current => ({ ...current, page }));
   };
 
   const chooseDishHandler =(id: string) => {history.push(`/products/${id}`);};
@@ -221,7 +217,7 @@ export default function Products(props: ProductsProps) {
                     </Stack>
 
                     <Stack className={"product-wrapper"}>
-                        {products.length !== 0 ? (
+                        {!loading && products.length !== 0 ? (
                             products.map((product: Product) => {
                               const imagePath = `${serverApi}/${product.productImages[0]}`;
                               const secondHand = 
@@ -276,18 +272,15 @@ export default function Products(props: ProductsProps) {
                                 );
                             })
                         ) : (
-                            <Box className="no-data">Cars are not available!</Box>
+                            <Box className="no-data">{loading ? "Loading cars..." : loadError ? "Unable to load cars. Please try again." : "Cars are not available!"}</Box>
                         )}
                     </Stack>
                 </Stack>
 
                 <Stack className={"pagination-section"}>
                   <Pagination
-                    count={
-                      products.length !== 0
-                        ? productSearch.page + 1
-                        : productSearch.page
-                    }
+                    count={Math.max(1, Math.ceil(total / productSearch.limit))}
+                    disabled={loading}
                     page={productSearch.page}
                     renderItem={(item) => (
                       <PaginationItem

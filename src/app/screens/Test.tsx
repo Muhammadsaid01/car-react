@@ -2,8 +2,9 @@
 import  React, {Component} from  "react";
 
 
-class Test extends Component {
-  constructor(props) {
+interface TestState { brand: string; model: string; color: string; year: number; }
+class Test extends Component<{}, TestState> {
+  constructor(props: {}) {
     super(props);
     this.state = {
       brand: "Ford",

@@ -34,7 +34,7 @@ export default function OrdersPage() {
   const {setPausedOrders, setProcessOrders, setFinishedOrders} = 
   actionDispatch(useDispatch());
 
-  const {orderBuilder, authMember} = useGlobals();
+  const {orderBuilder, authMember, authReady} = useGlobals();
   const history = useHistory();
   const [value, setValue] = useState("1");
 const [orderInquiry ,setOrderInquiry] = useState<OrderInquiry>({
@@ -44,6 +44,7 @@ const [orderInquiry ,setOrderInquiry] = useState<OrderInquiry>({
   });
 
   useEffect(() => {
+    if (!authReady || !authMember) return;
     const order = new OrderService();
     
     order
@@ -61,7 +62,7 @@ const [orderInquiry ,setOrderInquiry] = useState<OrderInquiry>({
     .then((data) => setFinishedOrders(data))
     .catch((err) => console.log(err));
 
-  }, [orderInquiry, orderBuilder]);
+  }, [orderInquiry, orderBuilder, authReady, authMember]);
 
 
   /**HANDLERS */
@@ -70,7 +71,11 @@ const [orderInquiry ,setOrderInquiry] = useState<OrderInquiry>({
     setValue(newValue);
   };
 
-  if (!authMember)history.push("/");
+  useEffect(() => {
+    if (authReady && !authMember) history.replace("/");
+  }, [authReady, authMember, history]);
+
+  if (!authReady || !authMember) return null;
 
   return (
     <div className="order-page">

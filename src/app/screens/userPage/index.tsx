@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
+import { useEffect } from "react";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
@@ -13,9 +14,12 @@ import { Settings } from "./Settings";
 
 export default function UserPage() {
   const history = useHistory();
-  const {authMember} = useGlobals();
+  const {authMember, authReady} = useGlobals();
 
-  if(!authMember) history.push("/");
+  useEffect(() => {
+    if (authReady && !authMember) history.replace("/");
+  }, [authReady, authMember, history]);
+  if (!authReady || !authMember) return null;
   return (
     <div className={"user-page"}>
       <Container>

@@ -10,15 +10,18 @@ class MemberService {
         this.path = serverApi;
     }
 
+    public async getMemberDetail(): Promise<Member> {
+      const result = await axios.get(`${this.path}/member/detail`, { withCredentials: true });
+      return result.data;
+    }
+
     public async getTopUsers(): Promise<Member[]> {
         try {
             const url = this.path + "/member/top-users"
             const result = await axios.get(url);
- console.log("getTopUsers:", result)
   
            return result.data;
         } catch (err) {
-            console.log("Error, getTopUsers:", err);
             throw err;
         }
     }
@@ -27,14 +30,12 @@ class MemberService {
     
     public async getRestaurant(): Promise<Member> {
         try {
-            const url = this.path + "/member/restaurant"
+            const url = this.path + "/member/Uzavto"
             const result = await axios.get(url);
-            console.log("getRestaurant:", result)
 
            const restaurant: Member = result.data;
            return restaurant;
         } catch (err) {
-            console.log("Error, getRestaurant:", err);
             throw err;
         }
     }
@@ -44,14 +45,11 @@ public async signUp(input: MemberInput): Promise<Member> {
     try {
       const url = this.path + "/member/signup";
       const result = await axios.post(url, input, {withCredentials: true});
-      console.log("signup:", result);
 
       const member: Member = result.data.member;
-      console.log("member:", member)
       localStorage.setItem("memberData", JSON.stringify(member));
       return member;
     } catch (err) {
-        console.log("Error, signUp", err);
         throw err;
     }
 
@@ -65,16 +63,13 @@ public async login(input: LoginInput): Promise<Member> {
     try {
       const url = this.path + "/member/login";
       const result = await axios.post(url, input, {withCredentials: true});
-      console.log("login:", result);
 
       const member: Member = result.data.member;
-      console.log("member:", member)
       localStorage.setItem("memberData", JSON.stringify(member));
 
 
       return member;
     } catch (err) {
-        console.log("Error, login", err);
         throw err;
     }
 
@@ -86,7 +81,6 @@ public async logout() : Promise<void> {
     try {
       const url = this.path + "/member/logout";
       const result = await axios.post(url, {}, {withCredentials: true});
-      console.log("logout:", result);
 
      
       localStorage.removeItem("memberData");
@@ -94,7 +88,6 @@ public async logout() : Promise<void> {
 
       return result.data.logout;
     } catch (err) {
-        console.log("Error, logout", err);
         throw err;
     }
 
@@ -107,7 +100,7 @@ public async updateMember(input: MemberUpdateInput): Promise<Member> {
       formData.append("memberPhone", input.memberPhone || "");
       formData.append("memberAddress", input.memberAddress || "");
       formData.append("memberDesc", input.memberDesc || "");
-      formData.append("memberImage", input.memberImage || "");
+      if (input.memberImage instanceof File) formData.append("memberImage", input.memberImage);
 
   const result = await axios (`${serverApi}/member/update`, {
     method: "POST",
@@ -118,14 +111,12 @@ public async updateMember(input: MemberUpdateInput): Promise<Member> {
     },
   });
 
-  console.log("updateMember:" , result);
 
    const member: Member = result.data;
    localStorage.setItem("memberData", JSON.stringify(member));
    return member ;
 
     } catch (err) {
-        console.log("Error, updateMember", err);
         throw err;
     }
 

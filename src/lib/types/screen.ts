@@ -16,6 +16,7 @@ export interface AppRootState {
 
 export interface HomePageState {
     
+    products: Product[];
     brandCars:Product[];
     newCars:Product[];
     topUsers: Member [];

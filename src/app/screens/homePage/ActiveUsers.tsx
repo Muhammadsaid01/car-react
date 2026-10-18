@@ -28,12 +28,12 @@ export default function ActiveUsers() {
         <CssVarsProvider>
          {topUsers.length !== 0 ? (
           topUsers.map((member:Member)=> {
-             const imagePath = `${serverApi}/${member.memberImage}`;
+             const imagePath = member.memberImage ? `${serverApi}/${member.memberImage}` : "/icons/default-user.svg";
             return (
               <Card key={member._id} variant="outlined" className={"card"}>
                 <CardOverflow>
                      <AspectRatio ratio="1">
-                  <img src={imagePath} alt="" />
+                  <img src={imagePath} alt={member.memberNick} />
                   </AspectRatio>
                 </CardOverflow>
                 <CardOverflow variant="soft" className="product-detail">

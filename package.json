@@ -63,5 +63,23 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(swiper|ssr-window|dom7)/)",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "moduleNameMapper": {
+      "^swiper/css(?:/.*)?$": "<rootDir>/src/test/styleMock.js"
+    }
+  },
+  "resolutions": {
+    "@types/react": "18.3.29",
+    "@types/react-dom": "18.3.7"
+  },
+  "fork-ts-checker": {
+    "typescript": {
+      "memoryLimit": 4096
+    }
   }
 }

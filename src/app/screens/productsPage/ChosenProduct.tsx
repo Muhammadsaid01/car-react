@@ -4,11 +4,11 @@ import { Box, Container, Stack } from "@mui/material";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import { Dispatch } from "@reduxjs/toolkit";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { createSelector } from "reselect";
-import { FreeMode, Navigation, Thumbs } from "swiper";
+import { A11y, FreeMode, Navigation, Thumbs } from "swiper";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
@@ -54,21 +54,29 @@ export default function ChosenProduct(props: ChosenProductsProps) {
   const {chosenProduct} =useSelector(chosenProductRetriever);
   const {restaurant} = useSelector(restaurantRetriever);
 
+  const [loading, setLoading] = useState(true);
+  const [failed, setFailed] = useState(false);
   useEffect(() => {
+    let active = true;
+    setLoading(true);
+    setFailed(false);
     const product = new ProductService();
     product
       .getProduct(productId)
-      .then((data) => setChosenProduct(data))
-      .catch((err) => console.log(err));
+      .then((data) => { if (active) setChosenProduct(data); })
+      .catch(() => { if (active) setFailed(true); })
+      .finally(() => { if (active) setLoading(false); });
 
     const member = new MemberService();
     member
       .getRestaurant()
       .then((data) => setRestaurant(data))
       .catch((err) => console.log(err));
-  }, []);
+    return () => { active = false; };
+  }, [productId]);
 
-  if (!chosenProduct) return null;
+  if (loading) return <Box className="no-data">Loading car...</Box>;
+  if (failed || !chosenProduct) return <Box className="no-data">Car is not available.</Box>;
 
   return (
     <div className={"chosen-product"}>
@@ -76,10 +84,11 @@ export default function ChosenProduct(props: ChosenProductsProps) {
       <Container className={"product-container"}>
         <Stack className={"chosen-product-slider"}>
           <Swiper
-            loop={true}
+            loop={chosenProduct.productImages.length > 1}
             spaceBetween={10}
             navigation={true}
-            modules={[FreeMode, Navigation, Thumbs]}
+            modules={[A11y, FreeMode, Navigation, Thumbs]}
+            a11y={{ prevSlideMessage: "Previous car image", nextSlideMessage: "Next car image" }}
             className="swiper-area"
           >
             {chosenProduct?.productImages.map(
@@ -87,7 +96,7 @@ export default function ChosenProduct(props: ChosenProductsProps) {
                 const imagePath = `${serverApi}/${ele}`
                 return (
                   <SwiperSlide key={index}>
-                    <img className="slider-image" src={imagePath} />
+                    <img className="slider-image" src={imagePath} alt={`${chosenProduct.productName} ${index + 1}`} />
                   </SwiperSlide>
                 );
               }

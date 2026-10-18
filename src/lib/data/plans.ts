@@ -5,7 +5,7 @@ export const plans = [
 		author: 'Lux Motors Team',
 		date: '30 min ago',
 		location: 'Turkey, Istanbul',
-		img: '/img/discount.webp',
+		img: '/img/turkey.jpg',
 	},
 	{
 		title: 'New Arrivals Coming Soon',
@@ -13,7 +13,7 @@ export const plans = [
 		author: 'Lux Motors News',
 		date: '2 days ago',
 		location: 'Turkey, Istanbul',
-		img: '/img/fresh.webp',
+		img: '/img/turkey2.jpg',
 	},
 	{
 		title: 'New Showroom Launch',
@@ -21,7 +21,7 @@ export const plans = [
 		author: 'Lux Motors PR',
 		date: '5 days ago',
 		location: 'USA, Florida',
-		img: '/img/coming.webp',
+		img: '/img/florida.jpg',
 	},
 	{
 		title: 'Follow Us Online',
@@ -29,6 +29,6 @@ export const plans = [
 		author: 'Lux Motors Social',
 		date: '1 week ago',
 		location: 'Europe, France',
-		img: '/img/food-city.webp',
+		img: '/img/france.jpg',
 	},
 ];

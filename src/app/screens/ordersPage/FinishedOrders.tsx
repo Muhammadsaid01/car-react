@@ -30,7 +30,7 @@ export default function FinishedOrders() {
                 
                 const imagePath = product?.productImages?.[0] 
                   ? `${serverApi}/${product.productImages[0]}` 
-                  : "/img/kebab.webp";
+                  : "/icons/noimage-list.svg";
 
                 // Fix 1: Added return here
                 return (
@@ -40,7 +40,7 @@ export default function FinishedOrders() {
                       className="order-dish-img"
                       alt="dish"
                     />
-                    <p className="title-dish">{product?.productName}</p>
+                    <p className="title-dish">{product?.productName || "Unavailable car"}</p>
                     <Box className="price-box">
                       <p>${item.itemPrice}</p>
                       <img src={"/icons/close.svg"} alt="close" />

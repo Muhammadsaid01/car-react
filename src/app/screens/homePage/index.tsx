@@ -61,7 +61,7 @@ export  default function HomePage() {
       .catch((err) => console.log(err));
 
 
-    },[]);
+    },[setBrandCars, setNewCars, setTopUsers]);
 
 
   return <div className={'homepage'}>
