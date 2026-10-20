@@ -1,0 +1,94 @@
+[
+  {
+    "brokenImages": [],
+    "cardFieldsEmpty": true,
+    "grid": "353.994px",
+    "itemGrid": "320.752px",
+    "mobileTotalStack": "column",
+    "overflow": false,
+    "tabSizes": [
+      {
+        "height": 50,
+        "width": 118
+      },
+      {
+        "height": 50,
+        "width": 118
+      },
+      {
+        "height": 50,
+        "width": 118
+      }
+    ],
+    "width": 390
+  },
+  {
+    "brokenImages": [],
+    "cardFieldsEmpty": true,
+    "grid": "703.496px",
+    "itemGrid": "339.561px 308.691px",
+    "mobileTotalStack": "row",
+    "overflow": false,
+    "tabSizes": [
+      {
+        "height": 50,
+        "width": 132
+      },
+      {
+        "height": 50,
+        "width": 128
+      },
+      {
+        "height": 50,
+        "width": 142
+      }
+    ],
+    "width": 767
+  },
+  {
+    "brokenImages": [],
+    "cardFieldsEmpty": true,
+    "grid": "784.443px 373.555px",
+    "itemGrid": "382.549px 332.656px",
+    "mobileTotalStack": "row",
+    "overflow": false,
+    "tabSizes": [
+      {
+        "height": 50,
+        "width": 132
+      },
+      {
+        "height": 50,
+        "width": 128
+      },
+      {
+        "height": 50,
+        "width": 142
+      }
+    ],
+    "width": 1280
+  },
+  {
+    "brokenImages": [],
+    "cardFieldsEmpty": true,
+    "grid": "822.383px 391.621px",
+    "itemGrid": "402.842px 350.303px",
+    "mobileTotalStack": "row",
+    "overflow": false,
+    "tabSizes": [
+      {
+        "height": 50,
+        "width": 132
+      },
+      {
+        "height": 50,
+        "width": 128
+      },
+      {
+        "height": 50,
+        "width": 142
+      }
+    ],
+    "width": 1440
+  }
+]

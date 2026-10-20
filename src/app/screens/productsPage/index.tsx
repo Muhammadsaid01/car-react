@@ -9,6 +9,7 @@ import { CartItem } from '../../../lib/types/search';
 
 interface ProductsPageProps {
   onAdd: (item: CartItem) =>  void;
+  cartItems: CartItem[];
 }
 
 export default function ProductsPage(props: ProductsPageProps ) {
@@ -21,7 +22,7 @@ export default function ProductsPage(props: ProductsPageProps ) {
       <Switch>
 
         <Route path={`${products.path}/:productId`}>
-          <ChosenProduct  onAdd={onAdd}/>
+          <ChosenProduct onAdd={onAdd} cartItems={props.cartItems} />
         </Route>
 
         <Route path={`${products.path}`}>

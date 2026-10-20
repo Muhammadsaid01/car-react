@@ -1,0 +1,9 @@
+import { LocationOnOutlined } from "@mui/icons-material";
+import { siteContact, siteLocation } from "../../../lib/data/siteContent";
+export default function CatalogLocation() {
+  return <section className="lux-catalog-location" aria-labelledby="catalog-location-title"><div className="lux-container">
+    <h2 id="catalog-location-title">Bizni toping</h2>
+    <div className="lux-catalog-location-grid"><div className="lux-catalog-location-info"><span className="lux-catalog-location-icon"><LocationOnOutlined aria-hidden="true" /></span><h3>{siteContact.address ? "Showroomga tashrif buyuring" : "Showroom manzili"}</h3><p>{siteContact.address || "Manzil tasdiqlanmoqda."}</p>{siteLocation.mapUrl ? <a className="lux-catalog-map-link" href={siteLocation.mapUrl} target="_blank" rel="noreferrer">Xaritada ochish <span aria-hidden="true">↗</span></a> : <p className="lux-catalog-location-note">Tasdiqlangan manzil kiritilgach, xarita havolasi shu yerda paydo bo‘ladi.</p>}</div>
+    <div className="lux-catalog-map">{siteLocation.embedUrl ? <iframe title="LuxAvto showroom xaritasi" src={siteLocation.embedUrl} loading="lazy" referrerPolicy="no-referrer-when-downgrade" /> : <div className="lux-catalog-map-placeholder"><svg viewBox="0 0 700 300" aria-hidden="true"><defs><pattern id="catalog-map-pattern" width="100" height="100" patternUnits="userSpaceOnUse" patternTransform="rotate(-25)"><path d="M0 0H100V100H0Z M45 0V100 M0 50H100" fill="none" stroke="#ddd9d0" strokeWidth="6" /></pattern></defs><rect width="700" height="300" fill="#eeebe4"/><rect width="700" height="300" fill="url(#catalog-map-pattern)" /></svg><div><LocationOnOutlined aria-hidden="true" /><strong>Xarita hali sozlanmagan</strong><p>LuxAvto’ning tasdiqlangan manzili kutilmoqda.</p></div></div>}</div></div>
+  </div></section>;
+}

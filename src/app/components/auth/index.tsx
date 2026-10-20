@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import { Fab, Stack, TextField, Typography } from "@mui/material";
+import { Button, Fab, Stack, TextField, Typography } from "@mui/material";
 import LoginIcon from "@mui/icons-material/Login";
 import { Messages } from "../../../lib/config";
 import MemberService from "../../services/MemberService";
@@ -16,6 +16,7 @@ const useStyles = makeStyles(theme => ({
 interface AuthenticationModalProps {
   signupOpen: boolean; loginOpen: boolean;
   handleSignupClose: () => void; handleLoginClose: () => void;
+  onSignupRequest: () => void; onLoginRequest: () => void;
 }
 export default function AuthenticationModal(props: AuthenticationModalProps) {
   const { signupOpen, loginOpen, handleSignupClose, handleLoginClose } = props;
@@ -33,7 +34,7 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const submit = async (event: React.FormEvent, signup: boolean) => {
     event.preventDefault();
     if (pending) return;
-    if (!memberNick.trim() || !memberPassword || (signup && !memberPhone.trim())) { setError(Messages.error3); return; }
+    if (!memberNick.trim() || !memberPassword || (signup && !memberPhone.trim())) { setError("Barcha maydonlarni to‘ldiring!"); return; }
     setPending(true); setError("");
     try {
       const service = new MemberService();
@@ -50,20 +51,21 @@ export default function AuthenticationModal(props: AuthenticationModalProps) {
   const renderModal = (signup: boolean) => {
     const open = signup ? signupOpen : loginOpen;
     const prefix = signup ? "signup" : "login";
-    const title = signup ? "Signup" : "Login";
+    const title = signup ? "Ro‘yxatdan o‘tish" : "Kirish";
     return <Modal aria-labelledby={`${prefix}-title`} className={classes.modal} open={open}
       onClose={pending ? undefined : signup ? handleSignupClose : handleLoginClose}
       closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{ timeout: 500 }}>
       <Fade in={open}>
         <Stack className={classes.paper} direction="row" sx={{ width: signup ? 800 : 700, maxWidth: "calc(100vw - 32px)", maxHeight: "calc(100vh - 32px)", overflowY: "auto" }}>
-          <Stack component="img" src="/img/auth.webp" alt="camera" sx={{ width: "55%", objectFit: "cover", borderRadius: "10px", display: { xs: "none", sm: "block" } }} />
+          <Stack component="img" src="/assets/luxavto/hero.jpg" alt="" sx={{ width: "55%", objectFit: "cover", borderRadius: "10px", display: { xs: "none", sm: "block" } }} />
           <Stack component="form" noValidate onSubmit={event => submit(event, signup)} sx={{ ml: { xs: 0, sm: 3 }, flex: 1, minWidth: 0, alignItems: "center", gap: 2 }}>
-            <h2 id={`${prefix}-title`}>{title} Form</h2>
-            <TextField fullWidth id={`${prefix}-username`} label="username" autoComplete="username" value={memberNick} onChange={event => setMemberNick(event.target.value)} />
-            {signup && <TextField fullWidth id="signup-phone" label="phone number" autoComplete="tel" value={memberPhone} onChange={event => setMemberPhone(event.target.value)} />}
-            <TextField fullWidth id={`${prefix}-password`} label="password" type="password" autoComplete={signup ? "new-password" : "current-password"} value={memberPassword} onChange={event => setMemberPassword(event.target.value)} />
+            <h2 id={`${prefix}-title`}>{title}</h2>
+            <TextField fullWidth id={`${prefix}-username`} label="Foydalanuvchi nomi" autoComplete="username" value={memberNick} onChange={event => setMemberNick(event.target.value)} />
+            {signup && <TextField fullWidth id="signup-phone" label="Telefon" autoComplete="tel" value={memberPhone} onChange={event => setMemberPhone(event.target.value)} />}
+            <TextField fullWidth id={`${prefix}-password`} label="Parol" type="password" autoComplete={signup ? "new-password" : "current-password"} value={memberPassword} onChange={event => setMemberPassword(event.target.value)} />
             {error && <Typography role="alert" color="error">{error}</Typography>}
-            <Fab type="submit" disabled={pending} sx={{ mt: 1, width: 120, flexShrink: 0 }} variant="extended" color="primary"><LoginIcon sx={{ mr: 1 }} />{title}</Fab>
+            <Fab type="submit" disabled={pending} sx={{ mt: 1, minWidth: 120, width: "auto", px: 2, flexShrink: 0 }} variant="extended" color="primary"><LoginIcon sx={{ mr: 1 }} />{title}</Fab>
+            <Button type="button" disabled={pending} onClick={signup ? props.onLoginRequest : props.onSignupRequest}>{signup ? "Hisobingiz bormi? Kirish" : "Hisobingiz yo‘qmi? Ro‘yxatdan o‘tish"}</Button>
           </Stack>
         </Stack>
       </Fade>

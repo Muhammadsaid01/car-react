@@ -15,6 +15,7 @@ import '../css/app.css';
 import "../css/navbar.css";
 import "../css/footer.css";
 import "../css/responsive.css";
+import "../css/lux-shell.css";
 import { T } from '../lib/types/common';
 import { sweetErrorHandling, sweetTopSuccessAlert } from '../lib/sweetAlert';
 import { Messages } from '../lib/config';
@@ -99,7 +100,7 @@ const handleLogoutRequest = async() => {
        handleLogoutRequest={handleLogoutRequest} />}
       <Switch>
         <Route path="/products">
-          <ProductsPage onAdd={onAdd} />
+          <ProductsPage onAdd={onAdd} cartItems={cartItems} />
         </Route>
         <Route path="/orders">
           <OrdersPage />
@@ -122,6 +123,8 @@ const handleLogoutRequest = async() => {
       loginOpen={loginOpen}
       handleLoginClose={handleLoginClose}
       handleSignupClose={handleSignupClose}
+      onSignupRequest={() => { setLoginOpen(false); setSignupOpen(true); }}
+      onLoginRequest={() => { setSignupOpen(false); setLoginOpen(true); }}
     />
 
     </>

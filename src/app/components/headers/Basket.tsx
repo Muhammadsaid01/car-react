@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Messages, serverApi } from "../../../lib/config";
+import { serverApi } from "../../../lib/config";
 import { sweetErrorHandling } from "../../../lib/sweetAlert";
 import { CartItem } from "../../../lib/types/search";
 import { useGlobals } from "../../hooks/useGlobal";
@@ -50,7 +50,7 @@ export default function Basket(props: BasketProps) {
   const proceedOrderHandler = async () => {
     try {
  handleClose();
- if(!authMember) throw new Error (Messages.error2);
+ if(!authMember) throw new Error ("Avval hisobingizga kiring.");
 
   const order = new OrderService();
    await order.createOrder(cartItems);
@@ -73,7 +73,7 @@ export default function Basket(props: BasketProps) {
   return (
     <Box className={"hover-line"}>
       <IconButton
-        aria-label="cart"
+        aria-label="Savat"
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
@@ -81,7 +81,7 @@ export default function Basket(props: BasketProps) {
         onClick={handleClick}
       >
         <Badge badgeContent={cartItems.length} color="secondary">
-          <img src={"/icons/shopping-cart.svg"} alt="Shopping Cart" />
+          <img src={"/icons/shopping-cart.svg"} alt="" />
         </Badge>
       </IconButton>
       <Menu
@@ -121,9 +121,9 @@ export default function Basket(props: BasketProps) {
       >
         <Stack className={"basket-frame"}>
           <Box className={"all-check-box"}>
-           {cartItems.length ===0 ? <div>Cart is empty!</div> :
-           <Stack flexDirection="row">  <div>Cart Products:</div>
-           <IconButton size="small" aria-label="Clear cart" onClick={onDeleteAll}><DeleteForeverIcon color="primary" /></IconButton></Stack>}
+           {cartItems.length ===0 ? <div>Savat bo‘sh.</div> :
+           <Stack flexDirection="row">  <div>Savatdagi avtomobillar:</div>
+           <IconButton size="small" aria-label="Savatni tozalash" onClick={onDeleteAll}><DeleteForeverIcon color="primary" /></IconButton></Stack>}
             
             
           </Box>
@@ -131,19 +131,19 @@ export default function Basket(props: BasketProps) {
           <Box className={"orders-main-wrapper"}>
             <Box className={"orders-wrapper"}>
               {cartItems.map((item: CartItem) => {
-                const imagePath = `${serverApi}/${item.image}`;
+                const imagePath = item.image ? `${serverApi}/${item.image}` : "/assets/luxavto/car-placeholder.svg";
                 return (
                       <Box className={"basket-info-box"} key={item._id}>
                 <div className={"cancel-btn"}>
-                  <IconButton size="small" aria-label={`Remove ${item.name}`} onClick={() => onDelete(item)}><CancelIcon color="primary" /></IconButton>
+                  <IconButton size="small" aria-label={`${item.name} — savatdan o‘chirish`} onClick={() => onDelete(item)}><CancelIcon color="primary" /></IconButton>
                 </div>
-                <img src={imagePath} className={"product-img"}  alt={item.name}/>
+                <img src={imagePath} className={"product-img"}  alt={item.name} onError={event => { const fallback = "/assets/luxavto/car-placeholder.svg"; if (event.currentTarget.getAttribute("src") !== fallback) event.currentTarget.src = fallback; }}/>
                 <span className={"product-name"}> {item.name}</span>
                 <p className={"product-price"}>${item.price} x {item.quantity}</p>
                 <Box sx={{ minWidth: 120 }}>
                   <div className="col-2">
-                    <button onClick={() => onRemove (item)}className="remove">-</button>{" "}
-                    <button  onClick={() => onAdd(item)} className="add">+</button>
+                    <button onClick={() => onRemove (item)}aria-label={`${item.name} — miqdorini kamaytirish`} className="remove">-</button>{" "}
+                    <button  onClick={() => onAdd(item)} aria-label={`${item.name} — miqdorini oshirish`} className="add">+</button>
                   </div>
                 </Box>
               </Box>
@@ -154,11 +154,11 @@ export default function Basket(props: BasketProps) {
             </Box>
           </Box>
           {cartItems.length !== 0 ?  ( <Box className={"basket-order"}>
-            <span className={"price"}>Total: ${totalPrice} ({itemsPrice} +{shippingCost})</span>
+            <span className={"price"}>Jami: ${totalPrice} ({itemsPrice} +{shippingCost})</span>
             <Button onClick={proceedOrderHandler} 
             startIcon={<ShoppingCartIcon />} 
             variant={"contained"}>
-              Order
+              Buyurtma berish
             </Button>
           </Box>) : ("")}
          

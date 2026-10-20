@@ -1,0 +1,155 @@
+/* Catalog-only layout. Existing product detail styles remain in products.css. */
+.lux-catalog { background:var(--lux-ivory); color:var(--lux-ink); font:15px/1.5 Arial,sans-serif; }
+.lux-catalog *, .lux-catalog *::before, .lux-catalog *::after { box-sizing:border-box; }
+.lux-catalog h1, .lux-catalog h2, .lux-catalog h3, .lux-catalog p { margin:0; }
+.lux-catalog a { text-decoration:none; color:inherit; }
+.lux-catalog button, .lux-catalog input, .lux-catalog select { font:inherit; }
+.lux-catalog button, .lux-catalog select { cursor:pointer; }
+.lux-catalog h1, .lux-catalog h2, .lux-catalog h3 { font-family:Georgia,'Times New Roman',serif; font-weight:400; letter-spacing:-.025em; }
+.lux-catalog :focus-visible { outline:3px solid #aa7e29; outline-offset:4px; }
+.lux-catalog-intro { padding:48px 0 36px; text-align:center; }
+.lux-catalog-intro nav { color:#75746e; font-size:13px; margin-bottom:10px; }
+.lux-catalog-intro nav a:hover { color:#8b6628; text-decoration:underline; }
+.lux-catalog-intro h1 { font-size:clamp(34px,3.65vw,54px); line-height:1.15; }
+.lux-catalog-intro>p { font-size:20px; color:#85847e; margin-top:12px; }
+.lux-catalog-inventory { padding-bottom:36px; }
+.lux-catalog-toolbar { display:grid; grid-template-columns:1fr 280px; gap:26px; align-items:end; margin-bottom:38px; }
+.lux-catalog-search label, .lux-catalog-sort label { display:block; font-size:14px; font-weight:600; margin-bottom:7px; }
+.lux-catalog-search>div { display:flex; align-items:center; min-height:48px; border:1px solid #cfcac0; border-radius:4px; background:#fbf9f5; }
+.lux-catalog-search input { width:100%; min-width:0; min-height:46px; border:0; background:none; padding:8px 6px; color:#2c2c28; font-size:14px; }
+.lux-catalog-search input::-webkit-search-cancel-button { display:none; }
+.lux-catalog-search button { display:grid; place-items:center; border:0; background:none; color:#33352f; width:46px; min-height:46px; flex-shrink:0; padding:10px; }
+.lux-catalog-search button:hover { color:#9c772f; }
+.lux-catalog-search svg { width:22px; height:22px; }
+.lux-catalog-sort select { width:100%; min-height:48px; background:#fbf9f5; border:1px solid #cfcac0; border-radius:4px; padding:10px 16px; color:#343630; font-size:14px; }
+.lux-catalog-layout { display:grid; grid-template-columns:230px minmax(0,1fr); gap:22px; align-items:start; }
+.lux-catalog-filters { border:1px solid #e1dbd1; border-radius:5px; padding:20px; align-self:stretch; min-width:0; }
+.lux-catalog-filters h2 { font-size:25px; margin-bottom:28px; }
+.lux-catalog-filters fieldset { border:0; padding:0; margin:0; }
+.lux-catalog-filters legend { font-weight:600; margin-bottom:12px; padding:0; }
+.lux-catalog-filters label { display:flex; align-items:center; gap:10px; min-height:39px; font-size:14px; color:#4b4c46; cursor:pointer; }
+.lux-catalog-filters input { accent-color:#a88743; width:17px; height:17px; flex-shrink:0; margin:0; }
+.lux-catalog-filter-actions { border-top:1px solid #dfd9ce; margin-top:24px; padding-top:24px; }
+.lux-catalog-reset, .lux-catalog-apply { min-height:46px; border:1px solid #bb9b5c; border-radius:4px; background:#b6995b; color:#fff; padding:10px 24px; font-size:14px; font-weight:600; }
+.lux-catalog-reset { background:#c9ad71; color:#282216; }
+.lux-catalog-reset:hover, .lux-catalog-apply:hover { background:#d8bd81; color:#29251b; }
+.lux-catalog-filters .lux-catalog-reset { width:100%; }
+.lux-catalog-apply, .lux-catalog-filter-toggle { display:none; }
+.lux-catalog-results { min-width:0; }
+.lux-catalog-results-bar { min-height:44px; margin-bottom:22px; display:flex; justify-content:space-between; gap:18px; align-items:center; }
+.lux-catalog-results-bar>p { font-size:14px; }
+.lux-catalog-results-bar .MuiPaginationItem-root { border:1px solid #ddd7cc; border-radius:4px; background:transparent; margin:0 0 0 8px; color:#242620; min-width:44px; height:44px; }
+.lux-catalog-results-bar .MuiPaginationItem-root.Mui-selected { background:#b89b5b; border-color:#b89b5b; color:#fff; }
+.lux-catalog-results-bar .MuiPaginationItem-ellipsis { border:0; min-width:14px; margin:0; height:auto; }
+.lux-catalog-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px 18px; }
+.lux-catalog-card { border:1px solid #e2dcd2; border-radius:4px; overflow:hidden; min-width:0; background:#fcfaf6; }
+.lux-catalog-card-image { display:block; width:100%; aspect-ratio:1.06; background:#e9e5dd; overflow:hidden; }
+.lux-catalog-card-image img { display:block; width:100%; height:100%; object-fit:cover; transition:transform .25s; }
+.lux-catalog-card-image:hover img { transform:scale(1.025); }
+.lux-catalog-card-copy { padding:17px 17px 9px; }
+.lux-catalog-card h2 { font:600 17px/1.35 Arial,sans-serif; letter-spacing:-.02em; overflow-wrap:anywhere; }
+.lux-catalog-card h2 a:hover { color:#89672c; }
+.lux-catalog-card-meta { color:#6e6e67; display:flex; flex-wrap:wrap; gap:9px; font-size:12px; margin-top:8px!important; }
+.lux-catalog-card-meta span+span { border-left:1px solid #b9b3a7; padding-left:9px; }
+.lux-catalog-price { color:#906c27; font-size:21px; font-weight:600; line-height:1.2; margin-top:16px!important; overflow-wrap:anywhere; }
+.lux-catalog-card-actions { display:flex; justify-content:space-between; align-items:center; gap:12px; min-height:44px; margin-top:8px; }
+.lux-catalog-card-actions>a { color:#927032; font-size:14px; display:inline-flex; align-items:center; min-height:44px; gap:12px; }
+.lux-catalog-card-actions>button { display:grid; place-items:center; border:0; width:44px; height:44px; flex-shrink:0; color:#927032; background:none; border-radius:4px; }
+.lux-catalog-card-actions>button:hover { background:#eee6d8; }
+.lux-catalog-card-actions svg { width:21px; }
+.lux-catalog-skeleton { border:1px solid #e2dcd2; border-radius:4px; background:#fcfaf6; min-height:370px; overflow:hidden; }
+.lux-catalog-skeleton>div { aspect-ratio:1.06; background:#e4dfd5; }
+.lux-catalog-skeleton>span { display:block; margin:18px; height:14px; border-radius:4px; background:#e4dfd5; }
+.lux-catalog-skeleton>span:nth-child(3) { width:55%; height:10px; }
+.lux-catalog-skeleton>span:last-child { width:65%; height:20px; }
+.lux-catalog-state { min-height:440px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:32px; border:1px solid #e2dcd2; border-radius:5px; background:#fbf9f5; }
+.lux-catalog-state h2 { font-size:30px; line-height:1.2; }
+.lux-catalog-state p { margin-top:12px; color:#6f6d64; }
+.lux-catalog-state button { margin-top:24px; }
+.lux-catalog-brands { color:#fff; background:linear-gradient(120deg,#1a201e,#0b1213); padding:44px 0 56px; }
+.lux-catalog-section-title { text-align:center; margin-bottom:36px; }
+.lux-catalog-section-title h2, .lux-catalog-location h2 { font-size:clamp(36px,3.8vw,54px); line-height:1.15; }
+.lux-catalog-video-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:clamp(16px,2.4vw,36px); width:100%; max-width:100%; min-width:0; margin-inline:auto; }
+.lux-catalog-video-card { position:relative; width:100%; min-width:0; overflow:hidden; aspect-ratio:5/7; border:1px solid #c4a265; border-radius:24px; background:#000; scroll-snap-align:start; }
+.lux-catalog-video-card>video { display:block; width:100%; height:100%; object-fit:contain; background:#000; }
+.lux-catalog-location { padding:42px 0 32px; }
+.lux-catalog-location h2 { text-align:center; margin-bottom:26px; }
+.lux-catalog-location-grid { display:grid; grid-template-columns:1fr 1.8fr; gap:22px; }
+.lux-catalog-location-info { border:1px solid #e0dbd1; border-radius:5px; padding:20px 26px; text-align:center; display:flex; align-items:center; flex-direction:column; justify-content:center; min-height:275px; }
+.lux-catalog-location-icon { width:74px; height:74px; border:1px solid #b59651; border-radius:50%; color:#b59651; display:grid; place-items:center; margin-bottom:16px; }
+.lux-catalog-location-icon svg { width:44px; height:44px; }
+.lux-catalog-location-info h3 { font:600 19px Arial,sans-serif; margin-bottom:9px; }
+.lux-catalog-location-info>p { font-size:14px; }
+.lux-catalog-location-info .lux-catalog-location-note { font-size:12px; color:#7e786b; margin-top:18px; max-width:290px; }
+.lux-catalog-map-link { margin-top:22px; display:block; border:1px solid #b59651; border-radius:4px; padding:10px 24px; min-height:44px; }
+.lux-catalog-map { border:1px solid #e0dbd1; border-radius:5px; overflow:hidden; min-height:275px; }
+.lux-catalog-map iframe { border:0; width:100%; height:100%; min-height:275px; display:block; }
+.lux-catalog-map-placeholder { min-height:275px; height:100%; position:relative; display:grid; place-items:center; text-align:center; padding:24px; background:#eeebe4; }
+.lux-catalog-map-placeholder>svg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.65; }
+.lux-catalog-map-placeholder>div { position:relative; border:1px solid #e3dccd; border-radius:6px; padding:18px 26px; background:#f7f4eef2; max-width:360px; }
+.lux-catalog-map-placeholder>div>svg { display:block; width:42px; height:42px; margin:0 auto 12px; color:#ab8d4d; }
+.lux-catalog-map-placeholder strong { display:block; font-size:17px; }
+.lux-catalog-map-placeholder p { color:#706d65; font-size:13px; margin-top:8px; }
+@media(max-width:1100px) {
+ .lux-catalog-layout { grid-template-columns:200px minmax(0,1fr); gap:18px; }
+ .lux-catalog-filters { padding:18px; }
+ .lux-catalog-card-copy { padding-inline:13px; }
+ .lux-catalog-card h2 { font-size:16px; }
+ .lux-catalog-card-meta { gap:6px; }
+ .lux-catalog-results-bar { gap:8px; }
+ .lux-catalog-results-bar .MuiPaginationItem-root { margin-left:4px; }
+ .lux-catalog-grid { gap:16px; }
+}
+@media(max-width:900px) {
+ .lux-catalog-layout { display:block; }
+ .lux-catalog-filter-toggle { display:flex; align-items:center; gap:10px; min-height:46px; background:#fbf9f5; border:1px solid #c9beaa; border-radius:4px; padding:10px 16px; margin-bottom:20px; }
+ .lux-catalog-filter-toggle span { background:#b89b5b; color:#fff; border-radius:50%; width:22px; height:22px; display:grid; place-items:center; }
+ .lux-catalog-filters { display:none; margin-bottom:24px; }
+ .lux-catalog-filters.is-open { display:block; }
+ .lux-catalog-filters fieldset { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px 24px; }
+ .lux-catalog-filters label { min-height:44px; }
+ .lux-catalog-filters legend { margin-bottom:14px; }
+ .lux-catalog-filter-actions { display:flex; gap:12px; margin-top:20px; padding-top:20px; }
+ .lux-catalog-apply { display:block; flex:1; color:#282216; background:#c9ad71; }
+ .lux-catalog-filters .lux-catalog-reset { width:auto; }
+ .lux-catalog-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
+ .lux-catalog-intro { padding-top:34px; }
+ .lux-catalog-toolbar { margin-bottom:24px; grid-template-columns:1fr 220px; gap:20px; }
+ .lux-catalog-video-grid { grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:clamp(190px,52vw,250px); gap:18px; overflow-x:auto; overscroll-behavior-x:contain; scroll-snap-type:x proximity; scrollbar-width:thin; scrollbar-color:#b5965a #17201e; padding:4px 2px 14px; }
+ .lux-catalog-location-grid { grid-template-columns:1fr 1.5fr; }
+ .lux-catalog-location-info { padding:20px; }
+}
+@media(max-width:600px) {
+ .lux-catalog-intro { padding:28px 0 26px; }
+ .lux-catalog-intro nav { font-size:12px; margin-bottom:14px; }
+ .lux-catalog-intro h1 { font-size:37px; }
+ .lux-catalog-intro>p { font-size:16px; margin-top:14px; }
+ .lux-catalog-toolbar { grid-template-columns:1fr; gap:16px; }
+ .lux-catalog-sort { display:flex; align-items:center; gap:16px; }
+ .lux-catalog-sort label { margin:0; font-weight:400; font-size:14px; }
+ .lux-catalog-sort select { flex:1; min-width:0; }
+ .lux-catalog-filter-toggle { width:100%; justify-content:center; }
+ .lux-catalog-results-bar { flex-wrap:wrap; gap:16px; margin-bottom:20px; }
+ .lux-catalog-results-bar>p { flex:1; white-space:nowrap; }
+ .lux-catalog-results-bar .MuiPaginationItem-root { min-width:44px; height:44px; margin-left:3px; font-size:13px; }
+ .lux-catalog-grid { grid-template-columns:1fr; gap:22px; }
+ .lux-catalog-card-image { aspect-ratio:1.18; }
+ .lux-catalog-card-copy { padding:18px 18px 10px; }
+ .lux-catalog-card h2 { font-size:20px; }
+ .lux-catalog-card-meta { font-size:13px; gap:10px; }
+ .lux-catalog-price { font-size:24px; }
+ .lux-catalog-filters { padding:18px; }
+ .lux-catalog-filters h2 { margin-bottom:20px; }
+ .lux-catalog-filters label { font-size:13px; gap:8px; }
+ .lux-catalog-filter-actions { flex-wrap:wrap; }
+ .lux-catalog-apply { flex-basis:100%; }
+ .lux-catalog-filters .lux-catalog-reset { width:100%; }
+ .lux-catalog-inventory { padding-bottom:30px; }
+ .lux-catalog-brands { padding:32px 0 40px; }
+ .lux-catalog-section-title { margin-bottom:24px; }
+ .lux-catalog-section-title h2, .lux-catalog-location h2 { font-size:38px; }
+ .lux-catalog-location { padding:32px 0; }
+ .lux-catalog-location-grid { grid-template-columns:1fr; gap:18px; }
+ .lux-catalog-location-info, .lux-catalog-map, .lux-catalog-map-placeholder { min-height:250px; }
+}
+@media(prefers-reduced-motion:reduce) { .lux-catalog *, .lux-catalog *::before, .lux-catalog *::after { transition:none!important; animation:none!important; } }

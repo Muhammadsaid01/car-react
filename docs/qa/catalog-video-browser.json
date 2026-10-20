@@ -1,0 +1,46 @@
+[
+  {
+    "ended": false,
+    "height": 1920,
+    "muted": true,
+    "paused": false,
+    "ready": 4,
+    "source": "/video/BMW.mp4",
+    "time": 7.478152,
+    "width": 1080
+  },
+  {
+    "ended": true,
+    "fit": "contain",
+    "height": 1920,
+    "muted": true,
+    "paused": true,
+    "ready": 4,
+    "source": "/video/Bugatti.mp4",
+    "time": 8.196644,
+    "width": 1080
+  },
+  {
+    "ended": true,
+    "fit": "contain",
+    "height": 1920,
+    "muted": true,
+    "paused": true,
+    "ready": 4,
+    "source": "/video/Lamborghini.mp4",
+    "time": 9.055782,
+    "width": 1080
+  },
+  {
+    "ended": true,
+    "fit": "contain",
+    "height": 854,
+    "muted": true,
+    "paused": true,
+    "players": 1,
+    "ready": 4,
+    "source": "/video/Benz.mp4",
+    "time": 8.057324,
+    "width": 480
+  }
+]

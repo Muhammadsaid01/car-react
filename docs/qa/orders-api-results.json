@@ -1,0 +1,291 @@
+{
+  "demo": {
+    "isolated": true,
+    "ordersAndTotalsUnchanged": true,
+    "pointsUnchanged": true,
+    "orderCount": 4
+  },
+  "actions": {
+    "isolated": true,
+    "states": {
+      "single": "FINISH",
+      "multi": "DELETE",
+      "process": "PROCESS",
+      "finished": "FINISH"
+    },
+    "points": 3
+  },
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=FINISH",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PROCESS",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/order/update",
+      "status": 503,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/order/update",
+      "status": 204,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "POST",
+      "path": "/order/update",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/order/update",
+      "status": 204,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "POST",
+      "path": "/order/update",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PROCESS",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/order/update",
+      "status": 204,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "POST",
+      "path": "/order/update",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=FINISH",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PROCESS",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=FINISH",
+      "status": 503,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=FINISH",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PROCESS",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=2&limit=5&orderStatus=PENDING",
+      "status": 503,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=2&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    }
+  ],
+  "paymentRequests": 0
+}

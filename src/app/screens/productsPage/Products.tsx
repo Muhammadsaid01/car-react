@@ -1,338 +1,94 @@
-/* eslint-disable jsx-a11y/iframe-has-title */
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import SearchIcon from "@mui/icons-material/Search";
-import { Box, Button, Container, Stack } from "@mui/material";
-import Badge from "@mui/material/Badge";
-import Pagination from "@mui/material/Pagination";
-import PaginationItem from "@mui/material/PaginationItem";
-import { Dispatch } from "@reduxjs/toolkit";
-import { ChangeEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { createSelector } from "reselect";
-import { serverApi } from "../../../lib/config";
-import { ProductCollection, ProductCondition } from "../../../lib/enums/product.enum";
-import { Product, ProductInquiry } from "../../../lib/types/product";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { Close, Search, Tune } from "@mui/icons-material";
+import { Pagination, useMediaQuery } from "@mui/material";
+import { catalogUrl, collectionOptions, readCatalogSearch, sortOptions } from "../../../lib/catalogSearch";
+import { ProductCollection } from "../../../lib/enums/product.enum";
+import { ProductInquiry } from "../../../lib/types/product";
 import { CartItem } from "../../../lib/types/search";
 import ProductService from "../../services/ProductService";
 import { retrieveProducts } from "./selector";
 import { setProducts } from "./slice";
+import CatalogVehicleCard from "./CatalogVehicleCard";
+import CatalogVideos from "./CatalogVideos";
+import CatalogLocation from "./CatalogLocation";
+import "../../../css/catalog.css";
 
-/** REDUX SLICE & SELECTOR **/
-const actionDispatch = (dispatch: Dispatch) => ({
-  setProducts: (data: Product[]) => dispatch(setProducts(data)),
-});
-
-const productsRetriever = createSelector(retrieveProducts, (products) => ({
-  products,
-}));
-
-
-
-interface ProductsProps {
-  onAdd: (item: CartItem) =>  void;
-}
-
-export default function Products(props: ProductsProps) {
-  const { onAdd}= props;
-
-  const { setProducts } = actionDispatch(useDispatch());
-  const { products } = useSelector(productsRetriever);
-  const [productSearch, setProductSearch] = useState<ProductInquiry>({
-    page: 1,
-    limit: 8,
-    order: "createdAt",
-    productCollection: ProductCollection.SEDAN,
-    search: "",
-  });
-
-  const [searchText, setSearchText] = useState<string>("");
+type CatalogState = "loading" | "ready" | "error";
+export default function Products({ onAdd }: { onAdd: (item: CartItem) => void }) {
   const history = useHistory();
-
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const products = useSelector(retrieveProducts);
+  const inquiry = useMemo(() => readCatalogSearch(location.search), [location.search]);
+  const [searchText, setSearchText] = useState(inquiry.search || "");
+  const [state, setState] = useState<CatalogState>("loading");
   const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [loadError, setLoadError] = useState(false);
+  const [retry, setRetry] = useState(0);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [draftCollection, setDraftCollection] = useState(inquiry.productCollection || "");
+  const filterToggle = useRef<HTMLButtonElement>(null);
+  const mobile = useMediaQuery("(max-width: 900px)");
+  useEffect(() => { if (!mobile) setFiltersOpen(false); }, [mobile]);
+  useEffect(() => {
+    setSearchText(inquiry.search || "");
+    setDraftCollection(inquiry.productCollection || "");
+    setFiltersOpen(false);
+  }, [inquiry]);
+
+  function navigate(changes: Partial<ProductInquiry>, replace = false) {
+    const next = { ...inquiry, ...changes };
+    const url = catalogUrl({ search: next.search, collection: next.productCollection, order: next.order, page: next.page });
+    if (replace) history.replace(url); else history.push(url);
+  }
   useEffect(() => {
     let active = true;
-    setLoading(true);
-    setLoadError(false);
-    new ProductService().getProductPage(productSearch).then(data => {
+    setState("loading");
+    new ProductService().getProductPage(inquiry).then(data => {
       if (!active) return;
-      setProducts(data.products);
+      const lastPage = Math.max(1, Math.ceil(data.total / inquiry.limit));
+      if (inquiry.page > lastPage) {
+        history.replace(catalogUrl({ search: inquiry.search, collection: inquiry.productCollection, order: inquiry.order, page: lastPage }));
+        return;
+      }
+      dispatch(setProducts(data.products));
       setTotal(data.total);
+      setState("ready");
     }).catch(() => {
-      if (active) { setProducts([]); setTotal(0); setLoadError(true); }
-    }).finally(() => { if (active) setLoading(false); });
+      if (active) { dispatch(setProducts([])); setState("error"); }
+    });
     return () => { active = false; };
-  }, [productSearch]);
+  }, [dispatch, inquiry, retry, history]);
 
-  useEffect(() => {
-    if (searchText === "") setProductSearch(current => ({ ...current, page: 1, search: "" }));
-  }, [searchText]);
-
-  const searchCollectionHandler = (collection: ProductCollection) => {
-    setProductSearch(current => ({ ...current, page: 1, productCollection: collection }));
-  };
-  const searchOrderHandler = (order: string) => {
-    setProductSearch(current => ({ ...current, page: 1, order }));
-  };
-  const searchProductHandler = () => {
-    setProductSearch(current => ({ ...current, page: 1, search: searchText.trim() }));
-  };
-  const paginationHandler = (_e: ChangeEvent<any>, page: number) => {
-    setProductSearch(current => ({ ...current, page }));
-  };
-
-  const chooseDishHandler =(id: string) => {history.push(`/products/${id}`);};
-
-
-  return (
-    <div className={"products"}>
-      <Container>
-        <Stack flexDirection={"column"} alignItems={"center"}>
-          <Stack className={"avatar-big-box"}>
-            <Stack className={"top-text"}>
-              <p>BUGATTI</p>
-              <Stack className={"single-search-form"}>
-                <input
-                  type={"search"}
-                  className={"single-search-input"}
-                  name={"singleResearch"}
-                  placeholder={"Type here"}
-                  value={searchText}
-                  onChange={(e) => setSearchText(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") searchProductHandler();
-                  }}
-                />
-                <Button
-                  className={"single-button-search"}
-                  variant={"contained"}
-                  endIcon={<SearchIcon />}
-                  onClick={searchProductHandler}
-                >
-                  Search
-                </Button>
-              </Stack>
-            </Stack>
-          </Stack>
-
-                <Stack className={"dishes-filter-section"}>
-                  <Stack className={"dishes-filter-box"}>
-                    <Button
-                      variant={"contained"}
-                      className={"order"}
-                      color={
-                        productSearch.order === "createdAt" ? "primary" : "secondary"
-                      }
-                      onClick={() => searchOrderHandler("createdAt")}
-                    >
-                      New
-                    </Button>
-                    <Button
-                      variant={"contained"}
-                      className={"order"}
-                      color={
-                        productSearch.order === "productPrice" ? "primary" : "secondary"
-                      }
-                      onClick={() => searchOrderHandler("productPrice")}
-                    >
-                      Price
-                    </Button>
-                    <Button
-                      variant={"contained"}
-                      className={"order"}
-                      color={
-                        productSearch.order === "productViews" ? "primary" : "secondary"
-                      }
-                      onClick={() => searchOrderHandler("productViews")}
-                    >
-                      Views
-                    </Button>
-                  </Stack>
-                </Stack>
-
-                <Stack className={"list-category-section"}>
-                    <Stack className={"product-category"}>
-                        <div className={"category-main"}>
-                            <Button
-                              variant={"contained"}
-                              color={
-                                productSearch.productCollection === ProductCollection.OTHER
-                                  ? "primary"
-                                  : "secondary"
-                              }
-                              onClick={() => searchCollectionHandler(ProductCollection.OTHER)}
-                              >
-                              Other
-                            </Button>
-                            <Button
-                              variant={"contained"}
-                              color={
-                                productSearch.productCollection === ProductCollection.HATCHBACK
-                                  ? "primary"
-                                  : "secondary"
-                              }
-                              onClick={() => searchCollectionHandler(ProductCollection.HATCHBACK)}
-                              >
-                              Hatchback
-                            </Button>
-                            <Button
-                              variant={"contained"}
-                              color={
-                                productSearch.productCollection === ProductCollection.TRUCK
-                                  ? "primary"
-                                  : "secondary"
-                              }
-                              onClick={() => searchCollectionHandler(ProductCollection.TRUCK)}
-                              >
-                              Truck
-                            </Button>
-                            <Button
-                              variant={"contained"}
-                              color={
-                                productSearch.productCollection === ProductCollection.SPORT_CAR
-                                  ? "primary"
-                                  : "secondary"
-                              }
-                              onClick={() => searchCollectionHandler(ProductCollection.SPORT_CAR)}
-                              >
-                              Sport Car
-                            </Button>
-                            <Button
-                              variant={"contained"}
-                              color={
-                                productSearch.productCollection === ProductCollection.SEDAN
-                                  ? "primary"
-                                  : "secondary"
-                              }
-                              onClick={() => searchCollectionHandler(ProductCollection.SEDAN)}
-                              >
-                              Sedan
-                            </Button>
-                        </div>
-                    </Stack>
-
-                    <Stack className={"product-wrapper"}>
-                        {!loading && products.length !== 0 ? (
-                            products.map((product: Product) => {
-                              const imagePath = `${serverApi}/${product.productImages[0]}`;
-                              const secondHand = 
-                              product.productCondition === ProductCondition.USED ?  " USED " : "NEW";
-                                return (
-                                    <Stack key={product._id} className={"product-card"}
-                                    onClick={() => chooseDishHandler(product._id)}>
-                                        <Stack
-                                        className={"product-img"}
-                                        sx={{backgroundImage: `url(${imagePath})`}}
-                                        >
-                                            <div className={"product-sale"}>{secondHand}</div>
-                                            <Button className={"shop-btn"}
-                                            onClick={(e) => {
-                                             
-                                              onAdd({
-                                                _id: product._id,
-                                                quantity: 1,
-                                                name: product.productName,
-                                                price: product.productPrice,
-                                                image: product.productImages[0],
-                                              });
-                                              e.stopPropagation();
-                                              
-                                            }}>
-                                            
-
-                                                <img 
-                                                src={"/icons/shopping-cart.svg"}
-                                                style={{ display: "flex"}} alt="Add to Cart"/>
-                                            </Button>
-                                            <Button className={"view-btn"} sx={{right: "36px"}}>
-                                            <Badge badgeContent={product.productViews} color="secondary">
-                                                <RemoveRedEyeIcon
-                                                sx={{
-                                                    color: product.productViews === 0 ? "gray" : "white",
-                                                }}
-                                                />
-                                            </Badge>
-                                            </Button>
-                                            </Stack>
-                                            <Box className={"product-desc"}>
-                                                <span className={"product-title"}>
-                                                    {product.productName}
-                                                </span>
-                                                <div className={"product-desc"}>
-                                                    <MonetizationOnIcon />
-                                                    {product.productPrice}
-                                                </div>
-                                            </Box>
-                                            </Stack>
-                                );
-                            })
-                        ) : (
-                            <Box className="no-data">{loading ? "Loading cars..." : loadError ? "Unable to load cars. Please try again." : "Cars are not available!"}</Box>
-                        )}
-                    </Stack>
-                </Stack>
-
-                <Stack className={"pagination-section"}>
-                  <Pagination
-                    count={Math.max(1, Math.ceil(total / productSearch.limit))}
-                    disabled={loading}
-                    page={productSearch.page}
-                    renderItem={(item) => (
-                      <PaginationItem
-                        components={{
-                          previous: ArrowBackIcon,
-                          next: ArrowForwardIcon,
-                        }}
-                        {...item}
-                        color={"secondary"}
-                      />
-                    )}
-                    onChange={paginationHandler}
-                  />
-                </Stack>
-          </Stack>
-        </Container>
-
-        <div className={"brands-logo"}>
-  <Container>
-    <Box className={"brands-title"}>Curated Timepiece Highlights</Box>
-    {/* Use a div instead of Stack to ensure CSS Grid takes full control */}
-    <div className={"video-grid"}>
-      <Box className={"video-box"}>
-        <video src={"/video/BMW.mp4"} autoPlay loop muted playsInline />
-      </Box>
-      <Box className={"video-box"}>
-        <video src={"/video/Bugatti.mp4"} autoPlay loop muted playsInline />
-      </Box>
-      <Box className={"video-box"}>
-        <video src={"/video/Lamborghini.mp4"} autoPlay loop muted playsInline />
-      </Box>
-      <Box className={"video-box"}>
-        <video src={"/video/Benz.mp4"} autoPlay loop muted playsInline />
-      </Box>
-    </div>
-  </Container>
-</div>
-
-        <div className={"address"}>
-            <Container>
-                <Stack className={"address-area"}>
-                    <Box className={"title"}>Our address</Box>
-                    <iframe
-                    style={{marginTop: "60px" }}
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2997.045733255449!2d69.23497807646164!3d41.30786870092324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8ba862628adf%3A0x35cbda4b6948a351!2sKamolon%20Osh!5e0!3m2!1sen!2skr!4v1771503124621!5m2!1sen!2skr" 
-                    width="1320"
-                    height="500"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    ></iframe>
-                </Stack>
-            </Container>
+  function submit(event: FormEvent) { event.preventDefault(); navigate({ search: searchText.trim(), page: 1 }); }
+  function clearSearch() { setSearchText(""); navigate({ search: "", page: 1 }); }
+  function reset() {
+    setSearchText(""); setDraftCollection(""); setFiltersOpen(false);
+    history.push(catalogUrl());
+  }
+  function closeFilters() { setFiltersOpen(false); filterToggle.current?.focus(); }
+  const pageCount = Math.ceil(total / inquiry.limit);
+  const options = [collectionOptions[0], collectionOptions[1], collectionOptions[5], collectionOptions[2], collectionOptions[3], collectionOptions[4], collectionOptions[8], collectionOptions[6], collectionOptions[7], collectionOptions[9]];
+  return <main className="lux-catalog" id="katalog">
+    <section className="lux-catalog-intro lux-container" aria-labelledby="catalog-heading"><nav aria-label="Sahifa yo‘li"><Link to="/">Bosh sahifa</Link><span aria-hidden="true"> / </span><span aria-current="page">Avtomobillar</span></nav><h1 id="catalog-heading">Sizga mos avtomobilni toping.</h1><p>Tanlang. Solishtiring. Yangi yo‘lga chiqing.</p></section>
+    <section className="lux-container lux-catalog-inventory" aria-label="Avtomobillar katalogi">
+      <div className="lux-catalog-toolbar"><form onSubmit={submit} className="lux-catalog-search" role="search"><label htmlFor="catalog-search">Avtomobil qidirish</label><div><button type="submit" aria-label="Qidirish"><Search aria-hidden="true" /></button><input id="catalog-search" type="search" value={searchText} placeholder="Model, marka yoki kalit so‘z..." onChange={event => { setSearchText(event.target.value); if (!event.target.value) clearSearch(); }} />{searchText && <button type="button" aria-label="Qidiruvni tozalash" onClick={clearSearch}><Close aria-hidden="true" /></button>}</div></form>
+      <div className="lux-catalog-sort"><label htmlFor="catalog-sort">Saralash</label><select id="catalog-sort" value={inquiry.order} onChange={event => navigate({ order: event.target.value, page: 1 })}>{sortOptions.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}</select></div></div>
+      <button ref={filterToggle} className="lux-catalog-filter-toggle" type="button" aria-label={filtersOpen ? "Filtrlarni yopish" : "Filtrlarni ochish"} aria-expanded={filtersOpen} aria-controls="catalog-filter-panel" onClick={() => { setDraftCollection(inquiry.productCollection || ""); setFiltersOpen(!filtersOpen); }}><Tune aria-hidden="true" />{filtersOpen ? "Filtrlarni yopish" : "Filtrlar"}{inquiry.productCollection && <span>1</span>}</button>
+      <div className="lux-catalog-layout">
+        <aside id="catalog-filter-panel" className={`lux-catalog-filters${filtersOpen ? " is-open" : ""}`} aria-label="Avtomobil filtrlari" onKeyDown={event => { if (event.key === "Escape" && filtersOpen) closeFilters(); }}><h2>Filtrlar</h2><fieldset><legend>Kuzov turi</legend>{options.map(option => <label key={option.value}><input type="radio" name="catalog-collection" value={option.value} checked={(filtersOpen ? draftCollection : inquiry.productCollection || "") === option.value} onChange={() => {
+          if (filtersOpen) setDraftCollection(option.value);
+          else navigate({ productCollection: option.value ? option.value as ProductCollection : undefined, page: 1 });
+        }} /><span>{option.label}</span></label>)}</fieldset>
+        <div className="lux-catalog-filter-actions"><button type="button" className="lux-catalog-apply" onClick={() => { navigate({ productCollection: draftCollection ? draftCollection as ProductCollection : undefined, page: 1 }); closeFilters(); }}>Filtrlarni qo‘llash</button><button type="button" className="lux-catalog-reset" onClick={() => { reset(); filterToggle.current?.focus(); }}>Tozalash</button></div></aside>
+        <div className="lux-catalog-results" aria-busy={state === "loading"}>
+          <div className="lux-catalog-results-bar"><p role="status" aria-live="polite">{state === "loading" ? "Avtomobillar yuklanmoqda…" : state === "ready" ? `${total} ta avtomobil` : "Natijalarni yuklab bo‘lmadi"}</p>{state === "ready" && pageCount > 1 && <Pagination count={pageCount} page={inquiry.page} onChange={(_event, page) => navigate({ page })} shape="rounded" siblingCount={1} aria-label="Katalog sahifalari" getItemAriaLabel={(type, page, selected) => type === "page" ? selected ? `Hozirgi sahifa: ${page}` : `${page}-sahifaga o‘tish` : type === "previous" ? "Oldingi sahifa" : type === "next" ? "Keyingi sahifa" : type === "first" ? "Birinchi sahifa" : "Oxirgi sahifa"} />}</div>
+          {state === "loading" ? <div className="lux-catalog-grid lux-catalog-skeletons" aria-label="Avtomobillar yuklanmoqda">{Array.from({ length: inquiry.limit }, (_, index) => <div key={index} className="lux-catalog-skeleton" aria-hidden="true"><div /><span /><span /><span /></div>)}</div> : state === "error" ? <div className="lux-catalog-state" role="alert"><h2>Avtomobillarni yuklab bo‘lmadi.</h2><p>Ulanishni tekshiring va qayta urinib ko‘ring.</p><button type="button" className="lux-catalog-reset" onClick={() => setRetry(value => value + 1)}>Qayta urinish</button></div> : products.length === 0 ? <div className="lux-catalog-state"><h2>Avtomobillar topilmadi.</h2><p>Qidiruv yoki kuzov turini o‘zgartirib ko‘ring.</p><button type="button" className="lux-catalog-reset" onClick={reset}>Filtrlarni tozalash</button></div> : <div className="lux-catalog-grid">{products.map(product => <CatalogVehicleCard key={product._id} product={product} onAdd={onAdd} />)}</div>}
         </div>
-    </div>
-  );
+      </div>
+    </section>
+    <CatalogVideos />
+    <CatalogLocation />
+  </main>;
 }

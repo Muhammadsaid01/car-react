@@ -1,259 +1,110 @@
-/* --- Global Container --- */
-.user-page {
-  width: 100%;
-  height: auto;
-  display: flex;
-  background: #0b1114;
-  padding: 50px 0;
+.lux-profile { background: var(--lux-ivory, #f7f4ee); color: #20211f; padding: 30px 0 24px; font-family: Arial, sans-serif; }
+.lux-profile *, .lux-profile *::before, .lux-profile *::after { box-sizing: border-box; }
+.lux-profile h1, .lux-profile h2, .lux-profile h3, .lux-profile p { margin: 0; }
+.lux-profile h1, .lux-profile h2, .lux-profile h3 { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+.lux-profile-breadcrumb { display: flex; gap: 12px; color: #8c7144; font-size: 14px; margin: 0 0 20px; }
+.lux-profile-breadcrumb a { color: #676b70; text-decoration: none; }
+.lux-profile-intro { margin-bottom: 34px; }
+.lux-profile h1 { font-size: clamp(38px, 4.5vw, 62px); letter-spacing: -1.8px; line-height: 1.1; }
+.lux-profile-intro p { margin-top: 10px; color: #626671; font-size: 20px; line-height: 1.5; }
+.lux-profile-grid { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 24px; align-items: stretch; }
+.lux-profile-card { background: #fff; border: 1px solid #f0ece6; border-radius: 9px; padding: 28px 30px; box-shadow: 0 8px 28px #4c3d2510; min-width: 0; }
+.lux-profile h2 { font-size: 30px; line-height: 1.2; letter-spacing: -.5px; }
+.lux-profile fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+.lux-profile-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+.lux-profile-upload { display: flex; align-items: center; gap: 36px; padding: 30px 0; border-bottom: 1px solid #dedad3; }
+.lux-profile-avatar { width: 124px; height: 124px; flex: 0 0 124px; border-radius: 50%; overflow: hidden; display: grid; place-items: center; background: linear-gradient(125deg,#dfd0b7,#e9ddca); color: #191b1a; font: 42px Georgia,serif; }
+.lux-profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.lux-profile-upload > div:last-child { min-width: 0; }
+.lux-profile-upload h3 { font-size: 23px; margin-bottom: 8px; }
+.lux-profile-upload p { font-size: 14px; line-height: 1.5; color: #6b6f79; margin-bottom: 12px; }
+.lux-profile-upload-button, .lux-profile-outline, .lux-profile-save { min-height: 46px; padding: 12px 22px; border: 1px solid #af8b53; border-radius: 5px; display: inline-flex; align-items: center; justify-content: center; gap: 12px; background: transparent; color: #20211f; font: 14px Arial,sans-serif; text-decoration: none; cursor: pointer; }
+.lux-profile-upload-button { position: relative; overflow: hidden; }
+.lux-profile-upload-button svg { color: #806338; font-size: 22px; }
+.lux-profile-upload-button input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.lux-profile-fields { display: grid; gap: 28px; padding: 26px 0 30px; }
+.lux-profile-field-row { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 24px; }
+.lux-profile-field { min-width: 0; }
+.lux-profile-field label { display: block; font-size: 14px; margin-bottom: 12px; }
+.lux-profile-field input, .lux-profile-field textarea { display: block; width: 100%; border: 1px solid #d4d1cd; background: #fff; border-radius: 5px; padding: 14px 17px; min-height: 46px; color: #20211f; font: 14px/1.45 Arial,sans-serif; }
+.lux-profile-field textarea { min-height: 124px; resize: vertical; }
+.lux-profile-field input::placeholder, .lux-profile-field textarea::placeholder { color: #858994; opacity: 1; }
+.lux-profile-count { display: block; text-align: right; margin-top: 8px; font-size: 13px; color: #777c87; }
+.lux-profile-actions { border-top: 1px solid #dedad3; padding-top: 20px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.lux-profile-actions > p { color: #777c87; font-size: 13px; line-height: 1.5; max-width: 180px; }
+.lux-profile-actions > div { display: flex; gap: 12px; }
+.lux-profile-save { color: #fff; background: #ad8e5b; border-color: #ad8e5b; }
+.lux-profile button:hover:not(:disabled), .lux-profile-outline:hover, .lux-profile-upload-button:hover { background-color: #f3ece0; color: #392e1e; }
+.lux-profile .lux-profile-save:hover:not(:disabled) { background: #917241; color: #fff; }
+.lux-profile :focus-visible, .lux-profile-upload-button:focus-within { outline: 3px solid #92703b; outline-offset: 4px; }
+.lux-profile [aria-invalid="true"] { border-color: #ae362e; }
+.lux-profile :disabled { opacity: .65; cursor: wait; }
+.lux-profile .lux-profile-field-error { color: #a3342c; font-size: 13px; line-height: 1.45; margin: 8px 0 0; }
+.lux-profile-message:empty { display: none; }
+.lux-profile .lux-profile-message:not(:empty) { padding: 12px 14px; margin-top: 16px; border-radius: 5px; font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
+.lux-profile-error { color: #94352c; background: #fff1ed; border: 1px solid #efd0c9; }
+.lux-profile-success { color: #356140; background: #f0f6ef; border: 1px solid #d4e2d2; }
+.lux-profile-sidebar { display: grid; grid-template-rows: auto 1fr; gap: 22px; min-width: 0; }
+.lux-profile-identity { display: flex; flex-direction: column; align-items: center; padding: 30px 0; text-align: center; }
+.lux-profile-identity .lux-profile-avatar { width: 120px; height: 120px; flex-basis: 120px; }
+.lux-profile-identity h3 { font-size: 26px; margin-top: 16px; max-width: 100%; overflow-wrap: anywhere; }
+.lux-profile-identity p { color: #737784; font-size: 14px; margin-top: 8px; }
+.lux-profile-preview-details { border-top: 1px solid #e1dcd5; padding-top: 24px; display: grid; gap: 24px; }
+.lux-profile-preview-details p { display: flex; align-items: flex-start; gap: 16px; color: #707580; font-size: 14px; line-height: 1.6; white-space: pre-wrap; }
+.lux-profile-preview-details span { min-width: 0; overflow-wrap: anywhere; }
+.lux-profile-preview-details svg { flex: 0 0 24px; color: #806338; }
+.lux-profile-helper { min-height: 270px; border-radius: 8px; padding: 28px 30px; background-color: #191d1c; background-position: center; background-size: cover; color: #fff; }
+.lux-profile-helper > svg { color: #d9bd83; width: 42px; height: 42px; margin-bottom: 16px; }
+.lux-profile-helper h2 { font-size: 28px; }
+.lux-profile-helper p { font-size: 15px; line-height: 1.6; margin-top: 12px; max-width: 270px; }
+.lux-profile-helper a { display: inline-flex; align-items: center; gap: 16px; color: #e2c287; margin-top: 22px; min-height: 44px; text-underline-offset: 7px; }
+.lux-profile-help { display: flex; align-items: center; gap: 26px; padding: 28px 36px; margin-top: 24px; background: linear-gradient(110deg,#efeae2,#f1eee8); border-radius: 8px; }
+.lux-profile-help-icon { width: 84px; height: 84px; flex: 0 0 84px; display: grid; place-items: center; background: #e6dece; border-radius: 50%; color: #806338; }
+.lux-profile-help-icon svg { width: 40px; height: 40px; }
+.lux-profile-help > div:nth-child(2) { flex: 1; }
+.lux-profile-help p { color: #686d77; font-size: 15px; line-height: 1.6; max-width: 570px; margin-top: 8px; }
+.lux-profile-help a { flex-shrink: 0; }
+@media (max-width: 1100px) {
+  .lux-profile-card, .lux-profile-helper { padding: 24px; }
+  .lux-profile-grid { grid-template-columns: minmax(0,1.7fr) minmax(0,1fr); gap: 20px; }
+  .lux-profile-upload { gap: 22px; }
+  .lux-profile-avatar { width: 104px; height: 104px; flex-basis: 104px; }
+  .lux-profile-actions { flex-wrap: wrap; }
+  .lux-profile-actions > p { max-width: none; }
 }
-
-.user-page .css-heg063-MuiTabs-flexContainer {
-  flex-direction: column;
+@media (max-width: 850px) {
+  .lux-profile-grid { grid-template-columns: 1fr; }
+  .lux-profile-sidebar { grid-template-columns: minmax(0,1fr) minmax(0,1fr); grid-template-rows: auto; gap: 20px; }
+  .lux-profile-preview h2 { font-size: 27px; }
+  .lux-profile-help { padding: 24px; flex-wrap: wrap; }
+  .lux-profile-help > div:nth-child(2) { min-width: 200px; }
+  .lux-profile-help > a { margin-left: 110px; }
 }
-
-.user-page .css-mn3ro6-MuiTabs-indicator {
-  height: 0px;
-  width: 0px;
-}
-
-.user-page .css-1ujnqem-MuiTabs-root {
-  width: 100%;
-}
-
-.user-page .my-page-frame {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  padding: 50px 0;
-}
-
-/* --- Left Column --- */
-.my-page-frame .my-page-left {
-  width: 70%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.my-page-left .menu-name {
-  width: 100%;
-  height: 70px;
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid #1c262a;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 45px;
-  color: #d7b586;
-}
-
-/* --- Settings Form (Styled as the Box) --- */
-.user-page .settings {
-  width: 95%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  background: #151d21; /* Added Box Background */
-  padding: 40px;      /* Added Padding */
-  border-radius: 16px;/* Added Rounded Corners */
-  border: 1px solid #333;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-  margin-top: 20px;
-}
-
-.user-page .settings .input-frame {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.user-page .settings .short-input,
-.user-page .settings .long-input {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.user-page .settings .spec-label {
-  font-family: 'Source Serif Pro', serif;
-  font-size: 16px;
-  color: #d7b586;
-}
-
-.user-page .settings .spec-input,
-.user-page .settings .spec-textarea {
-  position: relative;
-  margin-top: 10px;
-  padding: 20px;
-  width: 100%;
-  border: 1px solid #333;
-  background: #0b1114; /* Input Field Background */
-  border-radius: 5px;
-  font-family: 'GT Walsheim Pro', sans-serif;
-  color: #ffffff;
-}
-
-.user-page .settings .spec-textarea {
-  height: 200px;
-}
-
-.user-page .settings .member-media-frame {
-  margin-top: 25px;
-  padding: 10px;
-  width: 100%;
-  display: flex;
-  border-radius: 5px;
-}
-
-.user-page .settings .member-media-frame .mb-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.user-page .settings .media_change-box {
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.user-page .settings .media-change-box span {
-  font-family: 'GT Walsheim Pro', sans-serif;
-  color: #d7b586;
-}
-
-.user-page .settings .media-change-box p {
-  margin: 10px 0px 14px 0px;
-  color: #a0a0a0;
-}
-
-.user-page .settings .up-del-box {
-  width: 37px;
-  height: 37px;
-  display: flex;
-  background: #151d21;
-  border: 1px solid #333;
-  border-radius: 8px;
-  justify-content: center;
-  align-items: center;
-}
-
-.user-page .settings .save-box {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 25px;
-}
-
-/* --- Right Column (Profile Card) --- */
-.my-page-frame .my-page-right {
-  margin-left: 30px;
-  width: 30%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.user-page .order-info-box {
-  position: relative;
-  padding: 20px;
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #151d21;
-  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-  border: 1px solid #333;
-  border-radius: 16px;
-}
-
-.user-page .order-info-box .settings-btn {
-  position: absolute;
-  top: 6%;
-  right: 19%;
-  cursor: pointer;
-}
-
-.user-page .order-info-box .order-user-img {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.user-page .order-info-box .order-user-img .order-user-avatar {
-  width: 150px;
-  height: 150px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 37px;
-}
-
-.user-page .order-info-box .order-user-icon-box {
-  position: absolute;
-  padding: 5px;
-  width: 37px;
-  height: 37px;
-  top: 81%;
-  right: 0;
-  display: flex;
-  background: rgb(209 209 209 / 33%);
-  border-radius: 37px;
-}
-
-.user-page .order-info-box .order-user-name {
-  margin-top: 10px;
-  font-family: 'Commissioner', sans-serif;
-  font-weight: 500;
-  font-size: 28px;
-  color: #ffffff;
-}
-
-.user-page .order-info-box .order-user-prof {
-  font-family: 'Commissioner', sans-serif;
-  font-weight: 500;
-  font-size: 20px;
-  color: #d7b586;
-}
-
-.user-page .order-info-box .user-media-box {
-  margin-top: 10px;
-  width: 60%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.user-page .order-info-box .user-desc {
-  margin-top: 30px;
-  width: 90%;
-  display: flex;
-  justify-content: center;
-  font-family: 'DM Sans', sans-serif;
-  color: #a0a0a0;
-}
-
-.user-page .order-info-box .css-1e3kzd4-MuiButtonBase-root-MuiButton-root {
-  margin-top: 15px;
-  min-width: 90%;
-  height: 44px;
-  text-transform: capitalize;
-  font-weight: 600;
-  font-size: 25px;
-  color: #ffffff;
-}
-
-.user-page .menu-box img {
-  width: 25px;
-}
-
-.user-page .menu-box span {
-  margin-left: 30px;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  font-size: 25px;
-  color: #ffffff;
+@media (max-width: 600px) {
+  .lux-profile { padding-top: 22px; }
+  .lux-profile-breadcrumb { font-size: 13px; margin-bottom: 18px; }
+  .lux-profile h1 { letter-spacing: -1px; }
+  .lux-profile-intro { margin-bottom: 24px; }
+  .lux-profile-intro p { font-size: 16px; }
+  .lux-profile-card, .lux-profile-helper { padding: 22px 20px; }
+  .lux-profile h2 { font-size: 27px; }
+  .lux-profile-upload { gap: 18px; padding: 24px 0; align-items: flex-start; }
+  .lux-profile-upload .lux-profile-avatar { width: 76px; height: 76px; flex-basis: 76px; font-size: 28px; }
+  .lux-profile-upload h3 { font-size: 21px; }
+  .lux-profile-upload p { font-size: 12px; }
+  .lux-profile-upload-button { padding: 10px 13px; gap: 8px; }
+  .lux-profile-field-row { grid-template-columns: 1fr; gap: 24px; }
+  .lux-profile-fields { gap: 24px; padding-top: 24px; }
+  .lux-profile-field input, .lux-profile-field textarea { font-size: 16px; padding: 12px; }
+  .lux-profile-actions { gap: 16px; }
+  .lux-profile-actions > div { width: 100%; flex-direction: column-reverse; }
+  .lux-profile-actions button { width: 100%; min-height: 48px; }
+  .lux-profile-sidebar { grid-template-columns: 1fr; }
+  .lux-profile-identity { padding: 24px 0; }
+  .lux-profile-help { gap: 16px; padding: 22px 20px; }
+  .lux-profile-help-icon { width: 56px; height: 56px; flex-basis: 56px; }
+  .lux-profile-help-icon svg { width: 30px; height: 30px; }
+  .lux-profile-help > div:nth-child(2) { min-width: 0; }
+  .lux-profile-help p { font-size: 14px; }
+  .lux-profile-help > a { margin: 0; width: 100%; }
 }

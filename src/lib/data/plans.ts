@@ -1,34 +1,6 @@
+// Informational links to implemented features; these are not dated business announcements.
 export const plans = [
-	{
-		title: 'Weekend Mega Deals',
-		desc: 'Exclusive weekend discounts on selected luxury cars. Don’t miss limited offers!',
-		author: 'Lux Motors Team',
-		date: '30 min ago',
-		location: 'Turkey, Istanbul',
-		img: '/img/turkey.jpg',
-	},
-	{
-		title: 'New Arrivals Coming Soon',
-		desc: 'Fresh collection of premium vehicles arriving from Monday. Stay tuned!',
-		author: 'Lux Motors News',
-		date: '2 days ago',
-		location: 'Turkey, Istanbul',
-		img: '/img/turkey2.jpg',
-	},
-	{
-		title: 'New Showroom Launch',
-		desc: 'We are excited to announce a new Lux Motors showroom opening in Florida.',
-		author: 'Lux Motors PR',
-		date: '5 days ago',
-		location: 'USA, Florida',
-		img: '/img/florida.jpg',
-	},
-	{
-		title: 'Follow Us Online',
-		desc: '🚗 Stay updated with the latest cars, offers, and reviews on our social channels.',
-		author: 'Lux Motors Social',
-		date: '1 week ago',
-		location: 'Europe, France',
-		img: '/img/france.jpg',
-	},
+  { title: "Mukammal tanlov nimadan boshlanadi?", desc: "Kuzov turi va narx bo‘yicha avtomobil tanlang.", img: "/assets/luxavto/hero.jpg", to: "/products?order=productPrice" },
+  { title: "Katalogga eng so‘nggi qo‘shilganlar", desc: "Yangi qo‘shilgan avtomobillar bilan tanishing.", img: "/assets/luxavto/video-poster.jpg", to: "/products?order=createdAt" },
+  { title: "LuxAvto’dan foydalanish bo‘yicha yordam", desc: "Savollaringizga javob va foydalanish qoidalari.", img: "/assets/luxavto/editorial.jpg", to: "/help" },
 ];

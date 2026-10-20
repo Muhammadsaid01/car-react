@@ -1,0 +1,38 @@
+[
+  {
+    "source": "/video/BMW.mp4",
+    "sha256": "329e6caa1f0c8dfc3866d3640dd29f9b0d006e07deec2ab4f4b430815f0c36b7",
+    "width": 1080,
+    "height": 1920,
+    "durationSeconds": 15.022108843537415,
+    "poster": "/assets/luxavto/catalog-posters/bmw.jpg",
+    "posterFrameSeconds": 4
+  },
+  {
+    "source": "/video/Bugatti.mp4",
+    "sha256": "85c1b1ddb947d978e8418493b28b7b58bc265e8ec9354dd9ac88b337b2ec4c11",
+    "width": 1080,
+    "height": 1920,
+    "durationSeconds": 8.149108843537414,
+    "poster": "/assets/luxavto/catalog-posters/bugatti.jpg",
+    "posterFrameSeconds": 4
+  },
+  {
+    "source": "/video/Lamborghini.mp4",
+    "sha256": "8d271627b2550c7174e1771a2855158f74effd2bff917bc07902df9d9924d8ea",
+    "width": 1080,
+    "height": 1920,
+    "durationSeconds": 9.008108843537414,
+    "poster": "/assets/luxavto/catalog-posters/lamborghini.jpg",
+    "posterFrameSeconds": 4
+  },
+  {
+    "source": "/video/Benz.mp4",
+    "sha256": "a7db7385661e076413beb9b3ef3f5081e7db9a6e913e3028c9cbb942d7f1cc54",
+    "width": 480,
+    "height": 854,
+    "durationSeconds": 8.010108843537415,
+    "poster": "/assets/luxavto/catalog-posters/benz.jpg",
+    "posterFrameSeconds": 4
+  }
+]

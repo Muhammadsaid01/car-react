@@ -1,20 +1,19 @@
-import { Logout } from "@mui/icons-material";
-import { Box, Button, Container, ListItemIcon, Menu, MenuItem, Stack } from "@mui/material";
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Menu, MenuItem } from "@mui/material";
+import { NavLink, useLocation } from "react-router-dom";
 import { serverApi } from "../../../lib/config";
 import { CartItem } from "../../../lib/types/search";
 import { useGlobals } from "../../hooks/useGlobal";
 import Basket from "./Basket";
 
-interface HomeNavbarProps {
+export interface HomeNavbarProps {
   cartItems: CartItem[];
   onAdd: (item: CartItem) => void;
   onRemove: (item: CartItem) => void;
   onDelete: (item: CartItem) => void;
   onDeleteAll: () => void;
-  setSignupOpen: (isOpen: boolean) => void; 
-  setLoginOpen: (isOpen: boolean) => void; 
+  setSignupOpen: (open: boolean) => void;
+  setLoginOpen: (open: boolean) => void;
   handleLogoutClick: (e: React.MouseEvent<HTMLElement>) => void;
   anchorEl: HTMLElement | null;
   handleCloseLogout: () => void;
@@ -22,163 +21,34 @@ interface HomeNavbarProps {
 }
 
 export default function HomeNavbar(props: HomeNavbarProps) {
-  const { 
-   
-    cartItems, 
-    onAdd,
-     onRemove, 
-     onDelete, 
-    onDeleteAll, 
-    setSignupOpen,
-     setLoginOpen,
-     handleLogoutClick,
-     anchorEl,
-     handleCloseLogout,
-     handleLogoutRequest,
-  } = props;
-
- 
   const { authMember } = useGlobals();
-
-  return (
-    <div className="home-navbar">
-      <Container className="navbar-container">
-        <Stack className="menu">
-          <Box>
-            <NavLink to="/">
-              <img className="brand-logo" src="/icons/logo-text-white.svg" alt="Logo"/>
-            </NavLink>
-          </Box>
-          <Stack className="links">
-            <Box className="hover-line">
-              <NavLink to="/">Home</NavLink>
-            </Box>
-            <Box className="hover-line">
-              <NavLink to="/products">Cars</NavLink>
-            </Box>
-
-            {authMember ? (
-              <Box className="hover-line">
-                <NavLink to="/orders">Orders</NavLink>
-              </Box>
-            ) : null}
-
-            {authMember ? (
-              <Box className="hover-line">
-                <NavLink to="/member-page">My Page</NavLink>
-              </Box>
-            ) : null}
-
-            <Box className="hover-line">
-              <NavLink to="/help">Help</NavLink>
-            </Box>
-
-            <Basket 
-              cartItems={cartItems}
-              onAdd={onAdd}
-              onRemove={onRemove} 
-              onDelete={onDelete} 
-              onDeleteAll={onDeleteAll}
-            />
-
-           {!authMember ? (
-  <Box>
-    <Button 
-      variant="contained" 
-      className="login-button" 
-      onClick={() => setLoginOpen(true)}
-    >
-      Login
-    </Button>
-  </Box>
-) : (
-  // eslint-disable-next-line jsx-a11y/role-supports-aria-props
-  <img
-    className="user-avatar"
-    src={
-      /* Check if image exists AND is not an empty string */
-      authMember?.memberImage && authMember.memberImage !== ""
-        ? `${serverApi}/${authMember.memberImage}`
-        : "/icons/default-user.svg"
-    }
-    aria-haspopup="true"
-    onClick={handleLogoutClick}
-    alt="user avatar"
-    // This helps debug: if the image fails to load, it shows the default
-    onError={(e) => {
-      (e.target as HTMLImageElement).src = "/icons/default-user.svg";
-    }}
-  />
-)}
-
-     
-<Menu
-anchorEl={anchorEl}
-	id="account-menu"
-  open={Boolean(anchorEl)}
-  onClose={handleCloseLogout}
-  onClick={handleCloseLogout}
-	PaperProps={{
-		elevation: 0,
-		sx: {
-			overflow: 'visible',
-			filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-			mt: 1.5,
-			'& .MuiAvatar-root': {
-				width: 32,
-				height: 32,
-				ml: -0.5,
-				mr: 1,
-			},
-			'&:before': {
-				content: '""',
-				display: 'block',
-				position: 'absolute',
-				top: 0,
-				right: 14,
-				width: 10,
-				height: 10,
-				bgcolor: 'background.paper',
-				transform: 'translateY(-50%) rotate(45deg)',
-				zIndex: 0,
-			},
-		},
-	}}
-	transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-	anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
->
-	<MenuItem onClick={handleLogoutRequest}>
-		<ListItemIcon>
-			<Logout fontSize="small" style={{ color: 'blue' }} />
-		</ListItemIcon>
-		Logout
-	</MenuItem>
-</Menu>
-
-
-          </Stack>
-        </Stack>
-
-        <Stack className="header-frame">
-          <Stack className="detail">
-            <Box className="head-main-txt">Where luxury meets unmatched performance.</Box>
-            <Box className="wel-txt">Welcome to Luxury and Performance</Box>
-
-            <Box className="service-txt">24/7 Service</Box>
-            
-            <Box className="signup">
-              {!authMember ? (
-                <Button variant="contained" className="signup-button" onClick={() => setSignupOpen(true)}>
-                  SIGN UP
-                </Button>
-              ) : null}
-            </Box>
-          </Stack>
-          <Box className="logo-frame">
-            <div className="logo-img"></div>
-          </Box>
-        </Stack>
-      </Container>
+  const [menuOpen, setMenuOpen] = useState(false);
+  const toggle = useRef<HTMLButtonElement>(null);
+  const location = useLocation();
+  useEffect(() => { setMenuOpen(false); }, [location.pathname, location.search]);
+  return <header className="lux-header" onKeyDown={event => {
+    if (event.key === "Escape" && menuOpen) { setMenuOpen(false); toggle.current?.focus(); }
+  }}>
+    <div className="lux-container lux-header-inner">
+      <NavLink exact to="/" className="lux-wordmark" aria-label="LuxAvto — bosh sahifa">LUXAVTO</NavLink>
+      <nav id="lux-navigation" className={`lux-navigation${menuOpen ? " is-open" : ""}`} aria-label="Asosiy navigatsiya">
+        <NavLink exact to="/" activeClassName="is-current">Bosh sahifa</NavLink>
+        <NavLink to="/products" activeClassName="is-current">Avtomobillar</NavLink>
+        <NavLink to="/help" activeClassName="is-current">Yordam</NavLink>
+        {authMember && <><NavLink to="/orders" activeClassName="is-current">Buyurtmalar</NavLink><NavLink to="/member-page" activeClassName="is-current">Profilim</NavLink></>}
+      </nav>
+      <div className="lux-header-actions">
+        <Basket cartItems={props.cartItems} onAdd={props.onAdd} onRemove={props.onRemove} onDelete={props.onDelete} onDeleteAll={props.onDeleteAll} />
+        {authMember ? <button className="lux-account" aria-label="Hisob menyusi" aria-haspopup="menu" aria-expanded={Boolean(props.anchorEl)} onClick={props.handleLogoutClick}>
+          <img width="36" height="36" src={authMember.memberImage ? `${serverApi}/${authMember.memberImage}` : "/icons/default-user.svg"} alt="user avatar" onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = "/icons/default-user.svg"; }} />
+        </button> : <button className="lux-login" onClick={() => props.setLoginOpen(true)}>Kirish</button>}
+        <button ref={toggle} className="lux-menu-toggle" aria-label={menuOpen ? "Menyuni yopish" : "Menyuni ochish"} aria-expanded={menuOpen} aria-controls="lux-navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? "×" : "☰"}</button>
+      </div>
     </div>
-  );
+    <Menu anchorEl={props.anchorEl} open={Boolean(props.anchorEl)} onClose={props.handleCloseLogout} onClick={props.handleCloseLogout}>
+      <MenuItem component={NavLink} to="/member-page">Profilim</MenuItem>
+      <MenuItem component={NavLink} to="/orders">Buyurtmalar</MenuItem>
+      <MenuItem onClick={props.handleLogoutRequest}>Chiqish</MenuItem>
+    </Menu>
+  </header>;
 }

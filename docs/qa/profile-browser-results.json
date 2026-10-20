@@ -1,0 +1,845 @@
+{
+  "date": "2026-10-19",
+  "environment": {
+    "frontend": "http://127.0.0.1:3010",
+    "apiProxy": "http://127.0.0.1:3014",
+    "backendPort": 3015,
+    "database": "Disposable local MongoDB replica set; no production writes",
+    "inventoryCopy": {
+      "source": "public API",
+      "copiedVehicles": 11,
+      "generatedVehicles": 0,
+      "legacySportValues": 1
+    }
+  },
+  "browser": {
+    "signup": true,
+    "savedProfileLoaded": true,
+    "draftPreview": true,
+    "cancelRestoresAddressAndAvatar": true,
+    "textSave": true,
+    "pngPickerPreviewAndMultipartSave": true,
+    "jpegPickerPreviewAndMultipartSave": true,
+    "headerAndPreviewSynchronized": true,
+    "reloadPersistence": true,
+    "logoutLoginPersistence": true,
+    "unsupportedAndOversizedRejectedBeforeRequest": true,
+    "sameFileReselection": true,
+    "invalidImageBytesServer400": true,
+    "duplicateNameServer400": true,
+    "duplicatePhoneServer400": true,
+    "requiredFieldMessagesAndFocus": true,
+    "http503PreservesDraftAndSavedAvatar": true,
+    "retryWithoutFailedFile": true,
+    "pendingControlsDisabled": true,
+    "pendingUpdateRequestCount": 1,
+    "optionalFieldsCanBeEmpty": true,
+    "mobile2000CharacterSave": true,
+    "ordersAndHelpLinks": true,
+    "keyboardUploadFocusVisible": true,
+    "consoleErrorsAndWarnings": []
+  },
+  "layout": [
+    {
+      "brokenImages": 0,
+      "columns": "810.668px 405.334px",
+      "documentWidth": 1440,
+      "fieldColumns": "362.422px 362.429px",
+      "height": 900,
+      "horizontalOverflow": false,
+      "sidebarColumns": "405.334px",
+      "smallButtons": 0,
+      "width": 1440
+    },
+    {
+      "brokenImages": 0,
+      "columns": "773.331px 386.669px",
+      "documentWidth": 1280,
+      "fieldColumns": "343.757px 343.757px",
+      "height": 900,
+      "horizontalOverflow": false,
+      "sidebarColumns": "386.669px",
+      "smallButtons": 0,
+      "width": 1280
+    },
+    {
+      "brokenImages": 0,
+      "columns": "704.176px",
+      "documentWidth": 768,
+      "fieldColumns": "315.178px 315.185px",
+      "height": 900,
+      "horizontalOverflow": false,
+      "sidebarColumns": "342.088px 342.088px",
+      "smallButtons": 0,
+      "width": 768
+    },
+    {
+      "brokenImages": 0,
+      "columns": "353.999px",
+      "documentWidth": 390,
+      "fieldColumns": "312.18px",
+      "height": 900,
+      "horizontalOverflow": false,
+      "sidebarColumns": "353.999px",
+      "smallButtons": 0,
+      "width": 390
+    }
+  ],
+  "databaseVerification": {
+    "isolatedDatabase": true,
+    "members": 2,
+    "copiedPublicVehicles": 11,
+    "savedProfileMatches": {
+      "name": true,
+      "phone": true,
+      "address": true,
+      "description": true,
+      "image": true,
+      "imageFileExists": true,
+      "jpegBytes": true
+    },
+    "protectedFields": {
+      "memberType": "USER",
+      "memberStatus": "ACTIVE",
+      "memberPoints": 0
+    },
+    "savedImageFiles": 2
+  },
+  "network": {
+    "profileUpdateStatuses": {
+      "200": 8,
+      "400": 3,
+      "503": 1
+    },
+    "requests": [
+      {
+        "method": "GET",
+        "path": "/member/detail",
+        "status": 401,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/product/all?order=productViews&page=1&limit=3",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/member/top-users",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+        "status": 200,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+        "status": 200,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/06976cbe-cd16-4f6e-87cc-786f0ad79fb4.jpg",
+        "status": 200,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+        "status": 200,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "OPTIONS",
+        "path": "/member/signup",
+        "status": 204,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/signup",
+        "status": 201,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": [
+          {
+            "httpOnly": true,
+            "secure": false,
+            "sameSite": "Lax"
+          }
+        ]
+      },
+      {
+        "method": "POST",
+        "path": "/member/update",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/update",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/members/2f30ddaf-9c00-4f7b-9970-82a67daa2327.png",
+        "status": 200,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/member/detail",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/members/2f30ddaf-9c00-4f7b-9970-82a67daa2327.png",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/update",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/members/c07121aa-64fc-4f65-91ff-97cd0364bbe3.jpg",
+        "status": 200,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/update",
+        "status": 400,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/update",
+        "status": 400,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/update",
+        "status": 400,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/update",
+        "status": 503,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/update",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/update",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/update",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "OPTIONS",
+        "path": "/member/logout",
+        "status": 204,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/logout",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": [
+          {
+            "httpOnly": true,
+            "secure": false,
+            "sameSite": "Lax"
+          }
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/product/all?order=productViews&page=1&limit=3",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/member/top-users",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/06976cbe-cd16-4f6e-87cc-786f0ad79fb4.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "OPTIONS",
+        "path": "/member/login",
+        "status": 204,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/login",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": [
+          {
+            "httpOnly": true,
+            "secure": false,
+            "sameSite": "Lax"
+          }
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/member/Uzavto",
+        "status": 404,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/product/6a1aaa90c0e95bec70ab868e",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/member/detail",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/members/c07121aa-64fc-4f65-91ff-97cd0364bbe3.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+        "status": 201,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/update",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/update",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/product/all?order=productViews&page=1&limit=3",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/member/top-users",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/06976cbe-cd16-4f6e-87cc-786f0ad79fb4.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/product/all?order=createdAt&page=1&limit=6",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/e1f88479-983c-4ac5-a1c7-817f9198498c.jpg",
+        "status": 200,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/32f452f3-f3f8-48c1-9903-95da40a1daa4.jpg",
+        "status": 200,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/38eb176b-fee1-44d0-b2f9-0d4c80f9c39a.webp",
+        "status": 200,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+        "status": 201,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/product/all?order=productViews&page=1&limit=3",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/member/top-users",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/06976cbe-cd16-4f6e-87cc-786f0ad79fb4.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/product/all?order=createdAt&page=1&limit=6",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/38eb176b-fee1-44d0-b2f9-0d4c80f9c39a.webp",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/e1f88479-983c-4ac5-a1c7-817f9198498c.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/32f452f3-f3f8-48c1-9903-95da40a1daa4.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/order/all?page=1&limit=5&orderStatus=PENDING",
+        "status": 201,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "OPTIONS",
+        "path": "/member/logout",
+        "status": 204,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "POST",
+        "path": "/member/logout",
+        "status": 200,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": true,
+        "setCookieAttributes": [
+          {
+            "httpOnly": true,
+            "secure": false,
+            "sameSite": "Lax"
+          }
+        ]
+      },
+      {
+        "method": "GET",
+        "path": "/product/all?order=productViews&page=1&limit=3",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/member/top-users",
+        "status": 304,
+        "origin": "http://127.0.0.1:3010",
+        "allowOrigin": "http://127.0.0.1:3010",
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": false,
+        "setCookieAttributes": []
+      },
+      {
+        "method": "GET",
+        "path": "/uploads/products/06976cbe-cd16-4f6e-87cc-786f0ad79fb4.jpg",
+        "status": 304,
+        "origin": null,
+        "allowOrigin": null,
+        "hasCookie": false,
+        "setCookieAttributes": []
+      }
+    ]
+  },
+  "limitations": [
+    "Chrome only; no real mobile device or full screen-reader audit.",
+    "An initial localhost QA upload returned 401 with a cookie present; the cause was not proved. All final profile flows passed on a separate 127.0.0.1 cookie host.",
+    "HTTP 503 and pending delay were injected only in a disposable local proxy; other recorded API responses were from the real backend.",
+    "Payment/contact providers remain unimplemented and were not changed."
+  ],
+  "checks": {
+    "frontendTests": {
+      "passed": 51,
+      "suites": 7
+    },
+    "backendTests": {
+      "passed": 19
+    },
+    "typescript": "passed",
+    "profileTargetedLint": "0 errors, 0 warnings",
+    "qaProductionBuild": "passed",
+    "normalEnvironmentProductionBuild": "passed",
+    "diffCheck": "passed",
+    "legacyAppTestLint": "95 pre-existing Testing Library style errors; no increase"
+  },
+  "cleanup": {
+    "signedOut": true,
+    "agentTabClosed": true,
+    "viewportReset": true,
+    "temporaryServicesStopped": true,
+    "databaseAndUploadsRemoved": true,
+    "normalFrontend3001AndBackend3004StillRunning": true
+  }
+}

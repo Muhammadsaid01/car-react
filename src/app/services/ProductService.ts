@@ -29,7 +29,13 @@ class ProductService {
       const result = await axios.get(url);
       console.log("getProducts:", result);
 
-      return { products: result.data, total: Number(result.headers["x-total-count"]) || 0 };
+      const totalHeader = result.headers["x-total-count"];
+      const total = Number(totalHeader);
+      if (totalHeader === undefined || totalHeader === null || String(totalHeader).trim() === "" ||
+          !Number.isSafeInteger(total) || total < 0 || !Array.isArray(result.data) || total < result.data.length) {
+        throw new Error("Catalog response does not include an accurate total.");
+      }
+      return { products: result.data, total };
     } catch (err) {
       console.log("Error, getProduct:", err);
       throw err;

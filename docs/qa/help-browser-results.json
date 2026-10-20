@@ -1,0 +1,154 @@
+{
+  "widths": [
+    {
+      "brokenImages": [],
+      "contactColumns": "352.173px",
+      "disabledFields": true,
+      "faqColumns": "353.991px",
+      "overflow": false,
+      "quickColumns": "353.991px",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "brokenImages": [],
+      "contactColumns": "702.358px",
+      "disabledFields": true,
+      "faqColumns": "704.176px",
+      "overflow": false,
+      "quickColumns": "704.176px",
+      "scrollWidth": 768,
+      "width": 768
+    },
+    {
+      "brokenImages": [],
+      "contactColumns": "502.415px 679.758px",
+      "disabledFields": true,
+      "faqColumns": "422.628px 697.358px",
+      "overflow": false,
+      "quickColumns": "381.321px 381.335px 381.321px",
+      "scrollWidth": 1280,
+      "width": 1280
+    },
+    {
+      "brokenImages": [],
+      "contactColumns": "526.222px 711.96px",
+      "disabledFields": true,
+      "faqColumns": "443.764px 732.23px",
+      "overflow": false,
+      "quickColumns": "400px 400px 400px",
+      "scrollWidth": 1440,
+      "width": 1440
+    }
+  ],
+  "quickNavigation": [
+    {
+      "focused": "faq",
+      "hash": "#faq"
+    },
+    {
+      "focused": "terms",
+      "hash": "#terms"
+    },
+    {
+      "focused": "contact",
+      "hash": "#contact"
+    }
+  ],
+  "accordion": [
+    {
+      "question": "Qanday ro‘yxatdan o‘taman yoki hisobimga kiraman?",
+      "before": "true",
+      "after": "false",
+      "restored": "true"
+    },
+    {
+      "question": "Avtomobilni qanday qidiraman va filtrlayman?",
+      "before": "false",
+      "after": "true",
+      "restored": "false"
+    },
+    {
+      "question": "Savat va buyurtma qanday ishlaydi?",
+      "before": "false",
+      "after": "true",
+      "restored": "false"
+    },
+    {
+      "question": "Buyurtmalarimni qayerdan ko‘raman va bekor qilaman?",
+      "before": "false",
+      "after": "true",
+      "restored": "false"
+    },
+    {
+      "question": "Profilim va rasmimni qanday yangilayman?",
+      "before": "false",
+      "after": "true",
+      "restored": "false"
+    },
+    {
+      "question": "Sayt orqali xabar yubora olamanmi?",
+      "before": "false",
+      "after": "true",
+      "restored": "false"
+    }
+  ],
+  "sharedPages": [
+    {
+      "brokenImages": [],
+      "footers": 1,
+      "overflow": false,
+      "path": "/",
+      "pendingImages": 6,
+      "termsHref": "/help#terms",
+      "width": 390,
+      "destination": {
+        "focus": "terms",
+        "hash": "#terms",
+        "path": "/help"
+      }
+    },
+    {
+      "brokenImages": [],
+      "footers": 1,
+      "overflow": false,
+      "path": "/products",
+      "pendingImages": 6,
+      "termsHref": "/help#terms",
+      "width": 390,
+      "destination": {
+        "focus": "terms",
+        "hash": "#terms",
+        "path": "/help"
+      }
+    },
+    {
+      "brokenImages": [],
+      "footers": 1,
+      "overflow": false,
+      "path": "/",
+      "pendingImages": 0,
+      "termsHref": "/help#terms",
+      "width": 1440,
+      "destination": {
+        "focus": "terms",
+        "hash": "#terms",
+        "path": "/help"
+      }
+    },
+    {
+      "brokenImages": [],
+      "footers": 1,
+      "overflow": false,
+      "path": "/products",
+      "pendingImages": 0,
+      "termsHref": "/help#terms",
+      "width": 1440,
+      "destination": {
+        "focus": "terms",
+        "hash": "#terms",
+        "path": "/help"
+      }
+    }
+  ]
+}

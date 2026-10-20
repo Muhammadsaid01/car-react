@@ -1,78 +1,14 @@
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import AspectRatio from "@mui/joy/AspectRatio";
-import Card from "@mui/joy/Card";
-import CardOverflow from "@mui/joy/CardOverflow";
-import { CssVarsProvider } from "@mui/joy/styles";
-import Typography from "@mui/joy/Typography";
-import { Box, Container, Stack } from "@mui/material";
-import Divider from "../../components/divider";
-
 import { useSelector } from "react-redux";
-import { createSelector } from "reselect";
-import { serverApi } from "../../../lib/config";
-import { ProductCondition } from "../../../lib/enums/product.enum";
-import { Product } from "../../../lib/types/product";
+import { Link } from "react-router-dom";
+import { catalogUrl } from "../../../lib/catalogSearch";
+import { ProductCollection } from "../../../lib/enums/product.enum";
 import { retrieveNewCars } from "./selector";
-
-//**REDUX SLICE & SELECTOR
-const newCarsRetriever = createSelector(
-  retrieveNewCars,
-  (newCars) => ({ newCars })
-);
-
-export default function NewCars() {
-  const { newCars } = useSelector(newCarsRetriever);
-
-  return (
-    <div className="new-products-frame">
-      <Container>
-        <Stack className="main">
-          <Box className="category-title">New Cars</Box>
-          <Stack className="cards-frame">
-            <CssVarsProvider>
-              {newCars.length !== 0 ? (
-                newCars.map((product: Product) => { 
-                  const imagePath = `${serverApi}/${product.productImages[0]}`; 
-                  
-                  // Logic for size vs volume display
-                  const sizeVolume = 
-                    product.productCondition === ProductCondition.NEW
-                    ? `0`
-                    : `${product.productMileage}l`;
-
-                  return ( 
-                    <Card key={product._id} variant="outlined" className="card">
-                      <CardOverflow>
-                        <div className="product-sale">{sizeVolume}</div>
-                        <AspectRatio ratio={1}>
-                          <img src={imagePath} alt={product.productName} />
-                        </AspectRatio>
-                      </CardOverflow>
-
-                      <CardOverflow variant="soft" className="product-detail">
-                        <Stack className="info">
-                          <Stack flexDirection="row">
-                            {/* FIX: Changed 'ele' to 'product' to match the map variable */}
-                            <Typography className="title">{product.productName}</Typography>
-                            <Divider width="2" height="24" bg="#d9d9d9" />
-                            <Typography className="price">${product.productPrice}</Typography> 
-                          </Stack>
-                        </Stack>
-                        <Typography className="views">
-                          {product.productViews}
-                          <VisibilityIcon sx={{ fontSize: 20, marginLeft: "5px" }} />
-                        </Typography>
-                      </CardOverflow>
-                    </Card>
-                  );
-                })
-              ) : (
-                <Box className="no-data">New Cars are not available</Box>
-              )}
-            </CssVarsProvider>
-          </Stack>
-        </Stack>
-      </Container>
-    </div>
-  );
+import SectionState, { LoadState } from "./SectionState";
+import VehicleCard from "./VehicleCard";
+export default function NewCars({ state, retry }: { state: LoadState; retry: () => void }) {
+  const products = useSelector(retrieveNewCars);
+  return <section className="lux-container lux-section lux-arrivals" aria-labelledby="arrivals-heading">
+    <div className="lux-section-heading"><h2 id="arrivals-heading">Yangi kelganlar</h2><Link className="lux-inline-link" to={catalogUrl({ collection: ProductCollection.SEDAN })}>Barcha yangilarini ko‘rish <span aria-hidden="true">→</span></Link></div>
+    {state === "ready" && products.length ? <div className="lux-arrival-grid">{products.map(product => <VehicleCard key={product._id} product={product} arrival />)}</div> : <SectionState state={state} empty="Yangi avtomobillar hozircha mavjud emas." retry={retry} />}
+  </section>;
 }

@@ -1,58 +1,11 @@
-import { CssVarsProvider, Typography } from "@mui/joy"
-import AspectRatio from "@mui/joy/AspectRatio"
-import Card from "@mui/joy/Card"
-import CardOverflow from "@mui/joy/CardOverflow"
-import { Box, Container, Stack } from "@mui/material"
-
-import { useSelector } from 'react-redux'
-import { createSelector } from 'reselect'
-import { serverApi } from '../../../lib/config'
-import { Member } from '../../../lib/types/member'
-import { retrieveTopUsers } from './selector'
-
-const topUsersRetriever = createSelector(
-  retrieveTopUsers, (topUsers) =>({
-    topUsers,
-  }));
-
-
-export default function ActiveUsers() {
-  const { topUsers } = useSelector(topUsersRetriever);
- 
-  return (
-  <div className={"active-users-frame"}>
-  <Container>
-      <Stack className={"main"}>
-      <Box className={"category-title"}>Active Users</Box>
-      <Stack className={"cards-frame"}>
-        <CssVarsProvider>
-         {topUsers.length !== 0 ? (
-          topUsers.map((member:Member)=> {
-             const imagePath = member.memberImage ? `${serverApi}/${member.memberImage}` : "/icons/default-user.svg";
-            return (
-              <Card key={member._id} variant="outlined" className={"card"}>
-                <CardOverflow>
-                     <AspectRatio ratio="1">
-                  <img src={imagePath} alt={member.memberNick} />
-                  </AspectRatio>
-                </CardOverflow>
-                <CardOverflow variant="soft" className="product-detail">
-                <Stack flexDirection="row"> 
-                    <Typography className={"title"}>
-                      {member.memberNick}
-                    </Typography>
-                </Stack>
-                </CardOverflow>
-              </Card>
-            );
-          })
-        ) : (
-          <Box className="no-data">No Active Users!</Box>
-         )}
-        </CssVarsProvider>
-      </Stack>
-    </Stack>
-    </Container>  
-  </div>
-  );
+import { useSelector } from "react-redux";
+import { serverApi } from "../../../lib/config";
+import { retrieveTopUsers } from "./selector";
+import SectionState, { LoadState } from "./SectionState";
+export default function ActiveUsers({ state, retry }: { state: LoadState; retry: () => void }) {
+  const members = useSelector(retrieveTopUsers);
+  return <section className="lux-container lux-section lux-community" aria-labelledby="community-heading">
+    <div><h2 id="community-heading">Avtomobilga mehr<br />bizni birlashtiradi.</h2><p>Bir xil qiziqishlar, yangi tanishuvlar va yo‘lga bo‘lgan mehr.</p></div>
+    <div className="lux-community-members">{state === "ready" && members.length ? members.slice(0, 3).map(member => <figure key={member._id}><img width="140" height="140" loading="lazy" src={member.memberImage ? `${serverApi}/${member.memberImage}` : "/icons/default-user.svg"} alt={member.memberNick} onError={e => { e.currentTarget.onerror = null; e.currentTarget.src = "/icons/default-user.svg"; }} /><figcaption>{member.memberNick}</figcaption></figure>) : <SectionState state={state} empty="Hozircha faol a’zolar yo‘q. Hamjamiyatimiz sizni kutmoqda." retry={retry} />}</div>
+  </section>;
 }

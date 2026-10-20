@@ -1,0 +1,1051 @@
+{
+  "inventory": {
+    "source": "public API",
+    "copiedVehicles": 8,
+    "generatedVehicles": 0,
+    "legacySportValues": 1
+  },
+  "isolatedBrowserRequests": [
+    {
+      "method": "GET",
+      "path": "/product/all?order=productViews&page=1&limit=3",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/detail",
+      "status": 401,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/top-users",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+      "status": 200,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/06976cbe-cd16-4f6e-87cc-786f0ad79fb4.jpg",
+      "status": 200,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+      "status": 200,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+      "status": 200,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/member/signup",
+      "status": 204,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "POST",
+      "path": "/member/signup",
+      "status": 201,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": [
+        {
+          "httpOnly": true,
+          "secure": false,
+          "sameSite": "Lax"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/member/detail",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=productViews&page=1&limit=3",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/top-users",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/06976cbe-cd16-4f6e-87cc-786f0ad79fb4.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/member/logout",
+      "status": 204,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "POST",
+      "path": "/member/logout",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": [
+        {
+          "httpOnly": true,
+          "secure": false,
+          "sameSite": "Lax"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/member/detail",
+      "status": 401,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=productViews&page=1&limit=3",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/top-users",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/06976cbe-cd16-4f6e-87cc-786f0ad79fb4.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/member/login",
+      "status": 204,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "POST",
+      "path": "/member/login",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": [
+        {
+          "httpOnly": true,
+          "secure": false,
+          "sameSite": "Lax"
+        }
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=6",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/38eb176b-fee1-44d0-b2f9-0d4c80f9c39a.webp",
+      "status": 200,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/a7d9e15a-173e-4f5f-86f9-bb8812a642a8.jpg",
+      "status": 200,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/bde82220-e764-4238-b645-f3aea87d3a5f.jpg",
+      "status": 200,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/Uzavto",
+      "status": 404,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/6a1b92cfc0e95bec70ab897d",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/detail",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=productViews&page=1&limit=3",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/top-users",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/06976cbe-cd16-4f6e-87cc-786f0ad79fb4.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/detail",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=6",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/38eb176b-fee1-44d0-b2f9-0d4c80f9c39a.webp",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/a7d9e15a-173e-4f5f-86f9-bb8812a642a8.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/bde82220-e764-4238-b645-f3aea87d3a5f.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=6",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/detail",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=productViews&page=1&limit=3",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/top-users",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/detail",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/top-users",
+      "status": 503,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+      "status": 503,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=productViews&page=1&limit=3",
+      "status": 503,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/detail",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=6",
+      "status": 503,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/detail",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=6",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/38eb176b-fee1-44d0-b2f9-0d4c80f9c39a.webp",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/a7d9e15a-173e-4f5f-86f9-bb8812a642a8.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/bde82220-e764-4238-b645-f3aea87d3a5f.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=productViews&page=1&limit=3",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/top-users",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/06976cbe-cd16-4f6e-87cc-786f0ad79fb4.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=productViews&page=1&limit=3",
+      "status": 503,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/top-users",
+      "status": 503,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+      "status": 503,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/detail",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=productViews&page=1&limit=3",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/06976cbe-cd16-4f6e-87cc-786f0ad79fb4.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=2&productCollection=SEDAN",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/top-users",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/member/logout",
+      "status": 204,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "POST",
+      "path": "/member/logout",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": [
+        {
+          "httpOnly": true,
+          "secure": false,
+          "sameSite": "Lax"
+        }
+      ]
+    },
+    {
+      "method": "OPTIONS",
+      "path": "/member/signup",
+      "status": 204,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "POST",
+      "path": "/member/signup",
+      "status": 400,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/detail",
+      "status": 401,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=6",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/38eb176b-fee1-44d0-b2f9-0d4c80f9c39a.webp",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/bde82220-e764-4238-b645-f3aea87d3a5f.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/a7d9e15a-173e-4f5f-86f9-bb8812a642a8.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/Uzavto",
+      "status": 404,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/6a1b92cfc0e95bec70ab897d",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/detail",
+      "status": 401,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/member/Uzavto",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/6a1b92cfc0e95bec70ab897d",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/38eb176b-fee1-44d0-b2f9-0d4c80f9c39a.webp",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=1&limit=6",
+      "status": 304,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/ba6da652-3d71-4a52-9926-57d9d92d2751.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/2bb2e9a4-94f1-48b9-904f-cd4748d07fae.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/e703bac9-84e1-462d-aca0-a1b5074623dd.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/a7d9e15a-173e-4f5f-86f9-bb8812a642a8.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/bde82220-e764-4238-b645-f3aea87d3a5f.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/product/all?order=createdAt&page=2&limit=6",
+      "status": 200,
+      "origin": "http://localhost:3010",
+      "allowOrigin": "http://localhost:3010",
+      "hasCookie": false,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/06976cbe-cd16-4f6e-87cc-786f0ad79fb4.jpg",
+      "status": 304,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    },
+    {
+      "method": "GET",
+      "path": "/uploads/products/03ab6cb1-0b86-49ba-9e91-3028e2fbb699.jpg",
+      "status": 200,
+      "origin": null,
+      "allowOrigin": null,
+      "hasCookie": true,
+      "setCookieAttributes": []
+    }
+  ]
+}

@@ -1,26 +1,9 @@
+/** Answers describe current application behavior, not a commercial service policy. */
 export const faq = [
-	{
-		question: 'How to place an order for a car?',
-		answer: 'Select your desired car, review the details, and proceed to checkout to place your order.',
-	},
-	{
-		question: 'How long does the delivery or pickup process take?',
-		answer: 'Delivery or pickup time depends on your location and vehicle availability. Our team will contact you with exact timing.',
-	},
-	{
-		question: 'Is my personal information secure on this platform?',
-		answer: 'Yes, we use secure systems to protect your personal and payment information.',
-	},
-	{
-		question: 'My account is blocked. What should I do?',
-		answer: 'If your account is blocked, please contact our support team to review the issue.',
-	},
-	{
-		question: 'Can I cancel my car order?',
-		answer: 'Order cancellation is subject to our policy. Please contact support as soon as possible after placing the order.',
-	},
-	{
-		question: 'Who developed this platform?',
-		answer: 'This platform was developed by the Lux Motors development team.',
-	},
+  { id: "account", question: "Qanday ro‘yxatdan o‘taman yoki hisobimga kiraman?", answer: "Yuqoridagi «Kirish» tugmasini bosing. Hisobingiz bo‘lsa, foydalanuvchi nomi va parolni kiriting. Yangi hisob uchun «Ro‘yxatdan o‘tish» havolasini tanlab, foydalanuvchi nomi, telefon va parolni to‘ldiring. Katalogni hisobga kirmasdan ham ko‘rishingiz mumkin." },
+  { id: "catalog", question: "Avtomobilni qanday qidiraman va filtrlayman?", answer: "«Avtomobillar» sahifasida nom yoki kalit so‘z kiriting va qidirishni tasdiqlang. Kuzov turini tanlash, narx bo‘yicha o‘sish tartibida, yangiligi yoki ko‘rilishlar soni bo‘yicha saralash mumkin. Telefonda «Filtrlarni ochish» tugmasidan foydalanib, tanlovni «Filtrlarni qo‘llash» bilan tasdiqlang." },
+  { id: "cart", question: "Savat va buyurtma qanday ishlaydi?", answer: "Avtomobil kartasidagi savat tugmasi bilan mahsulot qo‘shing. Yuqoridagi savat belgisidan miqdorni o‘zgartirishingiz yoki mahsulotni olib tashlashingiz mumkin. Buyurtma yaratish uchun hisobga kiring va «Buyurtma berish»ni bosing. Yakuniy summa buyurtma yaratilganda hisoblanadi. Saytda haqiqiy onlayn to‘lov hozircha mavjud emas." },
+  { id: "orders", question: "Buyurtmalarimni qayerdan ko‘raman va bekor qilaman?", answer: "Hisobga kirgach, «Buyurtmalar» sahifasini oching. «Kutilmoqda» — yangi, «Jarayonda» — tasdiqlangan, «Yakunlangan» — yakunlangan buyurtmalar. Kutilayotgan buyurtmani «Bekor qilish» tugmasi orqali, tasdiqlash oynasida rozilik berib bekor qilish mumkin. «Buyurtmani tasdiqlash» buyurtmani jarayonga o‘tkazadi; u pul yechmaydi. «To‘lov uchun tanlash» esa alohida to‘lov namoyishini ochadi, haqiqiy to‘lov hozircha amalga oshirilmaydi. Tasdiqlangan buyurtmani bu sahifada bekor qilish imkoniyati yo‘q." },
+  { id: "profile", question: "Profilim va rasmimni qanday yangilayman?", answer: "Hisobga kirib, «Profilim» sahifasiga o‘ting. Foydalanuvchi nomi, telefon, manzil va tavsifni tahrirlab saqlashingiz mumkin. Profil rasmi uchun JPG, JPEG yoki PNG fayl tanlang; hajmi 5 MiB dan oshmasligi kerak. Rasm tanlangach, o‘zgarishlarni saqlang." },
+  { id: "contact", question: "Sayt orqali xabar yubora olamanmi?", answer: "Xabar yuborish hozircha mavjud emas. Aloqa bo‘limidagi forma shu sababli o‘chirilgan. Tasdiqlangan aloqa ma’lumotlari qo‘shilganda saytda ko‘rsatiladi." },
 ];
